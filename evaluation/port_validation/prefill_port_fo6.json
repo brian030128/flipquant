@@ -1,0 +1,226 @@
+{
+ "status": "complete",
+ "bench": "prefill",
+ "gpu": {
+  "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "driver_version": "595.71.05",
+  "power.limit": "500.00 W",
+  "power.default_limit": "600.00 W",
+  "clocks.max.sm": "3090 MHz",
+  "clocks.max.mem": "14001 MHz",
+  "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+  "persistence_mode": "Enabled",
+  "temperature.gpu": "57",
+  "utilization.gpu": "0 %",
+  "memory.used": "2 MiB",
+  "torch": "2.9.0+cu128",
+  "torch_cuda": "12.8",
+  "triton": "3.5.0",
+  "host": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capability": [
+   12,
+   0
+  ],
+  "sm_count": 188,
+  "utc": "2026-10-02T05:23:40+00:00"
+ },
+ "model": "llama3.1-8b",
+ "label": "fourover6",
+ "round": 1,
+ "reps": 7,
+ "pid": 1133268,
+ "allocator": "",
+ "eager": {
+  "1x128": {
+   "ms": 33.83011245727539,
+   "min_ms": 30.826112747192383,
+   "max_ms": 36.60784149169922,
+   "tokens_per_s": 3783.6114249295892,
+   "enqueue_ms": 35.970747005194426
+  },
+  "1x2048": {
+   "ms": 60.15523147583008,
+   "min_ms": 58.74233627319336,
+   "max_ms": 60.56905746459961,
+   "tokens_per_s": 34045.25175541667,
+   "enqueue_ms": 35.53752298466861
+  }
+ },
+ "graph": {
+  "1x128": {
+   "ms": 7.45136022567749,
+   "min_ms": 7.448095798492432,
+   "max_ms": 7.458176136016846,
+   "tokens_per_s": 17178.07167058039,
+   "logits_equal_eager": true,
+   "max_abs_diff_eager": 0.0
+  },
+  "1x2048": {
+   "ms": 59.79372787475586,
+   "min_ms": 58.10393524169922,
+   "max_ms": 60.036705017089844,
+   "tokens_per_s": 34251.08406503351,
+   "logits_equal_eager": true,
+   "max_abs_diff_eager": 0.0
+  }
+ },
+ "host_bound": {
+  "1x128": {
+   "flag": true,
+   "rule": "eager > 1.05 x graph",
+   "graph_saves": 0.7797417837410994
+  },
+  "1x2048": {
+   "flag": false,
+   "rule": "eager > 1.05 x graph",
+   "graph_saves": 0.0060095122602839
+  }
+ },
+ "graph_capture_note": "during capture, transformers.masking_utils.is_tracing ignores stream capture (the eager mask decision: flash SDPA with is_causal=True); logits compared bitwise with eager",
+ "policy": {
+  "model": "llama3.1-8b",
+  "source": {
+   "hf_id": "meta-llama/Llama-3.1-8B",
+   "revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b",
+   "transformers": "5.16.1",
+   "torch": "2.9.0+cu128"
+  },
+  "mode": "native",
+  "quant": {
+   "backend": "razer",
+   "weight": "fourover6",
+   "act": "fourover6",
+   "act_scope": "row",
+   "unit": null
+  },
+  "razer": {
+   "backend": "razer",
+   "kernel": "stock",
+   "routing": null,
+   "weight": "fourover6",
+   "unit": null,
+   "activation_quantizer": "four_over_six_rows",
+   "activation_quantizer_override": false,
+   "modules": 224,
+   "e0m3_tiles": 0,
+   "checked": true,
+   "ownership": {},
+   "kernel_set": {
+    "family": "stock",
+    "kernels": {
+     "stock_wA_n16": "28a5cdd457ceb4c2fb7fa889742478a61761aa6c2669133991de1b306fec73fe",
+     "stock_wA_n32": "98c9fa65cc290a2aa47100f5a64ab094fbae233ff370983a047ca1613681b487",
+     "stock_wA_n64": "8682ac62b7d078274aada4593b7f524fdf41ff019d9b669ba0da499340f0ea03",
+     "stock_wA": "da161243f69bcdb420a93ea5c6179e5320f2f67c3185d58ac6dc8280cf84b008"
+    },
+    "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+    "table_shapes": 16,
+    "table_family": "stock",
+    "schedule_shapes": 0,
+    "calls_by_width": {}
+   },
+   "device_bytes": {
+    "packed": 3489660928,
+    "scales_placed": 436207616,
+    "bias": 0
+   }
+  },
+  "quantized_modules": 224,
+  "native_backend": "razer"
+ },
+ "seconds": {
+  "load": 6.688631057739258,
+  "install": 6.352766990661621
+ },
+ "weights_gib": 5.6543073654174805,
+ "peak_eager_gib": 6.511523246765137,
+ "capture_error": null,
+ "graph_equals_eager": true,
+ "coverage": {
+  "native": 224,
+  "native_called": 224,
+  "calls": 7168,
+  "tokens": 7798784
+ },
+ "kernel_set": {
+  "family": "stock",
+  "kernels": {
+   "stock_wA_n16": "28a5cdd457ceb4c2fb7fa889742478a61761aa6c2669133991de1b306fec73fe",
+   "stock_wA_n32": "98c9fa65cc290a2aa47100f5a64ab094fbae233ff370983a047ca1613681b487",
+   "stock_wA_n64": "8682ac62b7d078274aada4593b7f524fdf41ff019d9b669ba0da499340f0ea03",
+   "stock_wA": "da161243f69bcdb420a93ea5c6179e5320f2f67c3185d58ac6dc8280cf84b008"
+  },
+  "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+  "table_shapes": 16,
+  "table_family": "stock",
+  "schedule_shapes": 0,
+  "calls_by_width": {
+   "16": 1024,
+   "64": 1536,
+   "128": 4608
+  }
+ },
+ "quant_reuse": {
+  "q_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  },
+  "k_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 1024
+  },
+  "v_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 1024
+  },
+  "o_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  },
+  "gate_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  },
+  "up_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 1024
+  },
+  "down_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  }
+ },
+ "peak_total_gib": 7.094753265380859,
+ "gpu_end": {
+  "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "driver_version": "595.71.05",
+  "power.limit": "500.00 W",
+  "power.default_limit": "600.00 W",
+  "clocks.max.sm": "3090 MHz",
+  "clocks.max.mem": "14001 MHz",
+  "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+  "persistence_mode": "Enabled",
+  "temperature.gpu": "72",
+  "utilization.gpu": "100 %",
+  "memory.used": "20792 MiB",
+  "torch": "2.9.0+cu128",
+  "torch_cuda": "12.8",
+  "triton": "3.5.0",
+  "host": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capability": [
+   12,
+   0
+  ],
+  "sm_count": 188,
+  "utc": "2026-10-02T05:23:56+00:00"
+ }
+}

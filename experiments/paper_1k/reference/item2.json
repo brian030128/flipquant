@@ -1,0 +1,1275 @@
+{
+ "note": "Item 2 (tab:latency SM120 rows and the memory paragraph): the reference values the memory probe's step 0 and report use. 'published_256': part B's / part Z's memory records (NVFP4-RaZeR paper-eval results; the 256-window release maps; flipquant main / paper-sm120-runs). 'anchor': the registered memory anchor, Mistral-7B FlipQuant 16x64 with the 256-window release map, against part B's record: installed and whole-model bytes equal, after-load and 1x2048-peak allocations within 0.02 GiB. 'measured_here_20261024': what part AC item 2 measured on the first board before the GPU stopped responding (the anchor and Llama-3.2-1B-Instruct BF16).",
+ "anchor": {
+  "model": "mistral-7b",
+  "policy": "fq-16x64",
+  "map": "the 256-window release map (artifact kind flipquant_256, 16x64)",
+  "tol_gib": 0.02,
+  "expected": {
+   "model_bytes": 4463272448,
+   "allocated_after_load": 4502072832,
+   "reserved_after_load": 19304284160,
+   "peak_prefill_1x2048": 5029162496,
+   "peak_prefill_over_load": 527089664,
+   "other_bytes": 537403904,
+   "quantized_linears": {
+    "modules": 224,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "packed_bytes": 3489660928,
+    "scales_bytes": 436207616,
+    "bias_bytes": 0,
+    "installed_over_bf16": 0.28125
+   },
+   "coverage": {
+    "native": 224,
+    "native_called": 224,
+    "calls": 224,
+    "tokens": 458752
+   },
+   "label": "fq-16x64",
+   "model": "mistral-7b"
+  }
+ },
+ "published_256": {
+  "llama3.1-8b-instruct": {
+   "bf16": {
+    "model_bytes": 16060523008,
+    "allocated_after_load": 16060523520,
+    "reserved_after_load": 16064184320,
+    "peak_prefill_1x2048": 16880657408,
+    "peak_prefill_over_load": 820133888,
+    "other_bytes": 2101879296,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 13958643712,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "llama3.1-8b-instruct"
+   },
+   "fo6": {
+    "model_bytes": 6027747840,
+    "allocated_after_load": 6071266304,
+    "reserved_after_load": 20870856704,
+    "peak_prefill_1x2048": 6966635520,
+    "peak_prefill_over_load": 895369216,
+    "other_bytes": 2101879296,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fo6",
+    "model": "llama3.1-8b-instruct"
+   },
+   "fq-16x64": {
+    "model_bytes": 6027747840,
+    "allocated_after_load": 6063402496,
+    "reserved_after_load": 21338521600,
+    "peak_prefill_1x2048": 6958124544,
+    "peak_prefill_over_load": 894722048,
+    "other_bytes": 2101879296,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fq-16x64",
+    "model": "llama3.1-8b-instruct"
+   },
+   "fq-256x64": {
+    "model_bytes": 6027747840,
+    "allocated_after_load": 6063402496,
+    "reserved_after_load": 21338521600,
+    "peak_prefill_1x2048": 6958124544,
+    "peak_prefill_over_load": 894722048,
+    "other_bytes": 2101879296,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fq-256x64",
+    "model": "llama3.1-8b-instruct"
+   },
+   "fq-8x64": {
+    "model_bytes": 6027747840,
+    "allocated_after_load": 6063402496,
+    "reserved_after_load": 21338521600,
+    "peak_prefill_1x2048": 6958124544,
+    "peak_prefill_over_load": 894722048,
+    "other_bytes": 2101879296,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fq-8x64",
+    "model": "llama3.1-8b-instruct"
+   },
+   "nvfp4": {
+    "model_bytes": 6027747840,
+    "allocated_after_load": 6068644864,
+    "reserved_after_load": 20866662400,
+    "peak_prefill_1x2048": 6963481600,
+    "peak_prefill_over_load": 894836736,
+    "other_bytes": 2101879296,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "nvfp4",
+    "model": "llama3.1-8b-instruct"
+   }
+  },
+  "llama3.2-1b-instruct": {
+   "bf16": {
+    "model_bytes": 2471629056,
+    "allocated_after_load": 2472678400,
+    "reserved_after_load": 2474639360,
+    "peak_prefill_1x2048": 3083097088,
+    "peak_prefill_over_load": 610418688,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 1946157056,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "llama3.2-1b-instruct"
+   },
+   "fo6": {
+    "model_bytes": 1072828672,
+    "allocated_after_load": 1072831488,
+    "reserved_after_load": 3326083072,
+    "peak_prefill_1x2048": 1726241792,
+    "peak_prefill_over_load": 653410304,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 547356672,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": 486539264,
+     "scales_bytes": 60817408,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 112,
+     "native_called": 112,
+     "calls": 112,
+     "tokens": 229376
+    },
+    "label": "fo6",
+    "model": "llama3.2-1b-instruct"
+   },
+   "fq-16x64": {
+    "model_bytes": 1072828672,
+    "allocated_after_load": 1072832000,
+    "reserved_after_load": 3313500160,
+    "peak_prefill_1x2048": 1725201920,
+    "peak_prefill_over_load": 652369920,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 547356672,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": 486539264,
+     "scales_bytes": 60817408,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 112,
+     "native_called": 112,
+     "calls": 112,
+     "tokens": 229376
+    },
+    "label": "fq-16x64",
+    "model": "llama3.2-1b-instruct"
+   },
+   "fq-256x64": {
+    "model_bytes": 1072828672,
+    "allocated_after_load": 1072832000,
+    "reserved_after_load": 3313500160,
+    "peak_prefill_1x2048": 1725201920,
+    "peak_prefill_over_load": 652369920,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 547356672,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": 486539264,
+     "scales_bytes": 60817408,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 112,
+     "native_called": 112,
+     "calls": 112,
+     "tokens": 229376
+    },
+    "label": "fq-256x64",
+    "model": "llama3.2-1b-instruct"
+   },
+   "fq-8x64": {
+    "model_bytes": 1072828672,
+    "allocated_after_load": 1072832000,
+    "reserved_after_load": 3313500160,
+    "peak_prefill_1x2048": 1725201920,
+    "peak_prefill_over_load": 652369920,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 547356672,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": 486539264,
+     "scales_bytes": 60817408,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 112,
+     "native_called": 112,
+     "calls": 112,
+     "tokens": 229376
+    },
+    "label": "fq-8x64",
+    "model": "llama3.2-1b-instruct"
+   },
+   "nvfp4": {
+    "model_bytes": 1072828672,
+    "allocated_after_load": 1072831488,
+    "reserved_after_load": 3126853632,
+    "peak_prefill_1x2048": 1725201408,
+    "peak_prefill_over_load": 652369920,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 547356672,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": 486539264,
+     "scales_bytes": 60817408,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 112,
+     "native_called": 112,
+     "calls": 112,
+     "tokens": 229376
+    },
+    "label": "nvfp4",
+    "model": "llama3.2-1b-instruct"
+   }
+  },
+  "mistral-7b": {
+   "bf16": {
+    "model_bytes": 14496047616,
+    "allocated_after_load": 14496048128,
+    "reserved_after_load": 14499708928,
+    "peak_prefill_1x2048": 15017354240,
+    "peak_prefill_over_load": 521306112,
+    "other_bytes": 537403904,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 13958643712,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "mistral-7b"
+   },
+   "fo6": {
+    "model_bytes": 4463272448,
+    "allocated_after_load": 4503120896,
+    "reserved_after_load": 19306381312,
+    "peak_prefill_1x2048": 5029153792,
+    "peak_prefill_over_load": 526032896,
+    "other_bytes": 537403904,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fo6",
+    "model": "mistral-7b"
+   },
+   "fq-16x64": {
+    "model_bytes": 4463272448,
+    "allocated_after_load": 4502072832,
+    "reserved_after_load": 19304284160,
+    "peak_prefill_1x2048": 5029162496,
+    "peak_prefill_over_load": 527089664,
+    "other_bytes": 537403904,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fq-16x64",
+    "model": "mistral-7b"
+   },
+   "fq-256x64": {
+    "model_bytes": 4463272448,
+    "allocated_after_load": 4497878528,
+    "reserved_after_load": 19774046208,
+    "peak_prefill_1x2048": 5024968192,
+    "peak_prefill_over_load": 527089664,
+    "other_bytes": 537403904,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fq-256x64",
+    "model": "mistral-7b"
+   },
+   "fq-8x64": {
+    "model_bytes": 4463272448,
+    "allocated_after_load": 4502072832,
+    "reserved_after_load": 19304284160,
+    "peak_prefill_1x2048": 5029162496,
+    "peak_prefill_over_load": 527089664,
+    "other_bytes": 537403904,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "fq-8x64",
+    "model": "mistral-7b"
+   },
+   "nvfp4": {
+    "model_bytes": 4463272448,
+    "allocated_after_load": 4504169472,
+    "reserved_after_load": 19302187008,
+    "peak_prefill_1x2048": 5030456320,
+    "peak_prefill_over_load": 526286848,
+    "other_bytes": 537403904,
+    "quantized_linears": {
+     "modules": 224,
+     "installed_bytes": 3925868544,
+     "bf16_bytes": 13958643712,
+     "packed_bytes": 3489660928,
+     "scales_bytes": 436207616,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 224,
+     "native_called": 224,
+     "calls": 224,
+     "tokens": 458752
+    },
+    "label": "nvfp4",
+    "model": "mistral-7b"
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "bf16": {
+    "model_bytes": 17776454656,
+    "allocated_after_load": 17776489984,
+    "reserved_after_load": 17783848960,
+    "peak_prefill_1x2048": 19592672768,
+    "peak_prefill_over_load": 1816182784,
+    "other_bytes": 2353212416,
+    "quantized_linears": {
+     "modules": 120,
+     "installed_bytes": 15423242240,
+     "bf16_bytes": 15423242240,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "nemotron-nano-9b-v2"
+   },
+   "fo6": {
+    "model_bytes": 6691447296,
+    "allocated_after_load": 6709000704,
+    "reserved_after_load": 23915921408,
+    "peak_prefill_1x2048": 8608545280,
+    "peak_prefill_over_load": 1899544576,
+    "other_bytes": 2353212416,
+    "quantized_linears": {
+     "modules": 120,
+     "installed_bytes": 4338234880,
+     "bf16_bytes": 15423242240,
+     "packed_bytes": 3855810560,
+     "scales_bytes": 482424320,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.2812790470701963
+    },
+    "coverage": {
+     "native": 120,
+     "native_called": 120,
+     "calls": 120,
+     "tokens": 245760
+    },
+    "label": "fo6",
+    "model": "nemotron-nano-9b-v2"
+   },
+   "fq-16x64": {
+    "model_bytes": 6691447296,
+    "allocated_after_load": 6708287488,
+    "reserved_after_load": 23915921408,
+    "peak_prefill_1x2048": 8609605632,
+    "peak_prefill_over_load": 1901318144,
+    "other_bytes": 2353212416,
+    "quantized_linears": {
+     "modules": 120,
+     "installed_bytes": 4338234880,
+     "bf16_bytes": 15423242240,
+     "packed_bytes": 3855810560,
+     "scales_bytes": 482424320,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.2812790470701963
+    },
+    "coverage": {
+     "native": 120,
+     "native_called": 120,
+     "calls": 120,
+     "tokens": 245760
+    },
+    "label": "fq-16x64",
+    "model": "nemotron-nano-9b-v2"
+   },
+   "fq-256x64": {
+    "model_bytes": 6691447296,
+    "allocated_after_load": 6707834368,
+    "reserved_after_load": 23664263168,
+    "peak_prefill_1x2048": 8606854656,
+    "peak_prefill_over_load": 1899020288,
+    "other_bytes": 2353212416,
+    "quantized_linears": {
+     "modules": 120,
+     "installed_bytes": 4338234880,
+     "bf16_bytes": 15423242240,
+     "packed_bytes": 3855810560,
+     "scales_bytes": 482424320,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.2812790470701963
+    },
+    "coverage": {
+     "native": 120,
+     "native_called": 120,
+     "calls": 120,
+     "tokens": 245760
+    },
+    "label": "fq-256x64",
+    "model": "nemotron-nano-9b-v2"
+   },
+   "fq-8x64": {
+    "model_bytes": 6691447296,
+    "allocated_after_load": 6708287488,
+    "reserved_after_load": 23915921408,
+    "peak_prefill_1x2048": 8609605632,
+    "peak_prefill_over_load": 1901318144,
+    "other_bytes": 2353212416,
+    "quantized_linears": {
+     "modules": 120,
+     "installed_bytes": 4338234880,
+     "bf16_bytes": 15423242240,
+     "packed_bytes": 3855810560,
+     "scales_bytes": 482424320,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.2812790470701963
+    },
+    "coverage": {
+     "native": 120,
+     "native_called": 120,
+     "calls": 120,
+     "tokens": 245760
+    },
+    "label": "fq-8x64",
+    "model": "nemotron-nano-9b-v2"
+   },
+   "nvfp4": {
+    "model_bytes": 6691447296,
+    "allocated_after_load": 6710817792,
+    "reserved_after_load": 23611834368,
+    "peak_prefill_1x2048": 8609293312,
+    "peak_prefill_over_load": 1898475520,
+    "other_bytes": 2353212416,
+    "quantized_linears": {
+     "modules": 120,
+     "installed_bytes": 4338234880,
+     "bf16_bytes": 15423242240,
+     "packed_bytes": 3855810560,
+     "scales_bytes": 482424320,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.2812790470701963
+    },
+    "coverage": {
+     "native": 120,
+     "native_called": 120,
+     "calls": 120,
+     "tokens": 245760
+    },
+    "label": "nvfp4",
+    "model": "nemotron-nano-9b-v2"
+   }
+  },
+  "phi4-14b": {
+   "bf16": {
+    "model_bytes": 29319014912,
+    "allocated_after_load": 29319015424,
+    "reserved_after_load": 29322379264,
+    "peak_prefill_1x2048": 30178995200,
+    "peak_prefill_over_load": 859979776,
+    "other_bytes": 2056038912,
+    "quantized_linears": {
+     "modules": 160,
+     "installed_bytes": 27262976000,
+     "bf16_bytes": 27262976000,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "phi4-14b"
+   },
+   "fo6": {
+    "model_bytes": 9723750912,
+    "allocated_after_load": 9741415424,
+    "reserved_after_load": 39409680384,
+    "peak_prefill_1x2048": 10697757696,
+    "peak_prefill_over_load": 956342272,
+    "other_bytes": 2056038912,
+    "quantized_linears": {
+     "modules": 160,
+     "installed_bytes": 7667712000,
+     "bf16_bytes": 27262976000,
+     "packed_bytes": 6815744000,
+     "scales_bytes": 851968000,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 160,
+     "native_called": 160,
+     "calls": 160,
+     "tokens": 327680
+    },
+    "label": "fo6",
+    "model": "phi4-14b"
+   },
+   "fq-16x64": {
+    "model_bytes": 9723750912,
+    "allocated_after_load": 9740269056,
+    "reserved_after_load": 40877686784,
+    "peak_prefill_1x2048": 10694940160,
+    "peak_prefill_over_load": 954671104,
+    "other_bytes": 2056038912,
+    "quantized_linears": {
+     "modules": 160,
+     "installed_bytes": 7667712000,
+     "bf16_bytes": 27262976000,
+     "packed_bytes": 6815744000,
+     "scales_bytes": 851968000,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 160,
+     "native_called": 160,
+     "calls": 160,
+     "tokens": 327680
+    },
+    "label": "fq-16x64",
+    "model": "phi4-14b"
+   },
+   "fq-256x64": {
+    "model_bytes": 9723750912,
+    "allocated_after_load": 9750427136,
+    "reserved_after_load": 42345693184,
+    "peak_prefill_1x2048": 10704778752,
+    "peak_prefill_over_load": 954351616,
+    "other_bytes": 2056038912,
+    "quantized_linears": {
+     "modules": 160,
+     "installed_bytes": 7667712000,
+     "bf16_bytes": 27262976000,
+     "packed_bytes": 6815744000,
+     "scales_bytes": 851968000,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 160,
+     "native_called": 160,
+     "calls": 160,
+     "tokens": 327680
+    },
+    "label": "fq-256x64",
+    "model": "phi4-14b"
+   },
+   "fq-8x64": {
+    "model_bytes": 9723750912,
+    "allocated_after_load": 9740269056,
+    "reserved_after_load": 40877686784,
+    "peak_prefill_1x2048": 10694620672,
+    "peak_prefill_over_load": 954351616,
+    "other_bytes": 2056038912,
+    "quantized_linears": {
+     "modules": 160,
+     "installed_bytes": 7667712000,
+     "bf16_bytes": 27262976000,
+     "packed_bytes": 6815744000,
+     "scales_bytes": 851968000,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 160,
+     "native_called": 160,
+     "calls": 160,
+     "tokens": 327680
+    },
+    "label": "fq-8x64",
+    "model": "phi4-14b"
+   },
+   "nvfp4": {
+    "model_bytes": 9723750912,
+    "allocated_after_load": 9747870720,
+    "reserved_after_load": 38440796160,
+    "peak_prefill_1x2048": 10702541824,
+    "peak_prefill_over_load": 954671104,
+    "other_bytes": 2056038912,
+    "quantized_linears": {
+     "modules": 160,
+     "installed_bytes": 7667712000,
+     "bf16_bytes": 27262976000,
+     "packed_bytes": 6815744000,
+     "scales_bytes": 851968000,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 160,
+     "native_called": 160,
+     "calls": 160,
+     "tokens": 327680
+    },
+    "label": "nvfp4",
+    "model": "phi4-14b"
+   }
+  },
+  "qwen3-1.7b": {
+   "bf16": {
+    "model_bytes": 3441150464,
+    "allocated_after_load": 3441165312,
+    "reserved_after_load": 4397727744,
+    "peak_prefill_1x2048": 4315300864,
+    "peak_prefill_over_load": 874135552,
+    "other_bytes": 622578176,
+    "quantized_linears": {
+     "modules": 196,
+     "installed_bytes": 2818572288,
+     "bf16_bytes": 2818572288,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "qwen3-1.7b"
+   },
+   "fo6": {
+    "model_bytes": 1415301632,
+    "allocated_after_load": 1422134272,
+    "reserved_after_load": 4951375872,
+    "peak_prefill_1x2048": 2328521728,
+    "peak_prefill_over_load": 906387456,
+    "other_bytes": 622578176,
+    "quantized_linears": {
+     "modules": 196,
+     "installed_bytes": 792723456,
+     "bf16_bytes": 2818572288,
+     "packed_bytes": 704643072,
+     "scales_bytes": 88080384,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 196,
+     "native_called": 196,
+     "calls": 196,
+     "tokens": 401408
+    },
+    "label": "fo6",
+    "model": "qwen3-1.7b"
+   },
+   "fq-16x64": {
+    "model_bytes": 1415301632,
+    "allocated_after_load": 1418464768,
+    "reserved_after_load": 4951375872,
+    "peak_prefill_1x2048": 2324852224,
+    "peak_prefill_over_load": 906387456,
+    "other_bytes": 622578176,
+    "quantized_linears": {
+     "modules": 196,
+     "installed_bytes": 792723456,
+     "bf16_bytes": 2818572288,
+     "packed_bytes": 704643072,
+     "scales_bytes": 88080384,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 196,
+     "native_called": 196,
+     "calls": 196,
+     "tokens": 401408
+    },
+    "label": "fq-16x64",
+    "model": "qwen3-1.7b"
+   },
+   "fq-256x64": {
+    "model_bytes": 1415301632,
+    "allocated_after_load": 1418464768,
+    "reserved_after_load": 4951375872,
+    "peak_prefill_1x2048": 2324852224,
+    "peak_prefill_over_load": 906387456,
+    "other_bytes": 622578176,
+    "quantized_linears": {
+     "modules": 196,
+     "installed_bytes": 792723456,
+     "bf16_bytes": 2818572288,
+     "packed_bytes": 704643072,
+     "scales_bytes": 88080384,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 196,
+     "native_called": 196,
+     "calls": 196,
+     "tokens": 401408
+    },
+    "label": "fq-256x64",
+    "model": "qwen3-1.7b"
+   },
+   "fq-8x64": {
+    "model_bytes": 1415301632,
+    "allocated_after_load": 1418464768,
+    "reserved_after_load": 4951375872,
+    "peak_prefill_1x2048": 2324852224,
+    "peak_prefill_over_load": 906387456,
+    "other_bytes": 622578176,
+    "quantized_linears": {
+     "modules": 196,
+     "installed_bytes": 792723456,
+     "bf16_bytes": 2818572288,
+     "packed_bytes": 704643072,
+     "scales_bytes": 88080384,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 196,
+     "native_called": 196,
+     "calls": 196,
+     "tokens": 401408
+    },
+    "label": "fq-8x64",
+    "model": "qwen3-1.7b"
+   },
+   "nvfp4": {
+    "model_bytes": 1415301632,
+    "allocated_after_load": 1416367104,
+    "reserved_after_load": 4848615424,
+    "peak_prefill_1x2048": 2322754560,
+    "peak_prefill_over_load": 906387456,
+    "other_bytes": 622578176,
+    "quantized_linears": {
+     "modules": 196,
+     "installed_bytes": 792723456,
+     "bf16_bytes": 2818572288,
+     "packed_bytes": 704643072,
+     "scales_bytes": 88080384,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 196,
+     "native_called": 196,
+     "calls": 196,
+     "tokens": 401408
+    },
+    "label": "nvfp4",
+    "model": "qwen3-1.7b"
+   }
+  },
+  "qwen3-8b": {
+   "bf16": {
+    "model_bytes": 16381471232,
+    "allocated_after_load": 16381490176,
+    "reserved_after_load": 16385048576,
+    "peak_prefill_1x2048": 17331647488,
+    "peak_prefill_over_load": 950157312,
+    "other_bytes": 2489936384,
+    "quantized_linears": {
+     "modules": 252,
+     "installed_bytes": 13891534848,
+     "bf16_bytes": 13891534848,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "qwen3-8b"
+   },
+   "fo6": {
+    "model_bytes": 6396930560,
+    "allocated_after_load": 6432603136,
+    "reserved_after_load": 21472739328,
+    "peak_prefill_1x2048": 7446731776,
+    "peak_prefill_over_load": 1014128640,
+    "other_bytes": 2489936384,
+    "quantized_linears": {
+     "modules": 252,
+     "installed_bytes": 3906994176,
+     "bf16_bytes": 13891534848,
+     "packed_bytes": 3472883712,
+     "scales_bytes": 434110464,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 252,
+     "native_called": 252,
+     "calls": 252,
+     "tokens": 516096
+    },
+    "label": "fo6",
+    "model": "qwen3-8b"
+   },
+   "fq-16x64": {
+    "model_bytes": 6396930560,
+    "allocated_after_load": 6423166464,
+    "reserved_after_load": 21470642176,
+    "peak_prefill_1x2048": 7438343680,
+    "peak_prefill_over_load": 1015177216,
+    "other_bytes": 2489936384,
+    "quantized_linears": {
+     "modules": 252,
+     "installed_bytes": 3906994176,
+     "bf16_bytes": 13891534848,
+     "packed_bytes": 3472883712,
+     "scales_bytes": 434110464,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 252,
+     "native_called": 252,
+     "calls": 252,
+     "tokens": 516096
+    },
+    "label": "fq-16x64",
+    "model": "qwen3-8b"
+   },
+   "fq-256x64": {
+    "model_bytes": 6396930560,
+    "allocated_after_load": 6413729280,
+    "reserved_after_load": 21468545024,
+    "peak_prefill_1x2048": 7428906496,
+    "peak_prefill_over_load": 1015177216,
+    "other_bytes": 2489936384,
+    "quantized_linears": {
+     "modules": 252,
+     "installed_bytes": 3906994176,
+     "bf16_bytes": 13891534848,
+     "packed_bytes": 3472883712,
+     "scales_bytes": 434110464,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 252,
+     "native_called": 252,
+     "calls": 252,
+     "tokens": 516096
+    },
+    "label": "fq-256x64",
+    "model": "qwen3-8b"
+   },
+   "fq-8x64": {
+    "model_bytes": 6396930560,
+    "allocated_after_load": 6423166464,
+    "reserved_after_load": 21470642176,
+    "peak_prefill_1x2048": 7438343680,
+    "peak_prefill_over_load": 1015177216,
+    "other_bytes": 2489936384,
+    "quantized_linears": {
+     "modules": 252,
+     "installed_bytes": 3906994176,
+     "bf16_bytes": 13891534848,
+     "packed_bytes": 3472883712,
+     "scales_bytes": 434110464,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 252,
+     "native_called": 252,
+     "calls": 252,
+     "tokens": 516096
+    },
+    "label": "fq-8x64",
+    "model": "qwen3-8b"
+   },
+   "nvfp4": {
+    "model_bytes": 6396930560,
+    "allocated_after_load": 6420020224,
+    "reserved_after_load": 21063794688,
+    "peak_prefill_1x2048": 7434681344,
+    "peak_prefill_over_load": 1014661120,
+    "other_bytes": 2489936384,
+    "quantized_linears": {
+     "modules": 252,
+     "installed_bytes": 3906994176,
+     "bf16_bytes": 13891534848,
+     "packed_bytes": 3472883712,
+     "scales_bytes": 434110464,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28125
+    },
+    "coverage": {
+     "native": 252,
+     "native_called": 252,
+     "calls": 252,
+     "tokens": 516096
+    },
+    "label": "nvfp4",
+    "model": "qwen3-8b"
+   }
+  },
+  "qwen3.8-27b": {
+   "bf16": {
+    "model_bytes": 54713457448,
+    "allocated_after_load": 54713562624,
+    "reserved_after_load": 54769221632,
+    "peak_prefill_1x2048": 56078693888,
+    "peak_prefill_over_load": 1365131264,
+    "other_bytes": 6012345128,
+    "quantized_linears": {
+     "modules": 496,
+     "installed_bytes": 48701112320,
+     "bf16_bytes": 48701112320,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "qwen3.8-27b"
+   },
+   "fo6": {
+    "model_bytes": 19711990568,
+    "allocated_after_load": 19764198912,
+    "reserved_after_load": 69392662528,
+    "peak_prefill_1x2048": 21206146560,
+    "peak_prefill_over_load": 1441947648,
+    "other_bytes": 6012345128,
+    "quantized_linears": {
+     "modules": 496,
+     "installed_bytes": 13699645440,
+     "bf16_bytes": 48701112320,
+     "packed_bytes": 12175278080,
+     "scales_bytes": 1524367360,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28130046291312305
+    },
+    "coverage": {
+     "native": 496,
+     "native_called": 496,
+     "calls": 496,
+     "tokens": 1015808
+    },
+    "label": "fo6",
+    "model": "qwen3.8-27b"
+   },
+   "fq-16x64": {
+    "model_bytes": 19711990568,
+    "allocated_after_load": 19750436864,
+    "reserved_after_load": 71074578432,
+    "peak_prefill_1x2048": 21203533824,
+    "peak_prefill_over_load": 1453096960,
+    "other_bytes": 6012345128,
+    "quantized_linears": {
+     "modules": 496,
+     "installed_bytes": 13699645440,
+     "bf16_bytes": 48701112320,
+     "packed_bytes": 12175278080,
+     "scales_bytes": 1524367360,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28130046291312305
+    },
+    "coverage": {
+     "native": 496,
+     "native_called": 496,
+     "calls": 496,
+     "tokens": 1015808
+    },
+    "label": "fq-16x64",
+    "model": "qwen3.8-27b"
+   },
+   "fq-256x64": {
+    "model_bytes": 19711990568,
+    "allocated_after_load": 19752402944,
+    "reserved_after_load": 72498544640,
+    "peak_prefill_1x2048": 21201420288,
+    "peak_prefill_over_load": 1449017344,
+    "other_bytes": 6012345128,
+    "quantized_linears": {
+     "modules": 496,
+     "installed_bytes": 13699645440,
+     "bf16_bytes": 48701112320,
+     "packed_bytes": 12175278080,
+     "scales_bytes": 1524367360,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28130046291312305
+    },
+    "coverage": {
+     "native": 496,
+     "native_called": 496,
+     "calls": 496,
+     "tokens": 1015808
+    },
+    "label": "fq-256x64",
+    "model": "qwen3.8-27b"
+   },
+   "fq-8x64": {
+    "model_bytes": 19711990568,
+    "allocated_after_load": 19756662784,
+    "reserved_after_load": 73209479168,
+    "peak_prefill_1x2048": 21213544448,
+    "peak_prefill_over_load": 1456881664,
+    "other_bytes": 6012345128,
+    "quantized_linears": {
+     "modules": 496,
+     "installed_bytes": 13699645440,
+     "bf16_bytes": 48701112320,
+     "packed_bytes": 12175278080,
+     "scales_bytes": 1524367360,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28130046291312305
+    },
+    "coverage": {
+     "native": 496,
+     "native_called": 496,
+     "calls": 496,
+     "tokens": 1015808
+    },
+    "label": "fq-8x64",
+    "model": "qwen3.8-27b"
+   },
+   "nvfp4": {
+    "model_bytes": 19711990568,
+    "allocated_after_load": 19755023872,
+    "reserved_after_load": 70629982208,
+    "peak_prefill_1x2048": 21206801920,
+    "peak_prefill_over_load": 1451778048,
+    "other_bytes": 6012345128,
+    "quantized_linears": {
+     "modules": 496,
+     "installed_bytes": 13699645440,
+     "bf16_bytes": 48701112320,
+     "packed_bytes": 12175278080,
+     "scales_bytes": 1524367360,
+     "bias_bytes": 0,
+     "installed_over_bf16": 0.28130046291312305
+    },
+    "coverage": {
+     "native": 496,
+     "native_called": 496,
+     "calls": 496,
+     "tokens": 1015808
+    },
+    "label": "nvfp4",
+    "model": "qwen3.8-27b"
+   }
+  }
+ },
+ "measured_here_20261024": {
+  "anchor": {
+   "model_bytes": 4463272448,
+   "allocated_after_load": 4502072832,
+   "reserved_after_load": 19304284160,
+   "peak_prefill_1x2048": 5029162496,
+   "peak_prefill_over_load": 527089664,
+   "other_bytes": 537403904,
+   "quantized_linears": {
+    "modules": 224,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "packed_bytes": 3489660928,
+    "scales_bytes": 436207616,
+    "bias_bytes": 0,
+    "installed_over_bf16": 0.28125
+   },
+   "coverage": {
+    "native": 224,
+    "native_called": 224,
+    "calls": 224,
+    "tokens": 458752
+   },
+   "label": "fq-16x64",
+   "model": "mistral-7b"
+  },
+  "anchor_check": {
+   "installed_equal": true,
+   "model_equal": true,
+   "after_load_diff_gib": 0.0,
+   "peak_diff_gib": 0.0,
+   "tol_gib": 0.02,
+   "passed": true
+  },
+  "panel": {
+   "llama3.2-1b-instruct/bf16": {
+    "model_bytes": 2471629056,
+    "allocated_after_load": 2472678400,
+    "reserved_after_load": 2474639360,
+    "peak_prefill_1x2048": 3083097088,
+    "peak_prefill_over_load": 610418688,
+    "other_bytes": 525472000,
+    "quantized_linears": {
+     "modules": 112,
+     "installed_bytes": 1946157056,
+     "bf16_bytes": 1946157056,
+     "packed_bytes": null,
+     "scales_bytes": null,
+     "bias_bytes": 0,
+     "installed_over_bf16": 1.0
+    },
+    "coverage": null,
+    "label": "bf16",
+    "model": "llama3.2-1b-instruct"
+   }
+  }
+ },
+ "latency": {
+  "status": "done and published; do not re-run",
+  "paper_eval": "f60666e",
+  "flipquant": "33bad82",
+  "records": "results/paper_1k/item2/item2.json (latency section)"
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "what": "NVFP4-RaZeR port, stage 3: calibration.train_map_razer reproduces the paper's TM-OPT+TC maps",
+ "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+ "runs": {
+  "llama3.1-8b_8x64": {
+   "command": "/home/dev/.conda/envs/n16k64/bin/python run_train_map.py --model llama8b --data-root /home/dev/n16k64_campaign/fqport/razer_data --transformers-deviation --unit 8x64 --tm-opt --tile-grad-tc --param ste --lr 0.02 --init-logit -1 --epochs 20 --eval-every 2 --no-dev --no-eval --out /home/dev/n16k64_campaign/fqport/validation/tmopt_llama3.1-8b_8x64/run",
+   "map_sha256": "8b412c67d9ea412933ecfe7c8801eeefd72c5ef2d13cc32a59c73b07a2ce195d",
+   "final_e0m3_units": 309517,
+   "reproduces_paper_map": true,
+   "committed_map": null,
+   "per_epoch_vs_nvfp4_razer": {
+    "paper_run": {
+     "record": "NVFP4-RaZeR results/tm_opt/runs/tc/tc_llama8b_8x64/report.json",
+     "epochs": 20,
+     "epochs_equal": true,
+     "map_sha256_equal": true
+    },
+    "paper_nodev_rerun": {
+     "record": "NVFP4-RaZeR results/nodev_cost/runs/nd_tc_llama8b_8x64/report.json",
+     "epochs": 20,
+     "epochs_equal": true,
+     "map_sha256_equal": true
+    }
+   },
+   "sources_equal_vendored": true,
+   "fresh_record": {
+    "fit_equals_paper_record": true,
+    "matrices_equal_paper_record": true,
+    "transformers_version": "4.57.3",
+    "paper_record_transformers_version": "4.57.3",
+    "paper_record": "/home/dev/n16k64_campaign/cost_comparison/data/llama8b/calibration/report.json"
+   },
+   "deviations": [
+    {
+     "transformers_installed": "5.16.1",
+     "transformers_calibration": "4.57.3"
+    }
+   ],
+   "host": {
+    "hostname": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+    "gpus": [
+     "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+    ],
+    "torch": "2.9.0+cu128",
+    "cuda": "12.8",
+    "transformers": "5.16.1"
+   },
+   "settings": {
+    "memory_mode": "lean",
+    "fused_act_quant": true,
+    "tile_grad_kernel": false,
+    "chunked_loss": true,
+    "deterministic": true,
+    "dev_backend": "native",
+    "eval_backend": "native",
+    "single_pass_epilogue": true,
+    "tile_grad_tc": true,
+    "pytorch_cuda_alloc_conf": "expandable_segments:True",
+    "cublas_workspace_config": ":4096:8"
+   },
+   "seconds": {
+    "wrapper_wall": 544.0453085899353,
+    "trainer_total": 515.5595989227295,
+    "setup": 60.05853033065796,
+    "training": 455.42867374420166
+   }
+  },
+  "phi4-14b_16x64": {
+   "command": "/home/dev/.conda/envs/n16k64/bin/python run_train_map.py --model phi4 --data-root /home/dev/n16k64_campaign/fqport/razer_data --unit 16x64 --tm-opt --tile-grad-tc --param ste --lr 0.02 --init-logit -1 --epochs 20 --eval-every 2 --no-dev --no-eval --out /home/dev/n16k64_campaign/fqport/validation/tmopt_phi4-14b_16x64/run",
+   "map_sha256": "110243a64cd15ee01083870195b5ea10d498be4a86ba1b19f433510f31fa66eb",
+   "final_e0m3_units": 287062,
+   "reproduces_paper_map": true,
+   "committed_map": {
+    "file": "maps/phi4-14b/flipquant_16x64.pt",
+    "tiles_equal": true,
+    "source_map_sha256": "110243a64cd15ee01083870195b5ea10d498be4a86ba1b19f433510f31fa66eb",
+    "equal": true
+   },
+   "per_epoch_vs_nvfp4_razer": {
+    "paper_run": {
+     "record": "NVFP4-RaZeR results/tm_opt/runs/tc/tc_phi4_16x64/report.json",
+     "epochs": 20,
+     "epochs_equal": true,
+     "map_sha256_equal": true
+    },
+    "paper_nodev_rerun": {
+     "record": "NVFP4-RaZeR results/nodev_cost/runs/nd_tc_phi4_16x64/report.json",
+     "epochs": 20,
+     "epochs_equal": true,
+     "map_sha256_equal": true
+    }
+   },
+   "sources_equal_vendored": true,
+   "fresh_record": {
+    "fit_equals_paper_record": true,
+    "matrices_equal_paper_record": true,
+    "transformers_version": "5.16.1",
+    "paper_record_transformers_version": "5.16.1",
+    "paper_record": "/home/dev/n16k64_campaign/multimodel/data/phi4/calibration/report.json"
+   },
+   "deviations": [],
+   "host": {
+    "hostname": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+    "gpus": [
+     "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+    ],
+    "torch": "2.9.0+cu128",
+    "cuda": "12.8",
+    "transformers": "5.16.1"
+   },
+   "settings": {
+    "memory_mode": "lean",
+    "fused_act_quant": true,
+    "tile_grad_kernel": false,
+    "chunked_loss": true,
+    "deterministic": true,
+    "dev_backend": "native",
+    "eval_backend": "native",
+    "single_pass_epilogue": true,
+    "tile_grad_tc": true,
+    "pytorch_cuda_alloc_conf": "expandable_segments:True",
+    "cublas_workspace_config": ":4096:8"
+   },
+   "seconds": {
+    "wrapper_wall": 991.8336126804352,
+    "trainer_total": 892.6986527442932,
+    "setup": 98.77777409553528,
+    "training": 793.8530819416046
+   }
+  }
+ },
+ "all_reproduce": true
+}

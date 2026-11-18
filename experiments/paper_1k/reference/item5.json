@@ -1,0 +1,196 @@
+{
+ "note": "Item 5 (Table D.5 at 1k). published_256: the paper's Table D.5, the six-model medians with the 256-window release maps (flipquant gemm-bench 505bcf8 on another RTX PRO 6000, driver 595.71.05, 500 W; typical and densest tags, %). step0: Phi-4's per-model median over its T >= 128 cells (typical tags) from the same run, as the paper's source note for Table D.5 gives it (8x64 / 16x64 / 256x64), and the user's relative criterion for this harness (2026-10-13): within 2 points.",
+ "step0": {
+  "model": "phi4-14b",
+  "ge128_typical": {
+   "8x64": 6.72,
+   "16x64": 0.75,
+   "256x64": 0.91
+  },
+  "criterion_points": 2.0
+ },
+ "published_256": {
+  "1": {
+   "8x64": {
+    "typical": 0.11,
+    "densest": 0.44
+   },
+   "16x64": {
+    "typical": -0.09,
+    "densest": 0.66
+   },
+   "256x64": {
+    "typical": 0.2,
+    "densest": 0.15
+   }
+  },
+  "4": {
+   "8x64": {
+    "typical": 0.07,
+    "densest": 0.23
+   },
+   "16x64": {
+    "typical": 0.23,
+    "densest": 0.49
+   },
+   "256x64": {
+    "typical": -0.03,
+    "densest": -0.1
+   }
+  },
+  "16": {
+   "8x64": {
+    "typical": 0.19,
+    "densest": 0.44
+   },
+   "16x64": {
+    "typical": 0.49,
+    "densest": 0.89
+   },
+   "256x64": {
+    "typical": 0.33,
+    "densest": 0.18
+   }
+  },
+  "32": {
+   "8x64": {
+    "typical": 1.27,
+    "densest": 1.8
+   },
+   "16x64": {
+    "typical": 0.5,
+    "densest": 0.96
+   },
+   "256x64": {
+    "typical": 0.43,
+    "densest": 0.37
+   }
+  },
+  "64": {
+   "8x64": {
+    "typical": 1.09,
+    "densest": 1.25
+   },
+   "16x64": {
+    "typical": 0.71,
+    "densest": 1.1
+   },
+   "256x64": {
+    "typical": 0.45,
+    "densest": 0.37
+   }
+  },
+  "128": {
+   "8x64": {
+    "typical": 1.73,
+    "densest": 2.35
+   },
+   "16x64": {
+    "typical": 0.5,
+    "densest": 1.1
+   },
+   "256x64": {
+    "typical": 0.42,
+    "densest": 0.47
+   }
+  },
+  "256": {
+   "8x64": {
+    "typical": 6.01,
+    "densest": 6.33
+   },
+   "16x64": {
+    "typical": 0.61,
+    "densest": 1.33
+   },
+   "256x64": {
+    "typical": 0.62,
+    "densest": 0.7
+   }
+  },
+  "512": {
+   "8x64": {
+    "typical": 9.33,
+    "densest": 9.85
+   },
+   "16x64": {
+    "typical": 1.23,
+    "densest": 1.7
+   },
+   "256x64": {
+    "typical": 1.4,
+    "densest": 1.66
+   }
+  },
+  "1024": {
+   "8x64": {
+    "typical": 7.45,
+    "densest": 7.95
+   },
+   "16x64": {
+    "typical": 1.39,
+    "densest": 1.69
+   },
+   "256x64": {
+    "typical": 1.27,
+    "densest": 1.26
+   }
+  },
+  "2048": {
+   "8x64": {
+    "typical": 7.3,
+    "densest": 7.68
+   },
+   "16x64": {
+    "typical": 0.78,
+    "densest": 1.03
+   },
+   "256x64": {
+    "typical": 1.26,
+    "densest": 1.21
+   }
+  },
+  "4096": {
+   "8x64": {
+    "typical": 7.48,
+    "densest": 7.89
+   },
+   "16x64": {
+    "typical": 1.15,
+    "densest": 1.54
+   },
+   "256x64": {
+    "typical": 1.33,
+    "densest": 1.5
+   }
+  },
+  "8192": {
+   "8x64": {
+    "typical": 7.52,
+    "densest": 7.98
+   },
+   "16x64": {
+    "typical": 1.24,
+    "densest": 1.61
+   },
+   "256x64": {
+    "typical": 1.45,
+    "densest": 1.5
+   }
+  },
+  "T>=128": {
+   "8x64": {
+    "typical": 7.24,
+    "densest": 7.63
+   },
+   "16x64": {
+    "typical": 1.2,
+    "densest": 1.49
+   },
+   "256x64": {
+    "typical": 1.2,
+    "densest": 1.23
+   }
+  }
+ }
+}

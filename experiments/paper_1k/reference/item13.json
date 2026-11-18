@@ -1,0 +1,148 @@
+{
+ "note": "Item 13 (Appendix F.1 at 1k): the published 256-sequence results (Mistral-7B, 16x64; the paper's text, Table F.1 and its source notes; the original run: flipquant gradcheck aab768f + 3f7f4e3, never pushed, on an RTX 6000 Ada with the reference activation quantizer). x 1e-3 nats for KL changes. They are step 0's targets for the re-implementation calibration/gradcheck.py, which has not run before.",
+ "model": "mistral-7b",
+ "unit": "16x64",
+ "tiles": 6800000.0,
+ "map_tiles_256": 75906,
+ "map_share_256_pct": 1.11,
+ "heldout_256": "512:64:128",
+ "published_256": {
+  "baseline_kl_rel_diff": 2.7e-09,
+  "spearman": {
+   "g_u": {
+    "heldout": {
+     "rho": 0.71,
+     "ci95": [
+      0.37,
+      0.92
+     ]
+    },
+    "insample": {
+     "rho": 0.9,
+     "ci95": [
+      0.73,
+      0.98
+     ]
+    }
+   },
+   "act": {
+    "heldout": {
+     "rho": -0.18,
+     "ci95": [
+      -0.59,
+      0.3
+     ]
+    },
+    "insample": {
+     "rho": -0.41,
+     "ci95": [
+      -0.76,
+      0.04
+     ]
+    }
+   },
+   "weight_error": {
+    "heldout": {
+     "rho": 0.05,
+     "ci95": [
+      -0.41,
+      0.48
+     ]
+    },
+    "insample": {
+     "rho": -0.17,
+     "ci95": [
+      -0.63,
+      0.27
+     ]
+    }
+   }
+  },
+  "beyond_2se": {
+   "heldout": {
+    "groups": 6,
+    "agree": 6
+   },
+   "insample": {
+    "groups": 12,
+    "agree": 12
+   }
+  },
+  "middle_bins_pooled_milli": {
+   "insample": {
+    "mean": -0.35,
+    "two_se": 0.39
+   },
+   "heldout": {
+    "mean": 0.16,
+    "two_se": 0.45
+   }
+  },
+  "topk_ratio": {
+   "insample": {
+    "10-100": [
+     0.88,
+     0.97
+    ],
+    "300": 0.72,
+    "1000": 0.57,
+    "10000": 0.27,
+    "75906": -0.03
+   },
+   "heldout": {
+    "10-100": [
+     0.57,
+     0.71
+    ],
+    "1000": 0.42,
+    "75906": -0.1
+   }
+  },
+  "topk_75906_heldout_milli": {
+   "mean": 7.4,
+   "two_se": 2.2
+  },
+  "topk_300000_milli": {
+   "predicted": -149.3,
+   "heldout": {
+    "mean": 29.05,
+    "two_se": 2.71
+   },
+   "insample": {
+    "mean": 24.7,
+    "two_se": 2.62
+   }
+  },
+  "map_milli": {
+   "heldout": {
+    "mean": -17.8,
+    "two_se": 1.7
+   },
+   "insample": {
+    "mean": -26.5,
+    "two_se": 2.0
+   },
+   "ratio": {
+    "heldout": 0.48,
+    "insample": 0.71
+   }
+  },
+  "map_ranks": {
+   "in_top_same_size": 15942,
+   "share_in_top_pct": 21,
+   "median_rank_pct": 5.1,
+   "positive_g": 942,
+   "bins_pct": {
+    "0-0.1": 3.7,
+    "0.1-1.11": 17.2,
+    "1.11-3": 17.0,
+    "3-10": 28.9,
+    "10-50": 31.7,
+    "50-100": 1.5
+   }
+  },
+  "single_flip_predicted": 2.4e-06,
+  "se_256": 0.00026
+ },
+ "step0_criteria": "gate item13-step0: (1) the run's own checks: the fit windows are the one-shot run's, the held-out windows disjoint and distinct, the optimizer steps as expected; (2) the in-sample all-E2M1 KL within 1e-6 (relative) of the trainer's epoch-0 KL (published 2.7e-9); (3) the release map's measured change within the published 2 SE of the published value, held-out and in-sample; (4) g_u's Spearman correlation inside the published 95 % interval, held-out and in-sample. Everything else is reported against the published values."
+}

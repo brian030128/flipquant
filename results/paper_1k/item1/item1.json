@@ -1,0 +1,729 @@
+{
+ "rows": {
+  "llama3.2-1b-instruct": {
+   "fq-8x64": {
+    "mmlu_pct": 41.909984332716135,
+    "two_se_pct": 0.8327698768039319,
+    "questions": 14042,
+    "avg_pct": 55.549911679956814,
+    "published_256": {
+     "mmlu": 40.74,
+     "avg": 55.47
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "fq-16x64": {
+    "mmlu_pct": 41.917105825381,
+    "two_se_pct": 0.832789575164379,
+    "questions": 14042,
+    "avg_pct": 55.64535790116184,
+    "published_256": {
+     "mmlu": 41.4,
+     "avg": 54.99
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "fq-256x64": {
+    "mmlu_pct": 41.68209656744054,
+    "two_se_pct": 0.8321301163564452,
+    "questions": 14042,
+    "avg_pct": 55.77068482877978,
+    "published_256": {
+     "mmlu": 42.02,
+     "avg": 55.48
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "focus": {
+    "mmlu_pct": 42.543797179888905,
+    "two_se_pct": 0.8344534153274356,
+    "questions": 14042,
+    "avg_pct": 55.7020886697829,
+    "published_256": {
+     "mmlu": 42.4,
+     "avg": 55.26
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "gptq": {
+    "mmlu_pct": 42.3728813559322,
+    "two_se_pct": 0.8340132733985133,
+    "questions": 14042,
+    "avg_pct": 54.51615000798916,
+    "published_256": {
+     "mmlu": 41.84,
+     "avg": 54.44
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "fq-8x64": {
+    "mmlu_pct": 65.31120922945449,
+    "two_se_pct": 0.8033484389782156,
+    "questions": 14042,
+    "avg_pct": 71.37879147404865,
+    "published_256": {
+     "mmlu": 66.52,
+     "avg": 71.72
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "fq-16x64": {
+    "mmlu_pct": 65.72425580401652,
+    "two_se_pct": 0.8010724508270817,
+    "questions": 14042,
+    "avg_pct": 71.34418455798622,
+    "published_256": {
+     "mmlu": 66.01,
+     "avg": 71.64
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "fq-256x64": {
+    "mmlu_pct": 65.93790058396239,
+    "two_se_pct": 0.7998688336025671,
+    "questions": 14042,
+    "avg_pct": 70.8271989012497,
+    "published_256": {
+     "mmlu": 65.6,
+     "avg": 71.33
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "focus": {
+    "mmlu_pct": 65.94502207662725,
+    "two_se_pct": 0.799828401866894,
+    "questions": 14042,
+    "avg_pct": 71.90066086387021,
+    "published_256": {
+     "mmlu": 65.97,
+     "avg": 71.43
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "gptq": {
+    "mmlu_pct": 65.43939609742202,
+    "two_se_pct": 0.8026492681376504,
+    "questions": 14042,
+    "avg_pct": 70.76225210637202,
+    "published_256": {
+     "mmlu": 65.57,
+     "avg": 70.95
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   }
+  },
+  "mistral-7b": {
+   "fq-8x64": {
+    "mmlu_pct": 60.00569719413189,
+    "two_se_pct": 0.826819707408965,
+    "questions": 14042,
+    "avg_pct": 73.31160340019018,
+    "published_256": {
+     "mmlu": 60.23,
+     "avg": 73.33
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "fq-16x64": {
+    "mmlu_pct": 60.126762569434554,
+    "two_se_pct": 0.8263997383354809,
+    "questions": 14042,
+    "avg_pct": 73.46725274562665,
+    "published_256": {
+     "mmlu": 59.8,
+     "avg": 73.49
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "fq-256x64": {
+    "mmlu_pct": 60.0982765987751,
+    "two_se_pct": 0.8264990282555352,
+    "questions": 14042,
+    "avg_pct": 73.0445053842116,
+    "published_256": {
+     "mmlu": 59.59,
+     "avg": 73.14
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "focus": {
+    "mmlu_pct": 60.19085600341831,
+    "two_se_pct": 0.8261752694316276,
+    "questions": 14042,
+    "avg_pct": 73.20238241893391,
+    "published_256": {
+     "mmlu": 60.2,
+     "avg": 73.02
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   },
+   "gptq": {
+    "mmlu_pct": 60.25494943740208,
+    "two_se_pct": 0.825949322737549,
+    "questions": 14042,
+    "avg_pct": 73.41913025115127,
+    "published_256": {
+     "mmlu": 59.35,
+     "avg": 73.48
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {},
+    "marks": ""
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "fq-8x64": {
+    "mmlu_pct": 73.29440250676542,
+    "two_se_pct": 0.746710168111451,
+    "questions": 14042,
+    "avg_pct": 71.5770825595256,
+    "published_256": {
+     "mmlu": 73.54,
+     "avg": 71.41
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "fq-16x64": {
+    "mmlu_pct": 73.53653325737073,
+    "two_se_pct": 0.7445441499557643,
+    "questions": 14042,
+    "avg_pct": 71.44156145759294,
+    "published_256": {
+     "mmlu": 73.34,
+     "avg": 71.11
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "fq-256x64": {
+    "mmlu_pct": 73.48668280871671,
+    "two_se_pct": 0.7449924422212196,
+    "questions": 14042,
+    "avg_pct": 71.55997449889405,
+    "published_256": {
+     "mmlu": 73.58,
+     "avg": 71.15
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "focus": {
+    "mmlu_pct": 73.53653325737073,
+    "two_se_pct": 0.7445441499557643,
+    "questions": 14042,
+    "avg_pct": 71.92533159583832,
+    "published_256": {
+     "mmlu": 73.14,
+     "avg": 71.83
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "gptq": {
+    "mmlu_pct": 72.77453354223044,
+    "two_se_pct": 0.7512645413126489,
+    "questions": 14042,
+    "avg_pct": 71.38528657665951,
+    "published_256": {
+     "mmlu": 73.05,
+     "avg": 71.18
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   }
+  },
+  "phi4-14b": {
+   "fq-8x64": {
+    "mmlu_pct": 79.19811992593647,
+    "two_se_pct": 0.6850531087424132,
+    "questions": 14042,
+    "avg_pct": 73.40030293054899,
+    "published_256": {
+     "mmlu": 79.23,
+     "avg": 73.54
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "fq-16x64": {
+    "mmlu_pct": 79.18387694060675,
+    "two_se_pct": 0.6852259717111663,
+    "questions": 14042,
+    "avg_pct": 73.6910728118841,
+    "published_256": {
+     "mmlu": 79.08,
+     "avg": 73.51
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "fq-256x64": {
+    "mmlu_pct": 79.31206380857428,
+    "two_se_pct": 0.6836655885933227,
+    "questions": 14042,
+    "avg_pct": 73.56692347949641,
+    "published_256": {
+     "mmlu": 79.01,
+     "avg": 73.47
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "focus": {
+    "mmlu_pct": 79.0770545506338,
+    "two_se_pct": 0.6865183735235597,
+    "questions": 14042,
+    "avg_pct": 73.90749034410774,
+    "published_256": {
+     "mmlu": 79.17,
+     "avg": 74.0
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "gptq": {
+    "mmlu_pct": 79.2693348525851,
+    "two_se_pct": 0.6841868718607652,
+    "questions": 14042,
+    "avg_pct": 73.76114508983937,
+    "published_256": {
+     "mmlu": 79.46,
+     "avg": 73.59
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 16,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   }
+  },
+  "qwen3.8-27b": {
+   "fq-8x64": {
+    "mmlu_pct": 82.55234297108674,
+    "two_se_pct": 0.6405437102344427,
+    "questions": 14042,
+    "avg_pct": 75.17747016024883,
+    "published_256": {
+     "mmlu": 82.62,
+     "avg": 75.28
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 8,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "fq-16x64": {
+    "mmlu_pct": 82.63067939040023,
+    "two_se_pct": 0.6394072980383964,
+    "questions": 14042,
+    "avg_pct": 75.58658878180644,
+    "published_256": {
+     "mmlu": 82.35,
+     "avg": 75.11
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 8,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "fq-256x64": {
+    "mmlu_pct": 82.60219341974077,
+    "two_se_pct": 0.6398210884874529,
+    "questions": 14042,
+    "avg_pct": 75.21316881474502,
+    "published_256": {
+     "mmlu": 81.68,
+     "avg": 75.04
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 8,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "focus": {
+    "mmlu_pct": 83.04372596496225,
+    "two_se_pct": 0.6333359462703769,
+    "questions": 14042,
+    "avg_pct": 75.91285225491022,
+    "published_256": {
+     "mmlu": 82.82,
+     "avg": 75.52
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 8,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   },
+   "gptq": {
+    "mmlu_pct": 81.41290414470873,
+    "two_se_pct": 0.6565501489203881,
+    "questions": 14042,
+    "avg_pct": 74.57490338172788,
+    "published_256": {
+     "mmlu": 81.24,
+     "avg": 75.05
+    },
+    "sample_digest": "2a2e59c68efd1925ac84c91e2d3b95e4875f17b60eb7df625c91e93aa252d98c",
+    "batch": 8,
+    "env": {
+     "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+    },
+    "marks": "\u00a4"
+   }
+  }
+ },
+ "paired": {
+  "llama3.2-1b-instruct": {
+   "fq-16x64 vs focus": {
+    "n": 14042,
+    "delta_pp": -0.6266913545079048,
+    "two_se_pp": 0.8277722443022887,
+    "a_only": 1645,
+    "b_only": 1733,
+    "mcnemar_p": 0.13441037037011117,
+    "significant": false
+   },
+   "fq-16x64 vs gptq": {
+    "n": 14042,
+    "delta_pp": -0.4557755305512035,
+    "two_se_pp": 0.8102166679813234,
+    "a_only": 1586,
+    "b_only": 1650,
+    "mcnemar_p": 0.2680832257264234,
+    "significant": false
+   },
+   "fq-8x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.007121492664862555,
+    "two_se_pp": 0.7239001868731268,
+    "a_only": 1291,
+    "b_only": 1292,
+    "mcnemar_p": 1.0,
+    "significant": false
+   },
+   "fq-256x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.23500925794046434,
+    "two_se_pp": 0.765304118161772,
+    "a_only": 1427,
+    "b_only": 1460,
+    "mcnemar_p": 0.5514756478059557,
+    "significant": false
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "fq-16x64 vs focus": {
+    "n": 14042,
+    "delta_pp": -0.22076627261073922,
+    "two_se_pp": 0.5977061583027571,
+    "a_only": 865,
+    "b_only": 896,
+    "mcnemar_p": 0.4746848600560977,
+    "significant": false
+   },
+   "fq-16x64 vs gptq": {
+    "n": 14042,
+    "delta_pp": 0.2848597065945022,
+    "two_se_pp": 0.6270188693007916,
+    "a_only": 989,
+    "b_only": 949,
+    "mcnemar_p": 0.37567252930343725,
+    "significant": false
+   },
+   "fq-8x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.41304657456202826,
+    "two_se_pp": 0.5479137470744257,
+    "a_only": 711,
+    "b_only": 769,
+    "mcnemar_p": 0.13840838407849101,
+    "significant": false
+   },
+   "fq-256x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": 0.21364477994587666,
+    "two_se_pp": 0.5643615958837779,
+    "a_only": 800,
+    "b_only": 770,
+    "mcnemar_p": 0.46424431690875956,
+    "significant": false
+   }
+  },
+  "mistral-7b": {
+   "fq-16x64 vs focus": {
+    "n": 14042,
+    "delta_pp": -0.06409343398376299,
+    "two_se_pp": 0.5444283626984261,
+    "a_only": 726,
+    "b_only": 735,
+    "mcnemar_p": 0.8342246077246187,
+    "significant": false
+   },
+   "fq-16x64 vs gptq": {
+    "n": 14042,
+    "delta_pp": -0.12818686796752599,
+    "two_se_pp": 0.5593136639433307,
+    "a_only": 762,
+    "b_only": 780,
+    "mcnemar_p": 0.6650873804699281,
+    "significant": false
+   },
+   "fq-8x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.12106537530266344,
+    "two_se_pp": 0.4960702786555492,
+    "a_only": 598,
+    "b_only": 615,
+    "mcnemar_p": 0.6459659230866599,
+    "significant": false
+   },
+   "fq-256x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.02848597065945022,
+    "two_se_pp": 0.5206184268252461,
+    "a_only": 666,
+    "b_only": 670,
+    "mcnemar_p": 0.9345900489791594,
+    "significant": false
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "fq-16x64 vs focus": {
+    "n": 14042,
+    "delta_pp": 0.0,
+    "two_se_pp": 0.46110213485740653,
+    "a_only": 524,
+    "b_only": 524,
+    "mcnemar_p": 1.0,
+    "significant": false
+   },
+   "fq-16x64 vs gptq": {
+    "n": 14042,
+    "delta_pp": 0.7619997151402934,
+    "two_se_pp": 0.4843174234353707,
+    "a_only": 632,
+    "b_only": 525,
+    "mcnemar_p": 0.0018192186131464644,
+    "significant": true
+   },
+   "fq-8x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.24213075060532688,
+    "two_se_pp": 0.4033493716323996,
+    "a_only": 384,
+    "b_only": 418,
+    "mcnemar_p": 0.24389204544999252,
+    "significant": false
+   },
+   "fq-256x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.049850448654037885,
+    "two_se_pp": 0.41891283743870616,
+    "a_only": 429,
+    "b_only": 436,
+    "mcnemar_p": 0.8383634609739085,
+    "significant": false
+   }
+  },
+  "phi4-14b": {
+   "fq-16x64 vs focus": {
+    "n": 14042,
+    "delta_pp": 0.10682238997293833,
+    "two_se_pp": 0.43178789331059064,
+    "a_only": 467,
+    "b_only": 452,
+    "mcnemar_p": 0.6442359566885358,
+    "significant": false
+   },
+   "fq-16x64 vs gptq": {
+    "n": 14042,
+    "delta_pp": -0.08545791197835066,
+    "two_se_pp": 0.42108489231215596,
+    "a_only": 431,
+    "b_only": 443,
+    "mcnemar_p": 0.7098556774244249,
+    "significant": false
+   },
+   "fq-8x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": 0.01424298532972511,
+    "two_se_pp": 0.369782494772808,
+    "a_only": 338,
+    "b_only": 336,
+    "mcnemar_p": 0.9692780325404462,
+    "significant": false
+   },
+   "fq-256x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": 0.12818686796752599,
+    "two_se_pp": 0.38641020822002725,
+    "a_only": 377,
+    "b_only": 359,
+    "mcnemar_p": 0.5309312493390791,
+    "significant": false
+   }
+  },
+  "qwen3.8-27b": {
+   "fq-16x64 vs focus": {
+    "n": 14042,
+    "delta_pp": -0.41304657456202826,
+    "two_se_pp": 0.4357113072534596,
+    "a_only": 439,
+    "b_only": 497,
+    "mcnemar_p": 0.06239004728131921,
+    "significant": false
+   },
+   "fq-16x64 vs gptq": {
+    "n": 14042,
+    "delta_pp": 1.217775245691497,
+    "two_se_pp": 0.47516888861832773,
+    "a_only": 643,
+    "b_only": 472,
+    "mcnemar_p": 3.3846981403922557e-07,
+    "significant": true
+   },
+   "fq-8x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.0783364193134881,
+    "two_se_pp": 0.40160369718833167,
+    "a_only": 392,
+    "b_only": 403,
+    "mcnemar_p": 0.7228661365885047,
+    "significant": false
+   },
+   "fq-256x64 vs fq-16x64": {
+    "n": 14042,
+    "delta_pp": -0.02848597065945022,
+    "two_se_pp": 0.41770091782989316,
+    "a_only": 428,
+    "b_only": 432,
+    "mcnemar_p": 0.9185270278774109,
+    "significant": false
+   }
+  }
+ },
+ "step0": {
+  "model": "llama3.2-1b-instruct",
+  "row": "fq-16x64",
+  "tier": "exact",
+  "accuracy_pct": 41.404358353510894,
+  "published_pct": 41.4,
+  "delta_pct": 0.004358353510897084,
+  "two_se_pct": 0.8313128427893594,
+  "delta_questions": 0.6,
+  "n": 14042,
+  "passed": true,
+  "accepted": false
+ },
+ "consistency": [
+  {
+   "model": "nemotron-nano-9b-v2",
+   "row": "fq-16x64",
+   "windows": 256,
+   "batch": 16,
+   "env": {
+    "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+   },
+   "tier": "exact",
+   "accuracy_pct": 73.34425295541945,
+   "published_pct": 73.34,
+   "delta_pct": 0.004252955419448146,
+   "two_se_pct": 0.7463044593894259,
+   "delta_questions": 0.6,
+   "n": 14042,
+   "passed": true,
+   "accepted": false
+  }
+ ]
+}

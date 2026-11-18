@@ -1,0 +1,14 @@
+{
+  "model": "llama8b",
+  "source": "/home/dev/.cache/huggingface/hub/models--meta-llama--Llama-3.1-8B/snapshots/d04e592bb4f6aa9cfee91e2e20afa771667e1d4b",
+  "revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b",
+  "fit_from": {
+    "path": "results/math_code_adaptive/calibration_333779_llama8b/report.json",
+    "sha256": "0ff1726a2711520f12e28163f0f56c8d451b853924620bd46894deb6f5067548"
+  },
+  "fit_windows_reproduced": 128,
+  "matrices_from": "results/math_code_adaptive/calibration_333779_llama8b/report.json",
+  "calibration_report_sha256": "f3b37423e12c53f847c03f4c6c4761473678115ffdd860bcd79d638bab5232de",
+  "matrices": 224,
+  "development": "not drawn (--fit-only)"
+}

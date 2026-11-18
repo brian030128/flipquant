@@ -1,0 +1,463 @@
+{
+ "rows": {
+  "seed1": {
+   "paired": {
+    "wiki": {
+     "delta": 0.00043551760948508795,
+     "two_se": 0.0009461285451688455,
+     "n": 163
+    },
+    "c4": {
+     "delta": -2.3663509637117386e-05,
+     "two_se": 0.0007704358551095139,
+     "n": 256
+    }
+   },
+   "e0m3_pct": 5.35577627328726,
+   "jaccard": 0.3438661020845538
+  },
+  "seed2": {
+   "paired": {
+    "wiki": {
+     "delta": 0.00015480532967971147,
+     "two_se": 0.0009809189248511456,
+     "n": 163
+    },
+    "c4": {
+     "delta": 0.00038366473745554686,
+     "two_se": 0.0007570669156363812,
+     "n": 256
+    }
+   },
+   "e0m3_pct": 5.284309387207031,
+   "jaccard": 0.34622144441078917
+  },
+  "nondet": {
+   "paired": {
+    "wiki": {
+     "delta": -0.0003009339783089293,
+     "two_se": 0.0009321432909643816,
+     "n": 163
+    },
+    "c4": {
+     "delta": -0.0002601699670776725,
+     "two_se": 0.000712461347180619,
+     "n": 256
+    }
+   },
+   "e0m3_pct": 5.300433819110577,
+   "jaccard": 0.3823442019886783
+  },
+  "fineweb-edu": {
+   "paired": {
+    "wiki": {
+     "delta": 0.00028204040293313245,
+     "two_se": 0.0010242331641278303,
+     "n": 163
+    },
+    "c4": {
+     "delta": -0.0003896889975294471,
+     "two_se": 0.0007309357936695577,
+     "n": 256
+    }
+   },
+   "e0m3_pct": 5.472608713003305,
+   "jaccard": 0.05276321271063481
+  },
+  "ultrachat": {
+   "paired": {
+    "wiki": {
+     "delta": 0.0023043879702047336,
+     "two_se": 0.0010174051464132206,
+     "n": 163
+    },
+    "c4": {
+     "delta": 0.0008027777075767517,
+     "two_se": 0.0008873579996255785,
+     "n": 256
+    }
+   },
+   "e0m3_pct": 5.6582817664513225,
+   "jaccard": 0.049540690266857194
+  },
+  "wikitext2-train": {
+   "paired": {
+    "wiki": {
+     "delta": -0.006080569665124811,
+     "two_se": 0.0010934615709506349,
+     "n": 163
+    },
+    "c4": {
+     "delta": 0.00048033561324700713,
+     "two_se": 0.0010757206126983821,
+     "n": 256
+    }
+   },
+   "e0m3_pct": 5.868999774639423,
+   "jaccard": 0.05025162439754582
+  }
+ },
+ "step0": {
+  "got": {
+   "map_unit": "16x64",
+   "modules": 224,
+   "e0m3_tiles": 75906,
+   "digest": "ee3c5cf1faac246095562761e2192f2b19a02bdeca3de1f288149ad482b3a450"
+  },
+  "want": {
+   "model": "mistral-7b",
+   "unit": "16x64",
+   "windows": 256,
+   "map_unit": "16x64",
+   "modules": 224,
+   "e0m3_tiles": 75906,
+   "digest": "ee3c5cf1faac246095562761e2192f2b19a02bdeca3de1f288149ad482b3a450"
+  },
+  "tiles_equal": true,
+  "accepted": false
+ },
+ "audits": {
+  "fineweb-edu": {
+   "passed": true,
+   "windows": 1024,
+   "scanned_13grams": 351689,
+   "windows_with_hits": {},
+   "control": {
+    "items": [
+     {
+      "eval_set": "gsm8k_test",
+      "item": 663,
+      "words": 72
+     },
+     {
+      "eval_set": "hellaswag",
+      "item": 2471,
+      "words": 112
+     },
+     {
+      "eval_set": "lambada_openai",
+      "item": 3234,
+      "words": 53
+     },
+     {
+      "eval_set": "arc_challenge",
+      "item": 98,
+      "words": 33
+     },
+     {
+      "eval_set": "wikitext2_test",
+      "item": "test",
+      "words": 78
+     }
+    ],
+    "picked": 30,
+    "plain_windows_with_hits": 0,
+    "spliced_detected": {
+     "gsm8k_test": 30,
+     "hellaswag": 30,
+     "lambada_openai": 30,
+     "arc_challenge": 30,
+     "wikitext2_test": 30
+    },
+    "ok": true
+   },
+   "accepted": false,
+   "eval_sets": {
+    "wikitext2_test": {
+     "items": 1,
+     "words": 206718,
+     "grams": 206706
+    },
+    "c4_validation_eval": {
+     "items": 235,
+     "words": 601601,
+     "grams": 598781
+    },
+    "piqa": {
+     "items": 1838,
+     "words": 82035,
+     "grams": 60385
+    },
+    "hellaswag": {
+     "items": 10042,
+     "words": 1926856,
+     "grams": 1806352
+    },
+    "winogrande": {
+     "items": 1267,
+     "words": 27030,
+     "grams": 11826
+    },
+    "arc_easy": {
+     "items": 2376,
+     "words": 101046,
+     "grams": 72534
+    },
+    "arc_challenge": {
+     "items": 1172,
+     "words": 59593,
+     "grams": 45529
+    },
+    "lambada_openai": {
+     "items": 5153,
+     "words": 316427,
+     "grams": 254591
+    },
+    "gsm8k_test": {
+     "items": 1319,
+     "words": 143399,
+     "grams": 127571
+    },
+    "gsm8k_llama_fewshot": {
+     "items": 8,
+     "words": 425,
+     "grams": 329
+    }
+   },
+   "c4_documents": 235,
+   "hits": 0
+  },
+  "ultrachat": {
+   "passed": true,
+   "windows": 1024,
+   "scanned_13grams": 362995,
+   "windows_with_hits": {},
+   "control": {
+    "items": [
+     {
+      "eval_set": "gsm8k_test",
+      "item": 663,
+      "words": 72
+     },
+     {
+      "eval_set": "hellaswag",
+      "item": 2471,
+      "words": 112
+     },
+     {
+      "eval_set": "lambada_openai",
+      "item": 3234,
+      "words": 53
+     },
+     {
+      "eval_set": "arc_challenge",
+      "item": 98,
+      "words": 33
+     },
+     {
+      "eval_set": "wikitext2_test",
+      "item": "test",
+      "words": 78
+     }
+    ],
+    "picked": 30,
+    "plain_windows_with_hits": 0,
+    "spliced_detected": {
+     "gsm8k_test": 30,
+     "hellaswag": 30,
+     "lambada_openai": 30,
+     "arc_challenge": 30,
+     "wikitext2_test": 30
+    },
+    "ok": true
+   },
+   "accepted": false,
+   "eval_sets": {
+    "wikitext2_test": {
+     "items": 1,
+     "words": 206718,
+     "grams": 206706
+    },
+    "c4_validation_eval": {
+     "items": 235,
+     "words": 601601,
+     "grams": 598781
+    },
+    "piqa": {
+     "items": 1838,
+     "words": 82035,
+     "grams": 60385
+    },
+    "hellaswag": {
+     "items": 10042,
+     "words": 1926856,
+     "grams": 1806352
+    },
+    "winogrande": {
+     "items": 1267,
+     "words": 27030,
+     "grams": 11826
+    },
+    "arc_easy": {
+     "items": 2376,
+     "words": 101046,
+     "grams": 72534
+    },
+    "arc_challenge": {
+     "items": 1172,
+     "words": 59593,
+     "grams": 45529
+    },
+    "lambada_openai": {
+     "items": 5153,
+     "words": 316427,
+     "grams": 254591
+    },
+    "gsm8k_test": {
+     "items": 1319,
+     "words": 143399,
+     "grams": 127571
+    },
+    "gsm8k_llama_fewshot": {
+     "items": 8,
+     "words": 425,
+     "grams": 329
+    }
+   },
+   "c4_documents": 235,
+   "hits": 0
+  },
+  "wikitext2-train": {
+   "passed": true,
+   "windows": 1024,
+   "scanned_13grams": 314982,
+   "windows_with_hits": {},
+   "control": {
+    "items": [
+     {
+      "eval_set": "gsm8k_test",
+      "item": 663,
+      "words": 72
+     },
+     {
+      "eval_set": "hellaswag",
+      "item": 2471,
+      "words": 112
+     },
+     {
+      "eval_set": "lambada_openai",
+      "item": 3234,
+      "words": 53
+     },
+     {
+      "eval_set": "arc_challenge",
+      "item": 98,
+      "words": 33
+     },
+     {
+      "eval_set": "wikitext2_test",
+      "item": "test",
+      "words": 78
+     }
+    ],
+    "picked": 30,
+    "plain_windows_with_hits": 0,
+    "spliced_detected": {
+     "gsm8k_test": 30,
+     "hellaswag": 30,
+     "lambada_openai": 30,
+     "arc_challenge": 30,
+     "wikitext2_test": 30
+    },
+    "ok": true
+   },
+   "accepted": false,
+   "eval_sets": {
+    "wikitext2_test": {
+     "items": 1,
+     "words": 206718,
+     "grams": 206706
+    },
+    "c4_validation_eval": {
+     "items": 235,
+     "words": 601601,
+     "grams": 598781
+    },
+    "piqa": {
+     "items": 1838,
+     "words": 82035,
+     "grams": 60385
+    },
+    "hellaswag": {
+     "items": 10042,
+     "words": 1926856,
+     "grams": 1806352
+    },
+    "winogrande": {
+     "items": 1267,
+     "words": 27030,
+     "grams": 11826
+    },
+    "arc_easy": {
+     "items": 2376,
+     "words": 101046,
+     "grams": 72534
+    },
+    "arc_challenge": {
+     "items": 1172,
+     "words": 59593,
+     "grams": 45529
+    },
+    "lambada_openai": {
+     "items": 5153,
+     "words": 316427,
+     "grams": 254591
+    },
+    "gsm8k_test": {
+     "items": 1319,
+     "words": 143399,
+     "grams": 127571
+    },
+    "gsm8k_llama_fewshot": {
+     "items": 8,
+     "words": 425,
+     "grams": 329
+    }
+   },
+   "c4_documents": 235,
+   "hits": 0
+  }
+ },
+ "fo6": {
+  "wiki": {
+   "delta": 0.012807206142168103,
+   "two_se": 0.0011803352706484353,
+   "n": 163
+  },
+  "c4": {
+   "delta": 0.011386853118892759,
+   "two_se": 0.0011197026795188825,
+   "n": 256
+  }
+ },
+ "overlap": {
+  "paper": {
+   "e0m3_pct": 5.279541015625,
+   "jaccard": 1.0
+  },
+  "seed1": {
+   "e0m3_pct": 5.35577627328726,
+   "jaccard": 0.3438661020845538
+  },
+  "seed2": {
+   "e0m3_pct": 5.284309387207031,
+   "jaccard": 0.34622144441078917
+  },
+  "nondet": {
+   "e0m3_pct": 5.300433819110577,
+   "jaccard": 0.3823442019886783
+  },
+  "fineweb-edu": {
+   "e0m3_pct": 5.472608713003305,
+   "jaccard": 0.05276321271063481
+  },
+  "ultrachat": {
+   "e0m3_pct": 5.6582817664513225,
+   "jaccard": 0.049540690266857194
+  },
+  "wikitext2-train": {
+   "e0m3_pct": 5.868999774639423,
+   "jaccard": 0.05025162439754582
+  }
+ }
+}

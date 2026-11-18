@@ -1,0 +1,852 @@
+--- upstream/src/mixed_nvfp4_gemm.cu
++++ sm120/kernel/src/mixed_nvfp4_gemm.cu
+@@ -64,8 +64,17 @@
+ 
+ using ElementC = cutlass::bfloat16_t;
+ using ElementD = cutlass::bfloat16_t;
++// [NVFP4-RaZeR local hook, see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_D_COLMAJOR=1 stores C/D
++// column-major. With the weights on A the kernel computes D = W X^T (out x tokens); column-major D
++// is then the row-major [tokens, out] tensor a linear layer returns, so no transpose is needed.
++// Mainloop, dispatch and SASS sites are unaffected.
++#if defined(MIXFP4_D_COLMAJOR) && MIXFP4_D_COLMAJOR
++using LayoutCTag = cutlass::layout::ColumnMajor;
++using LayoutDTag = cutlass::layout::ColumnMajor;
++#else
+ using LayoutCTag = cutlass::layout::RowMajor;
+ using LayoutDTag = cutlass::layout::RowMajor;
++#endif
+ constexpr int AlignmentC = 128 / cutlass::sizeof_bits<ElementC>::value;
+ constexpr int AlignmentD = 128 / cutlass::sizeof_bits<ElementD>::value;
+ 
+@@ -89,7 +98,15 @@
+ #ifndef MIXFP4_TILE_K
+ #define MIXFP4_TILE_K 128
+ #endif
+-using ThreadBlockShape = Shape<_128, cute::Int<MIXFP4_TILE_N>, cute::Int<MIXFP4_TILE_K>>;
++// [NVFP4-RaZeR local hook, see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_TILE_M=<64|32|16> narrows the
++// CTA tile's M. With the weights on B (n8k64_wB) M is the token count, so this is the weights-on-B
++// counterpart of MIXFP4_TILE_N's narrow token tiles for small T (decode). The collective then loads
++// the whole 128-row scale-factor block of A and each CTA reads its sub-tile (the mirror of the
++// narrow-N SFB path). Unset, the tile is the upstream 128.
++#ifndef MIXFP4_TILE_M
++#define MIXFP4_TILE_M 128
++#endif
++using ThreadBlockShape = Shape<cute::Int<MIXFP4_TILE_M>, cute::Int<MIXFP4_TILE_N>, cute::Int<MIXFP4_TILE_K>>;
+ using ClusterShape = Shape<_1, _1, _1>;
+ 
+ // How the CTA's 8 MMA warps are arranged over the tile. The builder picks 4x2 for a 128-wide tile,
+@@ -129,6 +146,8 @@
+ #ifndef MIXFP4_EPI_M
+ #if MIXFP4_ATOM_M == 8
+ #define MIXFP4_EPI_M 128           // 8x1: one m-atom per warp, so MMA_TILE_M is the full 128
++#elif MIXFP4_TILE_M < 64
++#define MIXFP4_EPI_M MIXFP4_TILE_M // narrow M (local hook): the epilogue tile cannot exceed the CTA tile
+ #else
+ #define MIXFP4_EPI_M 64
+ #endif
+@@ -144,12 +163,27 @@
+ #define MIXFP4_EPI_N 16
+ #endif
+ #endif
+-#if MIXFP4_ATOM_M == 8 || MIXFP4_ATOM_M == 1
++#if defined(MIXFP4_EPI_TILE_M) && defined(MIXFP4_EPI_TILE_N)
++// [NVFP4-RaZeR local hook, kernel-opt #4; see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_EPI_TILE_M/N set the epilogue tile
++// of any warp arrangement (sm120/csrc sets the stock builds' the same way). Unset, the choice below is upstream's.
++using MixedEpilogueTile = Shape<cute::Int<MIXFP4_EPI_TILE_M>, cute::Int<MIXFP4_EPI_TILE_N>>;
++#elif MIXFP4_ATOM_M == 8 || MIXFP4_ATOM_M == 1
+ using MixedEpilogueTile = Shape<cute::Int<MIXFP4_EPI_M>, cute::Int<MIXFP4_EPI_N>>;
+ #else
+ using MixedEpilogueTile = cutlass::epilogue::collective::EpilogueTileAuto;
+ #endif
+ 
++// [NVFP4-RaZeR local hook, see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_EPILOGUE_FUSION_T=<name>
++// replaces the epilogue's fusion with a callbacks type the including translation unit declared as
++// `template <class CtaTileMNK> using <name> = ...;` before including this file. Unset, it is
++// exactly the builder's default (LinearCombination with ElementCompute = ElementAccumulator).
++#if defined(MIXFP4_EPILOGUE_FUSION_T)
++using MixedEpilogueFusion = MIXFP4_EPILOGUE_FUSION_T<ThreadBlockShape>;
++#else
++using MixedEpilogueFusion = cutlass::epilogue::fusion::LinearCombination<
++    ElementD, ElementAccumulator, ElementC, ElementAccumulator>;
++#endif
++
+ using CollectiveEpilogue = typename cutlass::epilogue::collective::CollectiveBuilder<
+     ArchTag, OperatorClass,
+     ThreadBlockShape, ClusterShape,
+@@ -157,7 +191,19 @@
+     ElementAccumulator, ElementAccumulator,
+     ElementC, LayoutCTag, AlignmentC,
+     ElementD, LayoutDTag, AlignmentD,
+-    cutlass::epilogue::collective::EpilogueScheduleAuto>::CollectiveOp;
++    cutlass::epilogue::collective::EpilogueScheduleAuto,
++    MixedEpilogueFusion>::CollectiveOp;
++
++// [NVFP4-RaZeR local hook, see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_PINGPONG=1 selects CUTLASS's
++// ping-pong kernel schedule (4 MMA warps per tile, two consumer warp groups on alternating tiles)
++// instead of the builder's default cooperative one (8 MMA warps). The cooperative kernel requires a
++// CTA tile M >= 128, so the narrow-M (MIXFP4_TILE_M < 128) builds need it; they also need a 4-warp
++// arrangement (MIXFP4_ATOM_M * MIXFP4_ATOM_N == 4). Unset, the schedule is the upstream default.
++#if defined(MIXFP4_PINGPONG) && MIXFP4_PINGPONG
++using MixedBuilderSchedule = cutlass::gemm::KernelTmaWarpSpecializedPingpong;
++#else
++using MixedBuilderSchedule = cutlass::gemm::collective::KernelScheduleAuto;
++#endif
+ 
+ // The standard builder: reused purely for its derived types (TiledMma, SmemLayoutAtoms, etc.),
+ // not instantiated as an actual mainloop -- CollectiveOp below deliberately isn't used.
+@@ -169,10 +215,38 @@
+     ThreadBlockShape, ClusterShape,
+     cutlass::gemm::collective::StageCountAutoCarveout<
+         static_cast<int>(sizeof(typename CollectiveEpilogue::SharedStorage))>,
+-    cutlass::gemm::collective::KernelScheduleAuto>;
++    MixedBuilderSchedule>;
++
++// [NVFP4-RaZeR local hook] narrow M: the builder sizes the SFA smem atom as M/128 scale-factor blocks,
++// which is empty for M < 128 (it pads only SFB, to 128 columns). Take the atom of a 128-row builder
++// instead -- the collective loads the whole 128-row block -- and count the pipeline stages with it,
++// through the builder's own stage function. For M = 128 both are exactly the builder's.
++#if MIXFP4_TILE_M < 128
++using StdMainloopBuilder128 = cutlass::gemm::collective::CollectiveBuilder<
++    ArchTag, OperatorClass,
++    ElementA, LayoutATag, AlignmentA,
++    ElementB, LayoutBTag, AlignmentB,
++    ElementAccumulator,
++    Shape<_128, cute::Int<MIXFP4_TILE_N>, cute::Int<MIXFP4_TILE_K>>, ClusterShape,
++    cutlass::gemm::collective::StageCountAutoCarveout<
++        static_cast<int>(sizeof(typename CollectiveEpilogue::SharedStorage))>,
++    MixedBuilderSchedule>;
++using MixedSmemLayoutAtomSFA = typename StdMainloopBuilder128::SmemLayoutAtomSFA;
++using MixedSmemLayoutAtomsA = decltype(cute::make_tuple(
++    typename StdMainloopBuilder::SmemLayoutAtomA{}, MixedSmemLayoutAtomSFA{}));
++constexpr int MixedStages = cutlass::gemm::collective::detail::sm100_compute_stage_count_or_override_blockscaled<
++    StdMainloopBuilder::ReducedSmemCapacityBytes,
++    typename StdMainloopBuilder::SmemAllocTypeA, typename StdMainloopBuilder::SmemAllocTypeB,
++    ThreadBlockShape, MixedSmemLayoutAtomSFA, typename StdMainloopBuilder::SmemLayoutAtomSFB>(
++    cutlass::gemm::collective::StageCountAutoCarveout<
++        static_cast<int>(sizeof(typename CollectiveEpilogue::SharedStorage))>{});
++#else
++using MixedSmemLayoutAtomsA = typename StdMainloopBuilder::SmemLayoutAtomsA;
++constexpr int MixedStages = StdMainloopBuilder::DispatchPolicy::Stages;
++#endif
+ 
+ using MixedDispatchPolicy = cutlass::gemm::MainloopSm120TmaWarpSpecializedBlockScaledMixed<
+-    StdMainloopBuilder::DispatchPolicy::Stages,
++    MixedStages,
+     StdMainloopBuilder::DispatchPolicy::SchedulerPipelineStageCount,
+     typename StdMainloopBuilder::DispatchPolicy::ClusterShape,
+     typename StdMainloopBuilder::DispatchPolicy::Schedule>;
+@@ -259,7 +333,7 @@
+     typename StdMainloopBuilder::StridePairB,
+     MixedTiledMma,
+     typename StdMainloopBuilder::GmemTiledCopyPairA,
+-    typename StdMainloopBuilder::SmemLayoutAtomsA,
++    MixedSmemLayoutAtomsA,
+     typename StdMainloopBuilder::SmemCopyAtomsA,
+     cute::identity,
+     typename StdMainloopBuilder::GmemTiledCopyPairB,
+@@ -267,11 +341,17 @@
+     MixedSmemCopyAtomsB,
+     cute::identity>;
+ 
++// [NVFP4-RaZeR local hook, see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_TILE_SCHEDULER=<type>
++// selects the kernel's tile scheduler (e.g. cutlass::gemm::StreamKScheduler to split K across CTAs
++// when the output has fewer tiles than the GPU has SMs). Unset, it is the upstream default (void).
++#ifndef MIXFP4_TILE_SCHEDULER
++#define MIXFP4_TILE_SCHEDULER void
++#endif
+ using GemmKernel = cutlass::gemm::kernel::GemmUniversal<
+     Shape<int, int, int, int>,
+     CollectiveMainloop,
+     CollectiveEpilogue,
+-    void>;
++    MIXFP4_TILE_SCHEDULER>;
+ 
+ using Gemm = cutlass::gemm::device::GemmUniversalAdapter<GemmKernel>;
+ 
+@@ -470,6 +550,10 @@
+   }
+ }
+ 
++// [NVFP4-RaZeR local hook, see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_NO_SELFTEST=1 omits the
++// self-test driver (run/main) so the kernel types can be included by a library whose epilogue
++// arguments differ from the LinearCombination ones run() constructs.
++#if !(defined(MIXFP4_NO_SELFTEST) && MIXFP4_NO_SELFTEST)
+ int run(int m, int n, int k, int warmup_iters, int bench_iters) {
+   using Sm1xxBlkScaledConfig = typename Gemm::GemmKernel::CollectiveMainloop::Sm1xxBlkScaledConfig;
+ 
+@@ -773,3 +857,4 @@
+ 
+   return run(m, n, k, warmup_iters, bench_iters);
+ }
++#endif  // !MIXFP4_NO_SELFTEST
+--- upstream/src/collective/sm120_blockscaled_mma_tma_mixed.hpp
++++ sm120/kernel/src/collective/sm120_blockscaled_mma_tma_mixed.hpp
+@@ -177,6 +177,24 @@
+ 
+ namespace mixfp4_detail {
+ 
++// [NVFP4-RaZeR local hook, kernel-opt U; see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_UNIFORM_DISPATCH=1 makes the
++// dispatch index visibly warp-uniform to ptxas. The index is warp-uniform by construction (every lane of an MMA warp
++// reads the flags of the same granules; see MIXFP4_DEBUG_UNIFORMITY), but ptxas cannot prove it, so it brackets the
++// per-k_tile dispatch with reconvergence code (BSSY/BSYNC around the arms, WARPSYNC before the aligned MMAs). Passing
++// the index through redux.sync.or -- the identity on a warp-uniform value, with all 32 lanes active as they are in the
++// MMA warps -- puts it in a uniform register, and the tree's branches become uniform: no reconvergence code in the
++// k_tile loop. Every arm computes exactly as before. Unset (0), this is the upstream dispatch (identical SASS).
++#ifndef MIXFP4_UNIFORM_DISPATCH
++#define MIXFP4_UNIFORM_DISPATCH 0
++#endif
++CUTLASS_DEVICE uint32_t uniform_index(uint32_t x) {
++#if MIXFP4_UNIFORM_DISPATCH
++  return __reduce_or_sync(0xffffffffu, x);
++#else
++  return x;
++#endif
++}
++
+ // Compile-time dispatch on a runtime pattern index, as a balanced binary search so the cost is
+ // log2(arms) compares rather than a linear chain. A plain `switch` would be nicer but nvcc turns
+ // dense switches back into branch trees here anyway, and a linear if-chain over 64 arms is not
+@@ -184,17 +202,61 @@
+ // barriers, so ptxas leaves these as real branches rather than if-converting them.
+ template <int Lo, int Hi, class Body>
+ CUTLASS_DEVICE void
+-dispatch_pattern(uint32_t pattern, Body&& body) {
++dispatch_pattern_tree(uint32_t pattern, Body&& body) {
+   if constexpr (Lo == Hi) {
+     body(cute::C<Lo>{});
+   }
+   else {
+     constexpr int Mid = Lo + (Hi - Lo) / 2;
+-    if (pattern <= uint32_t(Mid)) { dispatch_pattern<Lo, Mid>(pattern, body); }
+-    else                          { dispatch_pattern<Mid + 1, Hi>(pattern, body); }
++    if (pattern <= uint32_t(Mid)) { dispatch_pattern_tree<Lo, Mid>(pattern, body); }
++    else                          { dispatch_pattern_tree<Mid + 1, Hi>(pattern, body); }
+   }
+ }
+ 
++// [NVFP4-RaZeR local hook, kernel-opt K-tile ablation; see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_PER_MMA_BRANCH=1
++// replaces the per-k_tile pattern dispatch with the per-MMA branch of docs/mixed_nvfp4_report.md section 1: one k_tile
++// body for every format, in which each MMA's format is chosen by an ordinary C++ if/else on its own granule's flag
++// (mixfp4::mma_kblock_branch, from a blob header generated with BRANCH=a|b). ptxas if-converts each if/else into a pair
++// of predicated OMMAs, so every useful MMA costs two tensor-pipe issues -- the codegen the per-k_tile dispatch exists
++// to avoid; this build measures it. Every MMA computes exactly as in the per-k_tile build (same atoms, same order per
++// accumulator). Unset (0), the dispatch is the upstream one (identical SASS). Never deployed.
++#ifndef MIXFP4_PER_MMA_BRANCH
++#define MIXFP4_PER_MMA_BRANCH 0
++#endif
++
++// [NVFP4-RaZeR local hook, diagnostic only; see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_ARM_XOR=<mask> permutes
++// where each pattern's arm sits in the branch tree: the tree is searched on (pattern ^ mask) and the leaf at position
++// L runs the arm of pattern L ^ mask. Every arm computes exactly as before; only its code position (and so which
++// branches are taken to reach it) changes. mask = arms - 1 puts the all-E0M3 arm on the all-fall-through path that
++// the all-E2M1 arm has by default. Unset (0), this is the upstream dispatch. The E0M3 investigation's test B.
++#ifndef MIXFP4_ARM_XOR
++#define MIXFP4_ARM_XOR 0
++#endif
++// [NVFP4-RaZeR local hook, kernel-opt #2; see sm120/kernel/LOCAL_CHANGES.md] -DMIXFP4_DISPATCH_FREQ=1 tests the all-E2M1
++// pattern (0) first -- one compare, and its arm on the fall-through path -- and only then enters the unchanged tree.
++// In the paper maps 82-95 % of all (warp, k_tile) patterns are 0 (results/kernel_opt/dispatch), which today pay the
++// tree's full log2(arms) compares. Every arm computes exactly as before. Unset, this is the upstream dispatch.
++template <int Lo, int Hi, class Body>
++CUTLASS_DEVICE void
++dispatch_pattern(uint32_t pattern, Body&& body) {
++#if MIXFP4_ARM_XOR
++  static_assert(Lo == 0 && ((Hi + 1) & Hi) == 0 && (MIXFP4_ARM_XOR & ~Hi) == 0, "MIXFP4_ARM_XOR needs a power-of-two arm count");
++  dispatch_pattern_tree<Lo, Hi>(pattern ^ uint32_t(MIXFP4_ARM_XOR), [&](auto c) {
++    body(cute::C<(decltype(c)::value ^ MIXFP4_ARM_XOR)>{});
++  });
++#elif defined(MIXFP4_DISPATCH_FREQ) && MIXFP4_DISPATCH_FREQ
++  if constexpr (Lo == 0 && Hi > 0) {
++    if (pattern == 0u) { body(cute::C<0>{}); }
++    else               { dispatch_pattern_tree<Lo, Hi>(pattern, body); }
++  }
++  else {
++    dispatch_pattern_tree<Lo, Hi>(pattern, body);
++  }
++#else
++  dispatch_pattern_tree<Lo, Hi>(pattern, body);
++#endif
++}
++
+ // Pattern bit layout: A granule flags occupy bits [0, AGranules), B granule flags follow in
+ // bits [AGranules, AGranules + BGranules).
+ template <int AGranules, int AAtomsPerGranule>
+@@ -349,11 +411,27 @@
+ 
+   // SmemLayoutAtomSFA and SmemLayoutAtomSFB are for whole CTA tiles. We add the number of pipeline stages here.
+   // The number of pipeline stages is the same as the number of pipeline stages from AB Load <-> MainLoop
+-  using SmemLayoutSFA = decltype(make_layout(
++  using SmemLayoutSFA_ = decltype(make_layout(
+     append(shape(SmemLayoutAtomSFA{}), Int<DispatchPolicy::Stages>{}),
+     append(stride(SmemLayoutAtomSFA{}), size(filter_zeros(SmemLayoutAtomSFA{})))
+   ));
+ 
++  // [NVFP4-RaZeR local change, see sm120/kernel/LOCAL_CHANGES.md] narrow M (CTA tile M < 128), the
++  // mirror of the narrow-N handling of SFB below: the scale-factor layout's indivisible unit is a
++  // 128-row block, so the SFA smem tile (and its TMA box) covers the whole block and each CTA reads
++  // its M sub-tile. SmemLayoutAtomSFA must then be the 128-row atom (mixed_nvfp4_gemm.cu takes it
++  // from a 128-row builder). For M >= 128 both types are exactly the upstream ones.
++  using TileShapeSFA = cute::conditional_t<size<0>(TileShape{}) < 128,
++    decltype(cute::make_shape(
++      Int<128>{},
++      shape<1>(TileShape{}),
++      shape<2>(TileShape{}))),
++    TileShape>;
++
++  using SmemLayoutSFA = cute::conditional_t<size<0>(TileShape{}) < 128,
++    decltype(cute::logical_divide(SmemLayoutSFA_{}, select<0,2>(TileShape{}))),
++    SmemLayoutSFA_>;
++
+   using SmemLayoutSFB_ = decltype(make_layout(
+     append(shape(SmemLayoutAtomSFB{}), Int<DispatchPolicy::Stages>{}),
+     append(stride(SmemLayoutAtomSFB{}), size(filter_zeros(SmemLayoutAtomSFB{})))
+@@ -466,7 +544,7 @@
+         GmemTiledCopySFA{},
+         make_tensor(static_cast<ElementSF const*>(nullptr), LayoutSFA{}),
+         SmemLayoutSFA{}(_,_,cute::Int<0>{}),
+-        make_shape(shape<0>(TileShape{}), shape<2>(TileShape{})),
++        make_shape(shape<0>(TileShapeSFA{}), shape<2>(TileShapeSFA{})),
+         _1{}));  // No programmatic multicast
+ 
+ 
+@@ -527,7 +605,7 @@
+         GmemTiledCopySFA{},
+         tensor_sfa,
+         SmemLayoutSFA{}(_,_,cute::Int<0>{}),
+-        make_shape(shape<0>(TileShape{}), shape<2>(TileShape{})),
++        make_shape(shape<0>(TileShapeSFA{}), shape<2>(TileShapeSFA{})),
+         _1{}); // No programmatic multicast
+ 
+     typename Params::TMA_SFB tma_load_sfb = make_tma_copy<uint16_t>(
+@@ -800,7 +878,20 @@
+         make_stride(_0{}, size<1>(TileShapeSFB{}) / size<1>(TileShape{})));
+       Tensor gA =   gA_mkl(_,_,m_coord,_,l_coord);                                                    // (BLK_M,BLK_K,k)
+       Tensor gB =   gB_nkl(_,_,n_coord,_,l_coord);                                                    // (BLK_N,BLK_K,k)
+-      Tensor gSFA = gSFA_mkl(_,_,m_coord,_,l_coord);                                                  // (BLK_M,BLK_K,k)
++      // [NVFP4-RaZeR local change] narrow M: load the 128-row scale-factor block that holds this
++      // CTA's rows (the same broadcast as broadcast_n below); the consumer reads its sub-tile.
++      Tensor gSFA = [&]() {
++        if constexpr (size<0>(TileShape{}) < 128) {
++          auto broadcast_m = make_layout(
++            make_shape(Int<size<0>(TileShapeSFA{}) / size<0>(TileShape{})>{},
++                       Int<cute::numeric_limits<int>::max()>{}),
++            make_stride(_0{}, size<0>(TileShapeSFA{}) / size<0>(TileShape{})));
++          return gSFA_mkl(_,_,broadcast_m(m_coord),_,l_coord);                                         // (BLK_M,BLK_K,k)
++        }
++        else {
++          return gSFA_mkl(_,_,m_coord,_,l_coord);                                                      // (BLK_M,BLK_K,k)
++        }
++      }();
+       Tensor gSFB = gSFB_nkl(_,_,broadcast_n(n_coord),_,l_coord);                                     // (BLK_N,BLK_K,k)
+ 
+       // Partition source and destination tensors for tma copies
+@@ -884,7 +975,17 @@
+ 
+     Tensor sA = make_tensor(make_smem_ptr(shared_tensors.smem_A.begin()), SmemLayoutA{});         // (BLK_M,BLK_K,PIPE)
+     Tensor sB = make_tensor(make_smem_ptr(shared_tensors.smem_B.begin()), SmemLayoutB{});         // (BLK_N,BLK_K,PIPE)
+-    Tensor sSFA = make_tensor(make_smem_ptr(shared_tensors.smem_SFA.begin()), SmemLayoutSFA{});  // (BLK_M,BLK_K,PIPE)
++    Tensor sSFA = [&]() {
++      if constexpr (size<0>(TileShape{}) >= 128) {
++        return make_tensor(make_smem_ptr(shared_tensors.smem_SFA.begin()), SmemLayoutSFA{});  // (BLK_M,BLK_K,PIPE)
++      }
++      else {
++        // [NVFP4-RaZeR local change] narrow M: this CTA's rows of the 128-row SFA block
++        Tensor temp = make_tensor(make_smem_ptr(shared_tensors.smem_SFA.begin()), SmemLayoutSFA{});  // (BLK_SFA_M,BLK_K,PIPE)
++        auto m = get<0>(blk_coord);
++        return temp(make_coord(_,m % (size<0>(TileShapeSFA{}) / size<0>(TileShape{}))), _, _);
++      }
++    }();
+     Tensor sSFB = [&]() {
+       if constexpr (size<1>(TileShape{}) >= 128) {
+         return make_tensor(make_smem_ptr(shared_tensors.smem_SFB.begin()), SmemLayoutSFB{});  // (BLK_N,BLK_K,PIPE)
+@@ -1299,7 +1400,20 @@
+     // (cute/algorithm/gemm.hpp), which exists to maximise operand register reuse between
+     // consecutive MMAs -- reproducing it keeps the .reuse flags ptxas emits unchanged.
+     auto gemm_kblock = [&](auto pattern_c, auto k_block) {
+-#if defined(MIXFP4_PTX) && MIXFP4_PTX
++#if MIXFP4_PER_MMA_BRANCH
++      // One k_tile body for every format: each MMA reads its own granule's flag and branches.
++      (void) pattern_c;
++#if !defined(MIXFP4_BLOBGEN_BRANCH)
++#error "MIXFP4_PER_MMA_BRANCH needs a blob header generated with BRANCH=a|b (mixfp4::mma_kblock_branch)"
++#endif
++      static_assert(kMmaM == MIXFP4_BLOBGEN_MMA_M && kMmaN == MIXFP4_BLOBGEN_MMA_N,
++                    "blob header was built for a different warp tile");
++      mixfp4::mma_kblock_branch(accum,
++                                recast<uint32_t>(tCrA(_,_,k_block)),
++                                recast<uint32_t>(tCrB(_,_,k_block)),
++                                recast<uint32_t>(tCrSFA(_,_,k_block)),
++                                recast<uint32_t>(tCrSFB(_,_,k_block)));
++#elif defined(MIXFP4_PTX) && MIXFP4_PTX
+       // The generated asm does its own dispatch, so the C++ pattern is unused here.
+       (void) pattern_c;
+       // Tagging finer than the granule makes lanes of one warp disagree on the jump index, and
+@@ -1456,7 +1570,7 @@
+     // a same-source A/B rather than against a separately-built binary.
+     auto dispatch = [&](auto body) {
+ #if (defined(MIXFP4_NO_DISPATCH) && MIXFP4_NO_DISPATCH) || \
+-    (defined(MIXFP4_PTX) && MIXFP4_PTX)
++    (defined(MIXFP4_PTX) && MIXFP4_PTX) || MIXFP4_PER_MMA_BRANCH
+       // PTX path: the dispatch lives inside the generated asm, so there is exactly one arm here.
+       (void) &read_site;
+       body(C<0>{});
+@@ -1472,18 +1586,18 @@
+       // registers at dispatch time. Reading them back from shared memory put an LDS on the
+       // branch's critical path for nothing -- the same fix that was worth ~20 TFLOP/s on
+       // joint-K-A.
+-      mixfp4_detail::dispatch_pattern<0, kNumArms - 1>(MIXFP4_IX(
++      mixfp4_detail::dispatch_pattern<0, kNumArms - 1>(mixfp4_detail::uniform_index(MIXFP4_IX(
+           (kADisp ? read_a_reg(_0{}) : 0u) | (read_b_reg(_0{}) << kADisp)
+                                            | (read_b_smem(_1{}) << (kADisp + kBGran)),
+-          kNumArms), body);
++          kNumArms)), body);
+ #elif defined(MIXFP4_JOINT_KA) && MIXFP4_JOINT_KA
+       // A's flags once per k_block, B's once for the whole k_tile. Only k_block 1 needs the smem
+       // read; the rest is already in the register fragment.
+-      mixfp4_detail::dispatch_pattern<0, kNumArms - 1>(
++      mixfp4_detail::dispatch_pattern<0, kNumArms - 1>(mixfp4_detail::uniform_index(
+           read_a_reg(_0{}) | (read_a_smem(_1{}) << kAGran)
+-                           | ((kBDisp ? read_b_reg(_0{}) : 0u) << (2 * kAGran)), body);
++                           | ((kBDisp ? read_b_reg(_0{}) : 0u) << (2 * kAGran))), body);
+ #else
+-      mixfp4_detail::dispatch_pattern<0, kNumArms - 1>(MIXFP4_IX(read_site(_0{}), kNumArms), body);
++      mixfp4_detail::dispatch_pattern<0, kNumArms - 1>(mixfp4_detail::uniform_index(MIXFP4_IX(read_site(_0{}), kNumArms)), body);
+ #endif
+     };
+ 
+@@ -1625,7 +1739,7 @@
+     }
+ #elif ((defined(MIXFP4_JOINT_KA) && MIXFP4_JOINT_KA) || \
+        (defined(MIXFP4_JOINT_KB) && MIXFP4_JOINT_KB)) && \
+-      defined(MIXFP4_PIPE_FLAGS) && MIXFP4_PIPE_FLAGS
++      defined(MIXFP4_PIPE_FLAGS) && MIXFP4_PIPE_FLAGS && !MIXFP4_PER_MMA_BRANCH
+     // ---------------------------------------------------------------------------------------
+     // Software-pipeline the dispatch index itself.
+     // ---------------------------------------------------------------------------------------
+@@ -1647,7 +1761,7 @@
+ #endif
+     };
+ 
+-    uint32_t pattern_cur  = next_pattern();
++    uint32_t pattern_cur  = mixfp4_detail::uniform_index(next_pattern());
+     uint32_t pattern_next = 0;
+ 
+     auto k_tile_body_pipe = [&](auto site_c) {
+@@ -1672,7 +1786,7 @@
+         if (k_block == K_BLOCK_MAX - 1) {
+           // The stage just waited on is the next k_tile's, and copy_kblock(0) has just refilled
+           // the register fragment from it, so every flag the next arm needs is readable now.
+-          pattern_next = next_pattern();
++          pattern_next = mixfp4_detail::uniform_index(next_pattern());
+         }
+ 
+         gemm_kblock(site_c, k_block);
+--- upstream/scripts/gen_mixed_mma_blob.py
++++ sm120/kernel/scripts/gen_mixed_mma_blob.py
+@@ -62,6 +62,26 @@
+         % (NPAT, A_ATOMS, B_ATOMS))
+ 
+ SEL = ["0x3210", "0x3214", "0x3254", "0x3654"]
++# [NVFP4-RaZeR local change, kernel-opt t0; see sm120/kernel/LOCAL_CHANGES.md] Two options, both defaulting to the
++# original blob (byte-identical output):
++# TAG0: '0' emits site-0 (e2m1 x e2m1) MMAs without the identity prmt tag; they read the scale word directly. Site 0 is
++#   never patched, and the tags cost one PRMT per (m-atom, k_block) and k_tile in every arm -- the whole gap between
++#   the no-dispatch kernel and stock NVFP4. The E0M3 sites keep their tags; patch with --untagged-site0.
++# ORDER: the MMA issue order inside a k_block. 'm' is the m-major serpentine below. 'n' is the order of CUTLASS's
++#   cute::gemm, as in stock: n outer, m serpentine inside, so consecutive MMAs share B and its scale word and ptxas can
++#   mark them .reuse. Measured without effect (results/kernel_opt/t0/exploration); kept for that diagnostic. Every
++#   accumulator still receives its MMAs in the same k order, so outputs are unchanged.
++ORDER = os.environ.get("ORDER", "m")
++TAG0 = os.environ.get("TAG0", "1") == "1"
++assert ORDER in ("m", "n"), ORDER
++# [NVFP4-RaZeR local change, kernel-opt K-tile ablation; see sm120/kernel/LOCAL_CHANGES.md] BRANCH: 'a' or 'b' appends
++# mma_kblock_branch() to the header: the same k_block of MMAs, in the same order and with the same per-MMA PTX as the
++# blob arms, but each MMA's format chosen at run time by an ordinary C++ if/else on the format flag of the weight
++# operand's granule ('a': A's, sites 0/1; 'b': B's, sites 0/2) -- the per-MMA branch of docs/mixed_nvfp4_report.md
++# section 1, which ptxas if-converts into predicated OMMA pairs. The mainloop uses it with -DMIXFP4_PER_MMA_BRANCH=1.
++# Unset, the output is the blob header byte for byte.
++BRANCH = os.environ.get("BRANCH", "")
++assert BRANCH in ("", "a", "b"), BRANCH
+ # Inline-asm operand numbering, derived from the warp tile: accumulators first (4 per MMA), then
+ # the A fragments (4 regs per m-atom), B (2 per n-atom), and one scale word per atom.
+ N_OUT = 4 * MMA_M * MMA_N
+@@ -78,6 +98,10 @@
+ 
+ 
+ def serpentine(i):
++    if ORDER == "n":
++        n = i // MMA_M
++        j = i % MMA_M
++        return (MMA_M - 1 - j) if (n & 1) else j, n
+     m = i // MMA_N
+     j = i % MMA_N
+     return m, (MMA_N - 1 - j) if (m & 1) else j
+@@ -93,16 +117,63 @@
+         d = [acc(m, ns, v) for v in range(4)]
+         a = [A_BASE + m * 4 + v for v in range(4)]
+         b = [B_BASE + ns * 2 + v for v in range(2)]
+-        out.append("    prmt.b32 %%sf%d, %%%d, %%%d, %s;"
+-                   % (i, SFA_BASE + m, SFA_BASE + m, SEL[site]))
++        if site == 0 and not TAG0:
++            sfa = "%%%d" % (SFA_BASE + m)
++        else:
++            out.append("    prmt.b32 %%sf%d, %%%d, %%%d, %s;"
++                       % (i, SFA_BASE + m, SFA_BASE + m, SEL[site]))
++            sfa = "%%sf%d" % i
+         out.append(
+             "    %s {%%%d,%%%d,%%%d,%%%d}, {%%%d,%%%d,%%%d,%%%d}, {%%%d,%%%d}, "
+-            "{%%%d,%%%d,%%%d,%%%d}, {%%sf%d}, {0, 0}, {%%%d}, {0, 0};"
++            "{%%%d,%%%d,%%%d,%%%d}, {%s}, {0, 0}, {%%%d}, {0, 0};"
+             % (MMA, d[0], d[1], d[2], d[3], a[0], a[1], a[2], a[3], b[0], b[1],
+-               d[0], d[1], d[2], d[3], i, SFB_BASE + ns))
++               d[0], d[1], d[2], d[3], sfa, SFB_BASE + ns))
+     return out
+ 
+ 
++def emit_branch():
++    """mma_kblock_branch(): one asm statement per MMA, in the blob's issue order, behind a C++ if/else on the weight
++    operand's per-granule flag (bit 7 of the granule's first atom's scale word, as the mainloop's read_site)."""
++    body = []
++    for i in range(MMA_M * MMA_N):
++        m, ns = serpentine(i)
++        if BRANCH == "a":
++            flag = "sfa(cute::Int<0>{}, cute::Int<%d>{})" % ((m // A_ATOMS) * A_ATOMS)
++            site_w = 1
++        else:
++            flag = "sfb(cute::Int<0>{}, cute::Int<%d>{})" % ((ns // B_ATOMS) * B_ATOMS)
++            site_w = 2
++        outs = ", ".join('"+f"(acc(cute::Int<%d>{}, cute::Int<%d>{}, cute::Int<%d>{}))' % (v, m, ns) for v in range(4))
++        ins = ", ".join(['"r"(a(cute::Int<%d>{}, cute::Int<%d>{}))' % (v, m) for v in range(4)]
++                        + ['"r"(b(cute::Int<%d>{}, cute::Int<%d>{}))' % (v, ns) for v in range(2)]
++                        + ['"r"(sfa(cute::Int<0>{}, cute::Int<%d>{}))' % m, '"r"(sfb(cute::Int<0>{}, cute::Int<%d>{}))' % ns])
++
++        def one(site):
++            # operands: %0-%3 accumulators, %4-%7 A, %8-%9 B, %10 SFA, %11 SFB
++            asm = ["{"]
++            if site == 0 and not TAG0:
++                sfa = "%10"
++            else:
++                asm += ["  .reg .b32 %sf;", "  prmt.b32 %%sf, %%10, %%10, %s;" % SEL[site]]
++                sfa = "%sf"
++            asm.append("  %s {%%0,%%1,%%2,%%3}, {%%4,%%5,%%6,%%7}, {%%8,%%9}, {%%0,%%1,%%2,%%3}, {%s}, {0, 0}, {%%11}, "
++                       "{0, 0};" % (MMA, sfa))
++            asm.append("}")
++            text = "\n".join('        "%s\\n"' % ln for ln in asm)
++            return "      asm volatile(\n%s\n        : %s\n        : %s);" % (text, outs, ins)
++        body.append("    if ((%s & 0x80u) != 0u) {\n%s\n    } else {\n%s\n    }" % (flag, one(site_w), one(0)))
++    return (
++        "// Per-MMA branch (BRANCH=%s): each MMA's format chosen at run time by its own C++ if/else.\n"
++        "#define MIXFP4_BLOBGEN_BRANCH %d\n"
++        "namespace mixfp4 {\n"
++        "template <class TAcc, class TA, class TB, class TSFA, class TSFB>\n"
++        "CUTLASS_DEVICE void\n"
++        "mma_kblock_branch(TAcc& acc, TA const& a, TB const& b, TSFA const& sfa, TSFB const& sfb) {\n"
++        "%s\n"
++        "}\n"
++        "} // namespace mixfp4\n" % (BRANCH, 1 if BRANCH == "a" else 2, "\n".join(body)))
++
++
+ def main():
+     outs = ",\n".join(
+         '        "+f"(acc(cute::Int<%d>{}, cute::Int<%d>{}, cute::Int<%d>{}))' % (v, m, n)
+@@ -149,6 +220,8 @@
+         "} // namespace mixfp4\n"
+         % (A_ATOMS * 16, B_ATOMS * 8, NPAT, MMA_M, MMA_N, MMA_M, MMA_N, "\n".join(arms)))
+ 
++    if BRANCH:
++        header += emit_branch()
+     dst = (pathlib.Path(__file__).resolve().parent.parent
+            / "src/collective/mixed_mma_blob_generated.hpp")
+     dst.write_text(header)
+--- upstream/scripts/patch_mixed_nvfp4_gemm.py
++++ sm120/kernel/scripts/patch_mixed_nvfp4_gemm.py
+@@ -42,6 +42,7 @@
+ import struct
+ import subprocess
+ import sys
++import tempfile
+ from collections import Counter
+ 
+ FIELD_SHIFT = 14
+@@ -141,6 +142,253 @@
+     return out
+ 
+ 
++# --untagged-site0 [NVFP4-RaZeR local change, kernel-opt; see sm120/kernel/LOCAL_CHANGES.md]. A blob generated with
++# TAG0=0 feeds its site-0 (e2m1 x e2m1) MMAs their scale word directly, without the identity prmt tag: site 0 is never
++# patched, so it needs no tag, and the tags cost one PRMT per (m-atom, k_block) and k_tile in every arm -- the whole gap
++# between the no-dispatch kernel and stock NVFP4. The E0M3 sites keep their tags. An OMMA's site is then read from the
++# reaching definitions of its SFA register over the kernel's control-flow graph (not from the nearest writer in
++# address order, which can belong to another arm): all reaching definitions are tags of one site s -> s; none of them
++# is the tag of an E0M3 site -> 0; anything else (a mix, or no definition) is an error. The equal-per-site check below
++# and build.py's expected census still apply, so an E0M3 OMMA lost to site 0 fails the build.
++# Indirect branches (kernel-opt amendment 6b): ptxas can compile a switch -- CUTLASS's warp-role dispatch in the
++# upstream self-test driver -- to `LDC Rx, c[0x2][..]; BRX Rx imm`, a jump table in the kernel's .nv.constant2 section.
++# Each BRX then branches to (table word + its next PC + imm) for every word of that section, a superset of its real
++# targets when a kernel has several tables. A BRX without a table, or a target that is not an instruction, is an error.
++INSN_RE = re.compile(r"/\*([0-9a-f]{4,})\*/\s+((?:@!?U?P[T\d]+\s+)?)([A-Z][A-Z0-9_.]*)\s*([^;]*);")
++NO_DEST = ("BRA", "BRX", "JMP", "JMX", "CALL", "RET", "EXIT", "WARPSYNC", "BSSY", "BSYNC", "BPT", "KILL")
++
++
++def _dest_regs(opcode, operands):
++    """General registers an instruction writes (none if its first operand is not one: RZ, a predicate, a uniform
++    register, an address, or a control-flow / store instruction)."""
++    base = opcode.split(".")[0]
++    if base in NO_DEST or base.startswith("ST"):
++        return ()
++    m = re.match(r"R(\d+)\b", operands)
++    if not m:
++        return ()
++    r0, parts = int(m.group(1)), opcode.split(".")
++    if base in ("OMMA", "HMMA", "IMMA", "QMMA"):
++        width = 4          # the 16x8 F32 accumulator fragment
++    elif base == "LDSM":
++        width = {"4": 4, "2": 2}.get(parts[-1], 1)
++    elif "128" in parts[1:]:
++        width = 4
++    elif "64" in parts[1:] or (base == "CS2R" and "32" not in parts[1:]) or (base == "IMAD" and "WIDE" in parts):
++        width = 2
++    elif base in ("DADD", "DMUL", "DFMA") or (base in ("F2F", "I2F") and "F64" in parts):
++        width = 2
++    else:
++        width = 1
++    return tuple(range(r0, r0 + width))
++
++
++def _functions(sass):
++    """[(name, [(addr, predicate, opcode, operands, line_index)])] for every function in the dump."""
++    out, cur = [], None
++    for i, line in enumerate(sass.split("\n")):
++        if "Function :" in line:
++            cur = (line.split("Function :", 1)[1].strip(), [])
++            out.append(cur)
++            continue
++        m = INSN_RE.search(line)
++        if m and cur is not None:
++            cur[1].append((int(m.group(1), 16), m.group(2).strip(), m.group(3), m.group(4).strip(), i))
++    return out
++
++
++def _control_flow(fname, ins, tables):
++    """Basic blocks [(first, last)] of a function's instruction list and each block's successor blocks. tables: the
++    function's jump-table words (.nv.constant2), for its BRX instructions."""
++    index_of = {addr: j for j, (addr, _, _, _, _) in enumerate(ins)}
++    leaders, ends = {0}, {}
++    for j, (addr, pred, op, operands, _) in enumerate(ins):
++        base = op.split(".")[0]
++        if base in ("JMX", "JMP", "CALL"):
++            raise RuntimeError(f"{fname}: {op} at 0x{addr:x}; --untagged-site0 supports direct branches and BRX only")
++        if base == "BRX":
++            if not tables:
++                raise RuntimeError(f"{fname}: BRX at 0x{addr:x} has no jump table (.nv.constant2) to resolve it")
++            imm = re.findall(r"(-?0x[0-9a-f]+)", operands)
++            origin = (ins[j + 1][0] if j + 1 < len(ins) else addr + 16) + (int(imm[-1], 16) if imm else 0)
++            targets = []
++            for w in tables:
++                if origin + w not in index_of:
++                    raise RuntimeError(f"{fname}: jump-table word 0x{w:x} of the BRX at 0x{addr:x} gives 0x{origin + w:x}, "
++                                       "which is not an instruction")
++                targets.append(index_of[origin + w])
++            leaders.update(targets)
++            if j + 1 < len(ins):
++                leaders.add(j + 1)
++            ends[j] = sorted(set(targets)) + ([j + 1] if pred and j + 1 < len(ins) else [])
++            continue
++        if base not in ("BRA", "EXIT", "RET"):
++            continue
++        conditional = bool(pred) or ".DIV" in op or bool(re.match(r"!?U?P[T\d]", operands))
++        targets = []
++        if base == "BRA":
++            t = re.findall(r"0x([0-9a-f]+)", operands)
++            if not t or int(t[-1], 16) not in index_of:
++                raise RuntimeError(f"{fname}: cannot resolve the target of {op} {operands} at 0x{addr:x}")
++            targets.append(index_of[int(t[-1], 16)])
++            leaders.add(targets[-1])
++        if j + 1 < len(ins):
++            leaders.add(j + 1)
++        ends[j] = targets + ([j + 1] if conditional and j + 1 < len(ins) else [])
++    starts = sorted(leaders)
++    blocks = [(s, (starts[k + 1] if k + 1 < len(starts) else len(ins)) - 1) for k, s in enumerate(starts)]
++    block_of = {s: b for b, (s, _) in enumerate(blocks)}
++    succ = []
++    for s, e in blocks:
++        nxt = ends[e] if e in ends else ([e + 1] if e + 1 < len(ins) else [])
++        succ.append([block_of[t] for t in nxt])
++    return blocks, succ
++
++
++def jump_tables(cuobjdump, binary):
++    """{function name: jump-table words} from every cubin's .nv.constant2.<function> section (cuobjdump -xelf)."""
++    out = {}
++    with tempfile.TemporaryDirectory() as d:
++        subprocess.run([str(cuobjdump), "-xelf", "all", str(pathlib.Path(binary).resolve())], cwd=d, check=True,
++                       stdout=subprocess.PIPE, stderr=subprocess.PIPE)
++        for path in sorted(pathlib.Path(d).glob("*.cubin")):
++            data = path.read_bytes()
++            if data[:4] != b"\x7fELF" or data[4] != 2 or data[5] != 1:
++                raise RuntimeError(f"{path.name}: not a little-endian ELF64 cubin")
++            shoff, = struct.unpack_from("<Q", data, 0x28)
++            shentsize, shnum, shstrndx = struct.unpack_from("<HHH", data, 0x3a)
++            secs = [struct.unpack_from("<IIQQQQIIQQ", data, shoff + i * shentsize) for i in range(shnum)]
++            strtab = secs[shstrndx][4]
++            for sh_name, _, _, _, offset, size, _, _, _, _ in secs:
++                name = data[strtab + sh_name:data.index(b"\0", strtab + sh_name)].decode()
++                if not name.startswith(".nv.constant2."):
++                    continue
++                words = struct.unpack_from(f"<{size // 4}I", data, offset)
++                fn = name[len(".nv.constant2."):]
++                if fn in out and out[fn] != words:
++                    raise RuntimeError(f"{fn}: different .nv.constant2 contents in two cubins")
++                out[fn] = words
++    return out
++
++
++# --predicate-aware [NVFP4-RaZeR local change, kernel-opt K-tile ablation; see sm120/kernel/LOCAL_CHANGES.md], with
++# --untagged-site0. The per-MMA-branch builds (-DMIXFP4_PER_MMA_BRANCH=1) are if-converted by ptxas into
++# `@P PRMT Rt, Rs, <tag>; @P OMMA .., Rt, ..; @!P OMMA .., Rs, ..`: the E0M3 tag is a predicated (may) definition, so the
++# reaching definitions of Rt at the @P OMMA also hold an older, untagged write of Rt, and the plain analysis reports a mix
++# of sites. With this flag, a predicated OMMA whose SFA register was last written, earlier in the same basic block, by an
++# instruction under the same predicate -- with that predicate not written in between -- reads exactly that definition
++# (whenever the OMMA executes, so did it). Every other OMMA is resolved as before. Without the flag, the analysis is the
++# one above.
++PRED_TOKEN_RE = re.compile(r"!?(U?P[0-6])")
++
++
++def _pred_writes(opcode, operands):
++    """Predicate registers an instruction may write: a predicate in its first two operands (setp/lop3 destinations,
++    carry-outs). 'ALL' for R2P, which writes the predicate file."""
++    if opcode.split(".")[0] == "R2P":
++        return {"ALL"}
++    out = set()
++    for tok in [t.strip() for t in operands.split(",")[:2]]:
++        m = PRED_TOKEN_RE.fullmatch(tok)
++        if m:
++            out.add(m.group(1))
++    return out
++
++
++def parse_ommas_cfg(sass: str, tables=None, predicate_aware=False):
++    """--untagged-site0: [(sass_address, word0, word1, site, selector or None)] for every OMMA, its site read from the
++    reaching definitions of its SFA register (see above). tables: jump_tables() of the binary, for BRX."""
++    tables = tables or {}
++    lines = sass.split("\n")
++    out = []
++    for fname, ins in _functions(sass):
++        sfa_of = {}
++        for j, (_, _, op, operands, _) in enumerate(ins):
++            if op.startswith("OMMA.SF"):
++                sfa_of[j] = int(operands.split(",")[4].strip().split(".")[0][1:])   # the 5th register, as OMMA_RE
++        if not sfa_of:
++            continue
++        tracked = set(sfa_of.values())
++        blocks, succ = _control_flow(fname, ins, tables.get(fname))
++        preds = [[] for _ in blocks]
++        for b, ss in enumerate(succ):
++            for t in ss:
++                preds[t].append(b)
++
++        def step(j, state):
++            # a predicated write may or may not happen, so it adds a definition without killing the others
++            _, pred, op, operands, _ = ins[j]
++            for r in _dest_regs(op, operands):
++                if r in tracked:
++                    state[r] = (state.get(r, frozenset()) | {j}) if pred else frozenset({j})
++
++        def transfer(b, state):
++            st = dict(state)
++            for j in range(blocks[b][0], blocks[b][1] + 1):
++                step(j, st)
++            return st
++
++        ins_state = [dict() for _ in blocks]
++        out_state = [transfer(b, {}) for b in range(len(blocks))]
++        changed = True
++        while changed:
++            changed = False
++            for b in range(len(blocks)):
++                merged = {}
++                for p in preds[b]:
++                    for r, d in out_state[p].items():
++                        merged[r] = merged.get(r, frozenset()) | d
++                if merged != ins_state[b]:
++                    ins_state[b] = merged
++                    new_out = transfer(b, merged)
++                    if new_out != out_state[b]:
++                        out_state[b] = new_out
++                        changed = True
++        for b, (s, e) in enumerate(blocks):
++            st = dict(ins_state[b])
++            guard = {}                                   # --predicate-aware: register -> (predicate, writer)
++            for j in range(s, e + 1):
++                if j in sfa_of:
++                    addr, reg = ins[j][0], sfa_of[j]
++                    reaching = st.get(reg, frozenset())
++                    pred_j = ins[j][1]
++                    if predicate_aware and pred_j and pred_j != "@PT" and guard.get(reg, (None,))[0] == pred_j:
++                        reaching = frozenset({guard[reg][1]})
++                    if not reaching:
++                        raise RuntimeError(f"{fname}: OMMA at 0x{addr:x} reads R{reg} with no reaching definition")
++                    found = set()
++                    for d in reaching:
++                        mp = PRMT_SEL_RE.search(lines[ins[d][4]]) if ins[d][2].startswith("PRMT") else None
++                        sel = int(mp.group(1), 16) if mp else None
++                        found.add((SITE_BY_SELECTOR[sel][0], sel) if sel in SITE_BY_SELECTOR else (0, None))
++                    if len({site for site, _ in found}) != 1:
++                        raise RuntimeError(f"{fname}: OMMA at 0x{addr:x}: definitions of different sites reach R{reg}: "
++                                           f"{sorted(found, key=str)}")
++                    site = next(iter(found))[0]
++                    sel = next((x for _, x in found if x is not None), None)
++                    words = [int(w, 16) for w in SECOND_WORD_RE.findall(lines[ins[j][4]])]
++                    for k in range(ins[j][4] + 1, min(ins[j][4] + 4, len(lines))):
++                        if len(words) >= 2:
++                            break
++                        words += [int(w, 16) for w in SECOND_WORD_RE.findall(lines[k])]
++                    if len(words) < 2:
++                        raise RuntimeError(f"no second encoding word after OMMA at 0x{addr:x}")
++                    out.append((addr, words[0], words[1], site, sel))
++                step(j, st)
++                if predicate_aware:
++                    _, pred, op, operands, _ = ins[j]
++                    for r in _dest_regs(op, operands):
++                        if pred and pred != "@PT":
++                            guard[r] = (pred, j)
++                        else:
++                            guard.pop(r, None)
++                    written = _pred_writes(op, operands)
++                    if written:
++                        guard = {r: g for r, g in guard.items()
++                                 if "ALL" not in written and g[0].lstrip("@!") not in written}
++    return sorted(out)
++
++
+ def solve_base(data: bytes, ommas) -> int:
+     """Find the unique file offset B with data[B + addr : B + addr + 16] == encoding, for all."""
+     addr0, w0, w1, _, _ = ommas[0]
+@@ -184,7 +432,17 @@
+              "operand is pinned to E2M1 (-DMIXFP4_A_ALL_E2M1=1), which makes the two E0M3-on-A "
+              "sites unreachable, so the kernel contains only sites 0 and 2. Equal counts among "
+              "the sites that ARE present is still required.")
++    parser.add_argument(
++        "--untagged-site0", action="store_true",
++        help="the blob was generated with TAG0=0: site-0 OMMAs carry no prmt tag, and every OMMA's site is read "
++             "from the reaching definitions of its SFA register (see parse_ommas_cfg)")
++    parser.add_argument(
++        "--predicate-aware", action="store_true",
++        help="with --untagged-site0: a predicated OMMA reads the same-predicate definition of its SFA register earlier "
++             "in its basic block, if that predicate is unchanged since (the per-MMA-branch builds' if-converted pairs)")
+     args = parser.parse_args()
++    if args.predicate_aware and not args.untagged_site0:
++        parser.error("--predicate-aware needs --untagged-site0")
+ 
+     data = bytearray(args.baseline.read_bytes())
+     sass = subprocess.run(
+@@ -192,7 +450,8 @@
+         check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+     ).stdout
+ 
+-    ommas = parse_ommas(sass)
++    ommas = (parse_ommas_cfg(sass, jump_tables(args.cuobjdump, args.baseline), predicate_aware=args.predicate_aware)
++             if args.untagged_site0 else parse_ommas(sass))
+     if not ommas:
+         raise RuntimeError("cuobjdump found no OMMA instructions")
+ 

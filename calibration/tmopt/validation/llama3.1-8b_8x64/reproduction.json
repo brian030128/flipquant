@@ -1,0 +1,19 @@
+{
+ "model": "llama3.1-8b",
+ "razer_key": "llama8b",
+ "unit": "8x64",
+ "epochs": 20,
+ "map": "/home/dev/n16k64_campaign/fqport/validation/tmopt_llama3.1-8b_8x64/flipquant_8x64.pt",
+ "map_file_sha256": "8f642982733374df22e81c0ed7d6c0b47dac8b441ca11ada4917299cfb959e2d",
+ "run_map_sha256": "8b412c67d9ea412933ecfe7c8801eeefd72c5ef2d13cc32a59c73b07a2ce195d",
+ "e0m3_share": 0.022706031799316406,
+ "wall_seconds": 544.0453085899353,
+ "references": {
+  "paper_map": {
+   "sha256": "8b412c67d9ea412933ecfe7c8801eeefd72c5ef2d13cc32a59c73b07a2ce195d",
+   "record": "results/tm_opt/runs/tc/tc_llama8b_8x64/report.json",
+   "equal": true
+  }
+ },
+ "reproduces_all_references": true
+}

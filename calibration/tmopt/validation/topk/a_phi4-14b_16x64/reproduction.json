@@ -1,0 +1,32 @@
+{
+ "model": "phi4-14b",
+ "razer_key": "phi4",
+ "unit": "16x64",
+ "epochs": 20,
+ "settings": {
+  "epochs": 20,
+  "lr": 0.02,
+  "init_logit": -1.0,
+  "teacher_topk": 0
+ },
+ "non_default_settings": {},
+ "map": "/home/dev/n16k64_campaign/fqport/topk_port/a_phi4-14b_16x64/flipquant_16x64.pt",
+ "map_file_sha256": "777bd041bb5d67d6758b2247b65691deb803c1ee975640c21e094159ec5bb2b4",
+ "run_map_sha256": "110243a64cd15ee01083870195b5ea10d498be4a86ba1b19f433510f31fa66eb",
+ "e0m3_share": 0.02156415264423077,
+ "wall_seconds": 911.4573879241943,
+ "references": {
+  "paper_map": {
+   "sha256": "110243a64cd15ee01083870195b5ea10d498be4a86ba1b19f433510f31fa66eb",
+   "record": "results/tm_opt/runs/tc/tc_phi4_16x64/report.json",
+   "equal": true
+  },
+  "committed_map": {
+   "file": "maps/phi4-14b/flipquant_16x64.pt",
+   "tiles_equal": true,
+   "source_map_sha256": "110243a64cd15ee01083870195b5ea10d498be4a86ba1b19f433510f31fa66eb",
+   "equal": true
+  }
+ },
+ "reproduces_all_references": true
+}

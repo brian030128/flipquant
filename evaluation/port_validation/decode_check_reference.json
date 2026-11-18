@@ -1,0 +1,53 @@
+{
+ "model": "llama8b",
+ "batch": 4,
+ "prompt": 256,
+ "gen": 64,
+ "bf16": {
+  "max_abs_logit_diff": 0.572265625,
+  "mean_abs_logit_diff": 0.02567739225924015,
+  "top1_agreement": 1.0,
+  "mean_kl": 0.0005446055438369513,
+  "max_kl": 0.002551032230257988,
+  "native_calls_per_decode_step": [
+   0
+  ],
+  "generated_tokens": 256
+ },
+ "install": {
+  "kernel": "n8k64_wB",
+  "kernel_sha256": "8d504d10070b952bc499d346aab96175749e834da277874fb3ceeb155fbfaf53",
+  "artifact_weights_sha256": "c636a642f8b092cf9540d27efe77923c7c2639669fd5328c0956ca9a025edc25",
+  "map_sha256": "6de07fd4e714bd555b0a59a9d6794201d0181751bdb6c95cb52856841c84689a",
+  "native_modules": 224,
+  "fallback": [],
+  "bf16_by_design": [
+   "lm_head (output head)"
+  ],
+  "e0m3_tiles": 309517,
+  "device_bytes": {
+   "packed": 3489660928,
+   "scales_placed": 436207616,
+   "scales_padding": 0,
+   "bias": 0
+  },
+  "kernel_set": null,
+  "activation_quantizer": "four_over_six_rows",
+  "activation_quantizer_override": false,
+  "routing": null
+ },
+ "native": {
+  "max_abs_logit_diff": 9.75,
+  "mean_abs_logit_diff": 0.33461102843284607,
+  "top1_agreement": 0.89453125,
+  "mean_kl": 0.061495423316955566,
+  "max_kl": 1.2913463115692139,
+  "native_calls_per_decode_step": [
+   224
+  ],
+  "generated_tokens": 256
+ },
+ "generate_ok": true,
+ "generated_text": " John Tiffany . He starred in the 2008 theatre production of The Seag",
+ "kernel_set": null
+}

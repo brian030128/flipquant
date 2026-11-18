@@ -1,0 +1,52 @@
+/home/dev/.conda/envs/n16k64/bin/python run_train_map.py --model phi4 --data-root /home/dev/n16k64_campaign/fqport/razer_data --unit 16x64 --tm-opt --tile-grad-tc --param ste --lr 0.02 --init-logit -1 --epochs 20 --eval-every 2 --no-dev --no-eval --out /home/dev/n16k64_campaign/fqport/validation/tmopt_phi4-14b_16x64/run
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/243 [00:00<?, ?it/s]
+Loading weights:   0%|          | 1/243 [00:00<00:58,  4.17it/s]
+Loading weights:   7%|▋         | 17/243 [00:00<00:03, 58.51it/s]
+Loading weights:  12%|█▏        | 29/243 [00:00<00:02, 73.53it/s]
+Loading weights:  16%|█▋        | 40/243 [00:00<00:02, 82.87it/s]
+Loading weights:  21%|██▏       | 52/243 [00:00<00:02, 91.50it/s]
+Loading weights:  26%|██▋       | 64/243 [00:00<00:02, 88.37it/s]
+Loading weights:  31%|███▏      | 76/243 [00:00<00:01, 92.57it/s]
+Loading weights:  35%|███▌      | 86/243 [00:01<00:01, 90.49it/s]
+Loading weights:  40%|███▉      | 96/243 [00:01<00:01, 90.79it/s]
+Loading weights:  44%|████▎     | 106/243 [00:01<00:01, 90.23it/s]
+Loading weights:  49%|████▉     | 119/243 [00:01<00:01, 97.17it/s]
+Loading weights:  53%|█████▎    | 130/243 [00:01<00:01, 96.69it/s]
+Loading weights:  59%|█████▉    | 143/243 [00:01<00:00, 101.08it/s]
+Loading weights:  64%|██████▍   | 155/243 [00:01<00:00, 102.68it/s]
+Loading weights:  69%|██████▊   | 167/243 [00:01<00:00, 103.27it/s]
+Loading weights:  74%|███████▎  | 179/243 [00:01<00:00, 103.60it/s]
+Loading weights:  78%|███████▊  | 190/243 [00:02<00:00, 101.18it/s]
+Loading weights:  84%|████████▎ | 203/243 [00:02<00:00, 104.30it/s]
+Loading weights:  88%|████████▊ | 215/243 [00:02<00:00, 103.56it/s]
+Loading weights:  93%|█████████▎| 226/243 [00:02<00:00, 99.69it/s] 
+Loading weights:  98%|█████████▊| 238/243 [00:02<00:00, 100.11it/s]
+Loading weights: 100%|██████████| 243/243 [00:02<00:00, 93.97it/s] 
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (16941 > 16384). Running this sequence through the model will result in indexing errors
+CANDIDATES {"store": "native packed (lean)", "modules": 160, "dense_fallback_modules": [], "store_gib": 14.2822265625} tiles=13312000
+LEAN {"start_map_mismatches": [], "mixed_map_mismatches": []}
+START (no development set) tiles=13312000 steps/epoch=16 total=320
+EPOCH {"epoch": 0, "step": 16, "train_kl": 0.036697129005915485, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 38.81108784675598}
+EPOCH {"epoch": 1, "step": 32, "train_kl": 0.036697128858577344, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.02072739601135}
+EPOCH {"epoch": 2, "step": 48, "train_kl": 0.03669712884584442, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.379202365875244}
+EPOCH {"epoch": 3, "step": 64, "train_kl": 0.03649079947535938, "e0m3_units": 399, "hard_flips": 399, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.70744705200195}
+EPOCH {"epoch": 4, "step": 80, "train_kl": 0.035575245954532875, "e0m3_units": 8750, "hard_flips": 8383, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.74670171737671}
+EPOCH {"epoch": 5, "step": 96, "train_kl": 0.03284977315161086, "e0m3_units": 34263, "hard_flips": 27147, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.88102436065674}
+EPOCH {"epoch": 6, "step": 112, "train_kl": 0.029831132293111295, "e0m3_units": 72595, "hard_flips": 41932, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.85297513008118}
+EPOCH {"epoch": 7, "step": 128, "train_kl": 0.028388308357534697, "e0m3_units": 99420, "hard_flips": 41273, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.83872628211975}
+EPOCH {"epoch": 8, "step": 144, "train_kl": 0.02684000087720051, "e0m3_units": 119513, "hard_flips": 43267, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.770214319229126}
+EPOCH {"epoch": 9, "step": 160, "train_kl": 0.025583145913515182, "e0m3_units": 135406, "hard_flips": 40455, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.83537483215332}
+EPOCH {"epoch": 10, "step": 176, "train_kl": 0.024742955703004554, "e0m3_units": 149271, "hard_flips": 42533, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.68014597892761}
+EPOCH {"epoch": 11, "step": 192, "train_kl": 0.024044083498665714, "e0m3_units": 163948, "hard_flips": 46909, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.752277851104736}
+EPOCH {"epoch": 12, "step": 208, "train_kl": 0.0233403277288744, "e0m3_units": 183811, "hard_flips": 60133, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.77410316467285}
+EPOCH {"epoch": 13, "step": 224, "train_kl": 0.022829110639577266, "e0m3_units": 201607, "hard_flips": 50532, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.8305299282074}
+EPOCH {"epoch": 14, "step": 240, "train_kl": 0.022256092745010392, "e0m3_units": 214130, "hard_flips": 50567, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.828904151916504}
+EPOCH {"epoch": 15, "step": 256, "train_kl": 0.02196069763522246, "e0m3_units": 228888, "hard_flips": 53112, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.864049434661865}
+EPOCH {"epoch": 16, "step": 272, "train_kl": 0.02158043547296984, "e0m3_units": 243753, "hard_flips": 58005, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.814157485961914}
+EPOCH {"epoch": 17, "step": 288, "train_kl": 0.021454395337059395, "e0m3_units": 259308, "hard_flips": 62703, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.83400106430054}
+EPOCH {"epoch": 18, "step": 304, "train_kl": 0.02061730114837701, "e0m3_units": 273339, "hard_flips": 55933, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.75154662132263}
+EPOCH {"epoch": 19, "step": 320, "train_kl": 0.020258290831407066, "e0m3_units": 287062, "hard_flips": 59477, "tau": 1.0, "lr": 0.02, "epoch_seconds": 39.87988495826721}
+FINAL e0m3=287062
+[W1002 05:07:20.799375962 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

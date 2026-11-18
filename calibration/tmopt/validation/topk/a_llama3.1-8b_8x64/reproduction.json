@@ -1,0 +1,26 @@
+{
+ "model": "llama3.1-8b",
+ "razer_key": "llama8b",
+ "unit": "8x64",
+ "epochs": 20,
+ "settings": {
+  "epochs": 20,
+  "lr": 0.02,
+  "init_logit": -1.0,
+  "teacher_topk": 0
+ },
+ "non_default_settings": {},
+ "map": "/home/dev/n16k64_campaign/fqport/topk_port/a_llama3.1-8b_8x64/flipquant_8x64.pt",
+ "map_file_sha256": "c9a0f8fa1856a498cb9d9975bc59eacadcbe98e7c291f20ccf3ac42701d92ee0",
+ "run_map_sha256": "8b412c67d9ea412933ecfe7c8801eeefd72c5ef2d13cc32a59c73b07a2ce195d",
+ "e0m3_share": 0.022706031799316406,
+ "wall_seconds": 529.7747120857239,
+ "references": {
+  "paper_map": {
+   "sha256": "8b412c67d9ea412933ecfe7c8801eeefd72c5ef2d13cc32a59c73b07a2ce195d",
+   "record": "results/tm_opt/runs/tc/tc_llama8b_8x64/report.json",
+   "equal": true
+  }
+ },
+ "reproduces_all_references": true
+}

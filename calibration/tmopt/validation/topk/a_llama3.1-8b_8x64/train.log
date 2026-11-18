@@ -1,0 +1,41 @@
+/home/dev/.conda/envs/n16k64/bin/python run_train_map.py --model llama8b --data-root /home/dev/n16k64_campaign/fqport/razer_data --transformers-deviation --unit 8x64 --tm-opt --tile-grad-tc --param ste --lr 0.02 --init-logit -1 --epochs 20 --eval-every 2 --no-dev --no-eval --out /home/dev/n16k64_campaign/fqport/topk_port/a_llama3.1-8b_8x64/run
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]
+Loading weights:   1%|          | 2/291 [00:00<00:17, 16.77it/s]
+Loading weights:  10%|█         | 30/291 [00:00<00:01, 152.98it/s]
+Loading weights:  20%|██        | 59/291 [00:00<00:01, 206.03it/s]
+Loading weights:  30%|██▉       | 86/291 [00:00<00:00, 227.13it/s]
+Loading weights:  39%|███▉      | 113/291 [00:00<00:00, 231.16it/s]
+Loading weights:  48%|████▊     | 141/291 [00:00<00:00, 244.03it/s]
+Loading weights:  58%|█████▊    | 168/291 [00:00<00:00, 249.08it/s]
+Loading weights:  67%|██████▋   | 195/291 [00:00<00:00, 254.85it/s]
+Loading weights:  76%|███████▋  | 222/291 [00:00<00:00, 256.68it/s]
+Loading weights:  86%|████████▌ | 249/291 [00:01<00:00, 257.79it/s]
+Loading weights:  95%|█████████▍| 276/291 [00:01<00:00, 260.79it/s]
+Loading weights: 100%|██████████| 291/291 [00:01<00:00, 240.87it/s]
+CANDIDATES {"store": "native packed (lean)", "modules": 224, "dense_fallback_modules": [], "store_gib": 7.3125} tiles=13631488
+LEAN {"start_map_mismatches": [], "mixed_map_mismatches": []}
+START (no development set) tiles=13631488 steps/epoch=16 total=320
+EPOCH {"epoch": 0, "step": 16, "train_kl": 0.09694585187389748, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.913636207580566}
+EPOCH {"epoch": 1, "step": 32, "train_kl": 0.09694585144461598, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.646562337875366}
+EPOCH {"epoch": 2, "step": 48, "train_kl": 0.09694585126271704, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.801928997039795}
+EPOCH {"epoch": 3, "step": 64, "train_kl": 0.0925725697670714, "e0m3_units": 1894, "hard_flips": 2050, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.865715980529785}
+EPOCH {"epoch": 4, "step": 80, "train_kl": 0.08679186393419513, "e0m3_units": 6522, "hard_flips": 5702, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.94330406188965}
+EPOCH {"epoch": 5, "step": 96, "train_kl": 0.08007229234499391, "e0m3_units": 22876, "hard_flips": 17296, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.966398000717163}
+EPOCH {"epoch": 6, "step": 112, "train_kl": 0.07306086522294208, "e0m3_units": 45829, "hard_flips": 25893, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.080019235610962}
+EPOCH {"epoch": 7, "step": 128, "train_kl": 0.06704551929578884, "e0m3_units": 73376, "hard_flips": 32777, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.308368682861328}
+EPOCH {"epoch": 8, "step": 144, "train_kl": 0.06127285103139002, "e0m3_units": 99282, "hard_flips": 33174, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.078391075134277}
+EPOCH {"epoch": 9, "step": 160, "train_kl": 0.057205831159080844, "e0m3_units": 124532, "hard_flips": 36268, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.163591623306274}
+EPOCH {"epoch": 10, "step": 176, "train_kl": 0.05443677362927701, "e0m3_units": 146084, "hard_flips": 35394, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.099481344223022}
+EPOCH {"epoch": 11, "step": 192, "train_kl": 0.05139932184465579, "e0m3_units": 167497, "hard_flips": 38551, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.03628373146057}
+EPOCH {"epoch": 12, "step": 208, "train_kl": 0.04970558535933378, "e0m3_units": 187370, "hard_flips": 38973, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.989747285842896}
+EPOCH {"epoch": 13, "step": 224, "train_kl": 0.047512377524981275, "e0m3_units": 206339, "hard_flips": 38103, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.07292342185974}
+EPOCH {"epoch": 14, "step": 240, "train_kl": 0.04601962160450057, "e0m3_units": 225536, "hard_flips": 41541, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.079307317733765}
+EPOCH {"epoch": 15, "step": 256, "train_kl": 0.04454921247815946, "e0m3_units": 243699, "hard_flips": 42651, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.059001445770264}
+EPOCH {"epoch": 16, "step": 272, "train_kl": 0.04358375258016167, "e0m3_units": 260815, "hard_flips": 43436, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.07198405265808}
+EPOCH {"epoch": 17, "step": 288, "train_kl": 0.04226203832149622, "e0m3_units": 278110, "hard_flips": 44047, "tau": 1.0, "lr": 0.02, "epoch_seconds": 23.01970601081848}
+EPOCH {"epoch": 18, "step": 304, "train_kl": 0.04106023644999368, "e0m3_units": 293738, "hard_flips": 41740, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.995360136032104}
+EPOCH {"epoch": 19, "step": 320, "train_kl": 0.04015102855191799, "e0m3_units": 309517, "hard_flips": 45361, "tau": 1.0, "lr": 0.02, "epoch_seconds": 22.947237491607666}
+FINAL e0m3=309517
+[W1005 08:57:51.393192547 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

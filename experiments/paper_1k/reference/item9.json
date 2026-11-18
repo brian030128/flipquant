@@ -1,0 +1,323 @@
+{
+ "note": "Item 9 (Tables D.2 tab:app-ktile and D.3 tab:app-c2, RTX PRO 6000 rows, at 1k). builds: the seven builds beyond kernels/sm120/build_deploy.sh that the item times (amendment 20's per-MMA builds; the no-dispatch ceilings and tag-copy builds of kernel-opt's C2 measurements), each with its reference SASS from the kernel-opt manifests (CUDA 13.1; every such build has one SASS across kernel-opt's build directories). census: amendment 20's static census of the five D.2 kernels. published: the paper's PRO 6000 rows (Table D.2: the unified re-measurement on another RTX PRO 6000, 10 repeats, cold modes, release-map tags of Mistral-7B layer 0 o_proj; Table D.3: the same session, iso_cold, mean +- SD over the repeats).",
+ "layer": "model.layers.0.self_attn.o_proj",
+ "model": "mistral-7b",
+ "shape": [
+  4096,
+  4096,
+  4096
+ ],
+ "builds": [
+  {
+   "config": "n16k64_wA_e64_t0_permma",
+   "extra_defines": {
+    "MIXFP4_DISPATCH_FREQ": 1,
+    "MIXFP4_UNIFORM_DISPATCH": 1
+   },
+   "sass_sha256": "34d7cbfd6c0f63e30fdd9c340ab6235e2026e560b8e732e60db64ab12ffca469",
+   "unpatched_sass_sha256": "7ae74aa73db63ecdf28f5ef474cece752b45bb397e7eba0186480cc5092989f3",
+   "allow_predicated": true,
+   "source": "NVFP4-RaZeR kernel-opt build_KT (amendment 20)"
+  },
+  {
+   "config": "n8k64_wB_t0_permma",
+   "extra_defines": {
+    "MIXFP4_DISPATCH_FREQ": 1,
+    "MIXFP4_PIPE_FLAGS": 1
+   },
+   "sass_sha256": "1a64f08e92e865324a2063759244957d7e0c619d013b5db43646e033b7f3c917",
+   "unpatched_sass_sha256": "74614e428aab6d2d9a7afe3e9603c92eb697299023275c836f454217b3ecdbbf",
+   "allow_predicated": true,
+   "source": "NVFP4-RaZeR kernel-opt build_KT (amendment 20)"
+  },
+  {
+   "config": "n16k64_wA_nodisp",
+   "extra_defines": {},
+   "sass_sha256": "ef283c856d0ba30c6cd533c2927f5d1a3d7b50d85f2fe5e714bdf2016f7eb148",
+   "unpatched_sass_sha256": "ef283c856d0ba30c6cd533c2927f5d1a3d7b50d85f2fe5e714bdf2016f7eb148",
+   "allow_predicated": false,
+   "source": "NVFP4-RaZeR kernel-opt build (kernel-opt C2 ceilings / tag-copy builds)"
+  },
+  {
+   "config": "n16k64_wA_nodisp_t0",
+   "extra_defines": {},
+   "sass_sha256": "7d9c86da591a3596175560d1f003fbb3bf2377faf58266d0b45cbb99e62e01ca",
+   "unpatched_sass_sha256": "7d9c86da591a3596175560d1f003fbb3bf2377faf58266d0b45cbb99e62e01ca",
+   "allow_predicated": false,
+   "source": "NVFP4-RaZeR kernel-opt build_T (kernel-opt C2 ceilings / tag-copy builds)"
+  },
+  {
+   "config": "n16k64_wA_nodisp_e64_t0",
+   "extra_defines": {},
+   "sass_sha256": "b7b668cd14daeba0c15aa04ffe27ce15045af5723e9828a296701637d3de12cb",
+   "unpatched_sass_sha256": "b7b668cd14daeba0c15aa04ffe27ce15045af5723e9828a296701637d3de12cb",
+   "allow_predicated": false,
+   "source": "NVFP4-RaZeR kernel-opt build_C3k (kernel-opt C2 ceilings / tag-copy builds)"
+  },
+  {
+   "config": "n8k64_wB_nodisp",
+   "extra_defines": {},
+   "sass_sha256": "9b64016bff84f544393f01bafca2fefa7ca986a40c5c1d3dec39c652462cb89d",
+   "unpatched_sass_sha256": "9b64016bff84f544393f01bafca2fefa7ca986a40c5c1d3dec39c652462cb89d",
+   "allow_predicated": false,
+   "source": "NVFP4-RaZeR kernel-opt build_W (kernel-opt C2 ceilings / tag-copy builds)"
+  },
+  {
+   "config": "n8k64_wB_nodisp_t0",
+   "extra_defines": {},
+   "sass_sha256": "cd1338a7ae525447431b7a4a51ea397a0c613e5248df8d4780caf05d5c43fa6e",
+   "unpatched_sass_sha256": "cd1338a7ae525447431b7a4a51ea397a0c613e5248df8d4780caf05d5c43fa6e",
+   "allow_predicated": false,
+   "source": "NVFP4-RaZeR kernel-opt build_W (kernel-opt C2 ceilings / tag-copy builds)"
+  }
+ ],
+ "census": {
+  "stock_ko": {
+   "config": "stock_wA_e64",
+   "sass_sha256": "a9548229a44cb0b42e7e1a3dc9d107ed8510a9ef26f6523a31b00dd21fbf718c",
+   "omma": 64,
+   "omma_predicated": 0,
+   "brx": 0,
+   "omma_per_steady_iteration": {
+    "min": 32,
+    "max": 32
+   },
+   "tensor_pipe_estimate_4096": 8388608
+  },
+  "ktile16": {
+   "config": "n16k64_wA_e64_t0",
+   "sass_sha256": "373b16278bce95e4672a9fde5e39398cb2dabf3d2db2b8b8df8772bd0b2f9515",
+   "omma": 1024,
+   "omma_predicated": 0,
+   "brx": 0,
+   "omma_per_steady_iteration": {
+    "min": 32,
+    "max": 32
+   },
+   "tensor_pipe_estimate_4096": 8388608
+  },
+  "permma16": {
+   "config": "n16k64_wA_e64_t0_permma",
+   "sass_sha256": "34d7cbfd6c0f63e30fdd9c340ab6235e2026e560b8e732e60db64ab12ffca469",
+   "omma": 128,
+   "omma_predicated": 128,
+   "brx": 0,
+   "omma_per_steady_iteration": {
+    "min": 64,
+    "max": 64
+   },
+   "tensor_pipe_estimate_4096": 16777216
+  },
+  "ktile8": {
+   "config": "n8k64_wB_t0",
+   "sass_sha256": "470dba119897d2c8c7082a76339bedfd529343adebd2887102a6116d8efc1e5c",
+   "omma": 1024,
+   "omma_predicated": 0,
+   "brx": 0,
+   "omma_per_steady_iteration": {
+    "min": 32,
+    "max": 32
+   },
+   "tensor_pipe_estimate_4096": 8388608
+  },
+  "permma8": {
+   "config": "n8k64_wB_t0_permma",
+   "sass_sha256": "1a64f08e92e865324a2063759244957d7e0c619d013b5db43646e033b7f3c917",
+   "omma": 128,
+   "omma_predicated": 128,
+   "brx": 0,
+   "omma_per_steady_iteration": {
+    "min": 64,
+    "max": 64
+   },
+   "tensor_pipe_estimate_4096": 16777216
+  }
+ },
+ "published": {
+  "d2": {
+   "stock": {
+    "us": 106.58,
+    "tflops": 1289.5,
+    "mmas": 32
+   },
+   "8x64": {
+    "permma": {
+     "us": 181.74,
+     "tflops": 756.2,
+     "iso": 70.5,
+     "b2b": 76.0,
+     "mmas": 64
+    },
+    "ktile": {
+     "us": 114.13,
+     "tflops": 1204.2,
+     "iso": 7.1,
+     "b2b": 7.7,
+     "mmas": 32
+    }
+   },
+   "16x64": {
+    "permma": {
+     "us": 175.25,
+     "tflops": 784.3,
+     "iso": 64.4,
+     "b2b": 70.2,
+     "mmas": 64
+    },
+    "ktile": {
+     "us": 108.08,
+     "tflops": 1271.7,
+     "iso": 1.4,
+     "b2b": 3.7,
+     "mmas": 32
+    }
+   },
+   "speedup": {
+    "8x64": 1.592,
+    "16x64": 1.622
+   },
+   "release_tag_share_pct": {
+    "16x64": 3.4,
+    "8x64": 2.15
+   }
+  },
+  "d3": {
+   "before": {
+    "8x64": {
+     "tiles": [
+      4.7,
+      0.6
+     ],
+     "tag_copies": [
+      0.9,
+      0.1
+     ],
+     "dispatch": [
+      3.9,
+      0.2
+     ],
+     "e0m3": [
+      0.3,
+      0.2
+     ],
+     "total": [
+      10.1,
+      0.6
+     ]
+    },
+    "16x64": {
+     "tiles": [
+      1.2,
+      0.3
+     ],
+     "tag_copies": [
+      1.0,
+      0.3
+     ],
+     "dispatch": [
+      2.1,
+      0.4
+     ],
+     "e0m3": [
+      0.3,
+      0.2
+     ],
+     "total": [
+      4.7,
+      0.4
+     ]
+    },
+    "256x64": {
+     "tiles": [
+      1.2,
+      0.3
+     ],
+     "tag_copies": [
+      1.0,
+      0.3
+     ],
+     "dispatch": [
+      2.1,
+      0.4
+     ],
+     "e0m3": [
+      0.3,
+      0.3
+     ],
+     "total": [
+      4.7,
+      0.2
+     ]
+    }
+   },
+   "after": {
+    "8x64": {
+     "tiles": [
+      4.8,
+      0.4
+     ],
+     "dispatch": [
+      1.7,
+      0.3
+     ],
+     "e0m3": [
+      0.4,
+      0.2
+     ],
+     "total": [
+      7.1,
+      0.6
+     ]
+    },
+    "16x64": {
+     "tiles": [
+      0.3,
+      0.2
+     ],
+     "dispatch": [
+      0.8,
+      0.3
+     ],
+     "e0m3": [
+      0.3,
+      0.2
+     ],
+     "total": [
+      1.4,
+      0.5
+     ]
+    },
+    "256x64": {
+     "tiles": [
+      0.3,
+      0.2
+     ],
+     "dispatch": [
+      0.9,
+      0.2
+     ],
+     "e0m3": [
+      0.1,
+      0.4
+     ],
+     "total": [
+      1.3,
+      0.3
+     ]
+    }
+   },
+   "all_e0m3_vs_all_e2m1_iso_cold": {
+    "before": {
+     "8x64": 1.9,
+     "16x64": 4.6,
+     "256x64": 4.7
+    },
+    "after": {
+     "8x64": 6.8,
+     "16x64": 5.5,
+     "256x64": 0.3
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,473 @@
+{
+ "maps": {
+  "llama3.2-1b-instruct": {
+   "8x64": {
+    "modules": 112,
+    "modules_expected": 112,
+    "elements": 973078528,
+    "informative": 887127842,
+    "e0m3_tiles": 214432,
+    "e0m3_elements": 96467751,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 112,
+    "modules_expected": 112,
+    "elements": 973078528,
+    "informative": 885843521,
+    "e0m3_tiles": 141062,
+    "e0m3_elements": 126919789,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 112,
+    "modules_expected": 112,
+    "elements": 973078528,
+    "informative": 876908613,
+    "e0m3_tiles": 377152,
+    "e0m3_elements": 339429748,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "8x64": {
+    "modules": 224,
+    "modules_expected": 224,
+    "elements": 6979321856,
+    "informative": 6383640924,
+    "e0m3_tiles": 586062,
+    "e0m3_elements": 263908693,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 224,
+    "modules_expected": 224,
+    "elements": 6979321856,
+    "informative": 6380496379,
+    "e0m3_tiles": 377393,
+    "e0m3_elements": 339896643,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 224,
+    "modules_expected": 224,
+    "elements": 6979321856,
+    "informative": 6356334692,
+    "e0m3_tiles": 1025456,
+    "e0m3_elements": 923631831,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "mistral-7b": {
+   "8x64": {
+    "modules": 224,
+    "modules_expected": 224,
+    "elements": 6979321856,
+    "informative": 6375296063,
+    "e0m3_tiles": 557943,
+    "e0m3_elements": 250659358,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 224,
+    "modules_expected": 224,
+    "elements": 6979321856,
+    "informative": 6372266980,
+    "e0m3_tiles": 359840,
+    "e0m3_elements": 323462086,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 224,
+    "modules_expected": 224,
+    "elements": 6979321856,
+    "informative": 6348026914,
+    "e0m3_tiles": 1009584,
+    "e0m3_elements": 907435089,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "8x64": {
+    "modules": 120,
+    "modules_expected": 120,
+    "elements": 7711621120,
+    "informative": 7057461648,
+    "e0m3_tiles": 645487,
+    "e0m3_elements": 290361943,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 120,
+    "modules_expected": 120,
+    "elements": 7711621120,
+    "informative": 7053681112,
+    "e0m3_tiles": 420667,
+    "e0m3_elements": 378444194,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 120,
+    "modules_expected": 120,
+    "elements": 7711621120,
+    "informative": 7023466330,
+    "e0m3_tiles": 1205072,
+    "e0m3_elements": 1084278867,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "phi4-14b": {
+   "8x64": {
+    "modules": 160,
+    "modules_expected": 160,
+    "elements": 13631488000,
+    "informative": 12508116012,
+    "e0m3_tiles": 758874,
+    "e0m3_elements": 343094455,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 160,
+    "modules_expected": 160,
+    "elements": 13631488000,
+    "informative": 12504039104,
+    "e0m3_tiles": 491665,
+    "e0m3_elements": 444569646,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 160,
+    "modules_expected": 160,
+    "elements": 13631488000,
+    "informative": 12472022403,
+    "e0m3_tiles": 1374016,
+    "e0m3_elements": 1242500901,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "qwen3.8-27b": {
+   "8x64": {
+    "modules": 496,
+    "modules_expected": 496,
+    "elements": 24350556160,
+    "informative": 22312125280,
+    "e0m3_tiles": 1074352,
+    "e0m3_elements": 484175835,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 496,
+    "modules_expected": 496,
+    "elements": 24350556160,
+    "informative": 22309601794,
+    "e0m3_tiles": 602694,
+    "e0m3_elements": 543043409,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 496,
+    "modules_expected": 496,
+    "elements": 24350556160,
+    "informative": 22269539075,
+    "e0m3_tiles": 1676068,
+    "e0m3_elements": 1510746831,
+    "exact": true,
+    "mismatches": 0
+   }
+  }
+ },
+ "controls": {
+  "llama3.2-1b-instruct": {
+   "status": "complete",
+   "passed": true,
+   "model": "llama3.2-1b-instruct",
+   "map": "edgeai-lab/Llama-3.2-1B-Instruct-FlipQuant-Calib1k@f447d81c6fdf/flipquant_16x64.pt",
+   "unit": "16x64",
+   "module": "model.layers.0.self_attn.q_proj",
+   "shape": [
+    2048,
+    2048
+   ],
+   "map_e0m3_tiles": 410,
+   "kernel": "mixed_ko",
+   "routing": "auto: 16x64 map -> mixed_ko with its optimized dispatch variants",
+   "probe": {
+    "name": "n16k64_wA_e64_t0",
+    "sha256": "2b814989f38f08fe36b9b242fe3dfd54f41a5fd76d452e64d0088e124626097e"
+   },
+   "rows": {
+    "map_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 0,
+     "informative_elements": 3726089,
+     "e0m3_elements_observed": 356723,
+     "e0m3_tiles": 410
+    },
+    "all_e2m1_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 374829,
+     "informative_elements": 3744195,
+     "e0m3_elements_observed": 0,
+     "e0m3_tiles": 410
+    },
+    "map_deployed_vs_all_e2m1": {
+     "exact": true,
+     "format_mismatches": 356723,
+     "informative_elements": 3726089,
+     "e0m3_elements_observed": 356723,
+     "e0m3_tiles": 0
+    }
+   },
+   "seconds": 5.1
+  },
+  "llama3.1-8b-instruct": {
+   "status": "complete",
+   "passed": true,
+   "model": "llama3.1-8b-instruct",
+   "map": "edgeai-lab/Llama-3.1-8B-Instruct-FlipQuant-Calib1k@ab08ef72c40a/flipquant_16x64.pt",
+   "unit": "16x64",
+   "module": "model.layers.0.self_attn.q_proj",
+   "shape": [
+    4096,
+    4096
+   ],
+   "map_e0m3_tiles": 814,
+   "kernel": "mixed_ko",
+   "routing": "auto: 16x64 map -> mixed_ko with its optimized dispatch variants",
+   "probe": {
+    "name": "n16k64_wA_e64_t0",
+    "sha256": "2b814989f38f08fe36b9b242fe3dfd54f41a5fd76d452e64d0088e124626097e"
+   },
+   "rows": {
+    "map_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 0,
+     "informative_elements": 10530773,
+     "e0m3_elements_observed": 477243,
+     "e0m3_tiles": 814
+    },
+    "all_e2m1_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 523640,
+     "informative_elements": 10577170,
+     "e0m3_elements_observed": 0,
+     "e0m3_tiles": 814
+    },
+    "map_deployed_vs_all_e2m1": {
+     "exact": true,
+     "format_mismatches": 477243,
+     "informative_elements": 10530773,
+     "e0m3_elements_observed": 477243,
+     "e0m3_tiles": 0
+    }
+   },
+   "seconds": 6.4
+  },
+  "mistral-7b": {
+   "status": "complete",
+   "passed": true,
+   "model": "mistral-7b",
+   "map": "edgeai-lab/Mistral-7B-Instruct-v0.3-FlipQuant-Calib1k@2922fffdf530/flipquant_16x64.pt",
+   "unit": "16x64",
+   "module": "model.layers.0.self_attn.q_proj",
+   "shape": [
+    4096,
+    4096
+   ],
+   "map_e0m3_tiles": 1080,
+   "kernel": "mixed_ko",
+   "routing": "auto: 16x64 map -> mixed_ko with its optimized dispatch variants",
+   "probe": {
+    "name": "n16k64_wA_e64_t0",
+    "sha256": "2b814989f38f08fe36b9b242fe3dfd54f41a5fd76d452e64d0088e124626097e"
+   },
+   "rows": {
+    "map_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 0,
+     "informative_elements": 7995155,
+     "e0m3_elements_observed": 495067,
+     "e0m3_tiles": 1080
+    },
+    "all_e2m1_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 532654,
+     "informative_elements": 8032742,
+     "e0m3_elements_observed": 0,
+     "e0m3_tiles": 1080
+    },
+    "map_deployed_vs_all_e2m1": {
+     "exact": true,
+     "format_mismatches": 495067,
+     "informative_elements": 7995155,
+     "e0m3_elements_observed": 495067,
+     "e0m3_tiles": 0
+    }
+   },
+   "seconds": 5.8
+  },
+  "nemotron-nano-9b-v2": {
+   "status": "complete",
+   "passed": true,
+   "model": "nemotron-nano-9b-v2",
+   "map": "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-FlipQuant-Calib1k@2a28a31bb8dc/flipquant_16x64.pt",
+   "unit": "16x64",
+   "module": "model.layers.0.mixer.in_proj",
+   "shape": [
+    22656,
+    4480
+   ],
+   "map_e0m3_tiles": 2753,
+   "kernel": "mixed_ko",
+   "routing": "auto: 16x64 map -> mixed_ko with its optimized dispatch variants",
+   "probe": {
+    "name": "n16k64_wA_e64_t0",
+    "sha256": "2b814989f38f08fe36b9b242fe3dfd54f41a5fd76d452e64d0088e124626097e"
+   },
+   "rows": {
+    "map_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 0,
+     "informative_elements": 92926599,
+     "e0m3_elements_observed": 2479547,
+     "e0m3_tiles": 2753
+    },
+    "all_e2m1_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 2580457,
+     "informative_elements": 93027509,
+     "e0m3_elements_observed": 0,
+     "e0m3_tiles": 2753
+    },
+    "map_deployed_vs_all_e2m1": {
+     "exact": true,
+     "format_mismatches": 2479547,
+     "informative_elements": 92926599,
+     "e0m3_elements_observed": 2479547,
+     "e0m3_tiles": 0
+    }
+   },
+   "seconds": 6.7
+  },
+  "phi4-14b": {
+   "status": "complete",
+   "passed": true,
+   "model": "phi4-14b",
+   "map": "edgeai-lab/phi-4-FlipQuant-Calib1k@a477cc860e39/flipquant_16x64.pt",
+   "unit": "16x64",
+   "module": "model.layers.0.self_attn.o_proj",
+   "shape": [
+    5120,
+    5120
+   ],
+   "map_e0m3_tiles": 535,
+   "kernel": "mixed_ko",
+   "routing": "auto: 16x64 map -> mixed_ko with its optimized dispatch variants",
+   "probe": {
+    "name": "n16k64_wA_e64_t0",
+    "sha256": "2b814989f38f08fe36b9b242fe3dfd54f41a5fd76d452e64d0088e124626097e"
+   },
+   "rows": {
+    "map_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 0,
+     "informative_elements": 24056338,
+     "e0m3_elements_observed": 483630,
+     "e0m3_tiles": 535
+    },
+    "all_e2m1_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 503209,
+     "informative_elements": 24075917,
+     "e0m3_elements_observed": 0,
+     "e0m3_tiles": 535
+    },
+    "map_deployed_vs_all_e2m1": {
+     "exact": true,
+     "format_mismatches": 483630,
+     "informative_elements": 24056338,
+     "e0m3_elements_observed": 483630,
+     "e0m3_tiles": 0
+    }
+   },
+   "seconds": 7.7
+  },
+  "qwen3.8-27b": {
+   "status": "complete",
+   "passed": true,
+   "model": "qwen3.8-27b",
+   "map": "edgeai-lab/Qwen3.8-27B-FlipQuant-Calib1k@06b068a3b68b/flipquant_16x64.pt",
+   "unit": "16x64",
+   "module": "model.language_model.layers.0.linear_attn.out_proj",
+   "shape": [
+    5120,
+    6144
+   ],
+   "map_e0m3_tiles": 420,
+   "kernel": "mixed_ko",
+   "routing": "auto: 16x64 map -> mixed_ko with its optimized dispatch variants",
+   "probe": {
+    "name": "n16k64_wA_e64_t0",
+    "sha256": "2b814989f38f08fe36b9b242fe3dfd54f41a5fd76d452e64d0088e124626097e"
+   },
+   "rows": {
+    "map_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 0,
+     "informative_elements": 28753410,
+     "e0m3_elements_observed": 376455,
+     "e0m3_tiles": 420
+    },
+    "all_e2m1_deployed_vs_map": {
+     "exact": true,
+     "format_mismatches": 392967,
+     "informative_elements": 28769922,
+     "e0m3_elements_observed": 0,
+     "e0m3_tiles": 420
+    },
+    "map_deployed_vs_all_e2m1": {
+     "exact": true,
+     "format_mismatches": 376455,
+     "informative_elements": 28753410,
+     "e0m3_elements_observed": 376455,
+     "e0m3_tiles": 0
+    }
+   },
+   "seconds": 14.0
+  }
+ },
+ "step0": {
+  "model": "mistral-7b",
+  "unit": "16x64",
+  "modules": 224,
+  "rows_sha256": "341d4d9a4934ae2debc9018700b2e22335d4fe7c5f37a3fc3cbd1e14e762f3a1",
+  "rows_equal": true,
+  "exact": true,
+  "mismatches": 0,
+  "accepted": false
+ },
+ "totals": {
+  "maps": 18,
+  "elements": 181876162560,
+  "informative": 166375994686,
+  "exact": true,
+  "mismatches": 0
+ }
+}

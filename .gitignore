@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+scripts/slurm/logs/
+kernels/build*/
+runs/
+# run outputs; the curated result documents below are tracked
+results/*
+!results/calibration_cost/
+!results/zeroshot6/
+!results/calib_size/
+kernels/sm120/build*/
+# the calibration records the vendored trainer reads (calibration/tmopt/VENDORED.json)
+!calibration/tmopt/results/
+# the paper's 1k reruns (results/paper_1k/RUNBOOK.md): the default run directory and calibration data root
+paper1k_runs/
+paper1k_data/

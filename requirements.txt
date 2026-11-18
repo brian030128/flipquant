@@ -1,0 +1,12 @@
+# Tested with Python 3.11, torch 2.9.0+cu128, transformers 5.16.1 (the reference's .joblib/qwen27b venv).
+# transformers >= 5.16 is required for Qwen3.8-27B (Qwen3_5ForConditionalGeneration) and Nemotron-Nano-9B-v2.
+torch>=2.9
+transformers>=5.16.1
+datasets>=4.4
+accelerate>=1.7
+sentencepiece
+protobuf
+packaging
+pytest
+# evaluation.downstream (the paper's multiple-choice tasks and gsm8k_llama)
+lm-eval==0.4.11

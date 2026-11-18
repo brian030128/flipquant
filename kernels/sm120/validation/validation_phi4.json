@@ -1,0 +1,410 @@
+{
+ "model": "phi4-14b",
+ "razer_key": "phi4",
+ "shapes": [
+  [
+   1,
+   16
+  ],
+  [
+   1,
+   200
+  ],
+  [
+   2,
+   512
+  ]
+ ],
+ "cases": {
+  "16x64-paper": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "mixed",
+     "kernels": {
+      "n16k64_wA_n16": "4c492e82a8312d5633d434d8454f5ca9a0de7fba11afe8f5dd2ef2778f420cc7",
+      "n16k64_wA_n32": "4d83d41161f40b59776efcf2e5995765afeeee99593e20c998844a8996c8e5a1",
+      "n16k64_wA_n64": "fe3af2a20636df63ff6fd3416ea95285c4d3e52490fa2fac51e4047e78463863",
+      "n16k64_wA": "b73e81ea9b25223678e0de795bbe086048ba3d1273b9161146bf926f95b6a8ad"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    },
+    {
+     "family": "mixed",
+     "kernels": {
+      "n16k64_wA_n16": "6fb5c4fa35fb8043db521c1242c4983eb7685634c0e451a2fd01fd58c660eded",
+      "n16k64_wA_n32": "c3728b8c201ed3a2b50d2a441f4d7c6c76230310fba5fdaa248dfd250b704ad6",
+      "n16k64_wA_n64": "0fc24041b4ec44e26ff879380e8ffb2b1f323ee518057c9dce986edf37566367",
+      "n16k64_wA": "44798e216158934b845cc9daadb49a6bb7c1d47894c8909686e58bd384c4e2de"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "16x64-adopted": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "mixed_ko",
+     "kernels": {
+      "n16k64_wA_n16_t0": "316438ac1618db0f0bf958cf4a394d8185de68f87eeeb9c03c6d8e079e3b532e",
+      "n16k64_wA_n32_t0": "efcf25c2c7977fb312438b3e158b041d81d08fe9382d95b57c2c573666afe6b3",
+      "n16k64_wA_n64_t0": "837da9c46a2668bdeabdf0483bd618cf716b83d62856ebfc958705a08062b9f1",
+      "n16k64_wA_e64_t0": "514b0734f21adf2306c543a19cfdb6ef031aa90d660dca20200de1ed3e7d587a"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.ko.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 16,
+     "calls_by_width": {}
+    },
+    {
+     "family": "mixed_ko",
+     "kernels": {
+      "n16k64_wA_n16_t0": "87b1f486cb24ffb822940ee5bd647f09861d9831a2d06f96752968733c14b769",
+      "n16k64_wA_n32_t0": "abd5ee6e0604d9f75e772106f2a38f33c004031f556e7e786bb549d95ae4b35b",
+      "n16k64_wA_n64_t0": "378939c76bafcefce792a6defa65c4a387bb297bf94619cd2f93ed7b90957bd5",
+      "n16k64_wA_e64_t0": "c7478bd8d91a6cf6b231f436d8def4883b2dc791cff33f22730ca4a51685d5e4"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.ko.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 16,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "8x64-paper": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "kernel": "n8k64_wB",
+     "sha256": "b4111699201b4cc14f0310d8fa04099cf0224ec72a1ea726d6aa1414ab076a4d"
+    },
+    null
+   ]
+  },
+  "8x64-adopted": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "mixed_wB",
+     "kernels": {
+      "n8k64_wB_m16": "fc832dbf0d33c7691cb8ad343af36d47d968c7e824194c388db54f292fabfe41",
+      "n8k64_wB_m32": "4a988ac7652dff2f0ab958eb789162a370e883297a483c6f324ea24d91819bcc",
+      "n8k64_wB_m64": "f1abb9a11aca94925d5e30e225fe789a086845897da6e4e4dfa8d6a9080d6f1c",
+      "n8k64_wB": "b4111699201b4cc14f0310d8fa04099cf0224ec72a1ea726d6aa1414ab076a4d",
+      "n8k64_wB_n64": "4fd922757b80ec04500e88f62884ddd7d84950a273b3289d41d85f537eb81941"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed_wB",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    },
+    {
+     "family": "mixed_wB",
+     "kernels": {
+      "n8k64_wB_m16": "962c63539925eabcfa14730396c780ccc0ec36b99619b1783e75160e8e6defdd",
+      "n8k64_wB_m32": "7fdb44f6436317347670c2b568fa8e6e9caabac5ba7efd9402d2a88b38a020cf",
+      "n8k64_wB_m64": "dda1dcd032baf3dd4971872fe230d4deabd8d797d7bcf61d246d8f2f7f18ffd5",
+      "n8k64_wB": "8e34bcc8b7e1a655a9f3bf0dca11fcf97ce374f4c58b8cc66cf7bc953a49f7db",
+      "n8k64_wB_n64": "08e7b45d32028068670f2412419e1487aa2b9fb1624aee373000187a1cadb2f9"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed_wB",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "256x64-paper": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "mixed",
+     "kernels": {
+      "n16k64_wA_n16": "4c492e82a8312d5633d434d8454f5ca9a0de7fba11afe8f5dd2ef2778f420cc7",
+      "n16k64_wA_n32": "4d83d41161f40b59776efcf2e5995765afeeee99593e20c998844a8996c8e5a1",
+      "n16k64_wA_n64": "fe3af2a20636df63ff6fd3416ea95285c4d3e52490fa2fac51e4047e78463863",
+      "n16k64_wA": "b73e81ea9b25223678e0de795bbe086048ba3d1273b9161146bf926f95b6a8ad"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    },
+    {
+     "family": "mixed",
+     "kernels": {
+      "n16k64_wA_n16": "6fb5c4fa35fb8043db521c1242c4983eb7685634c0e451a2fd01fd58c660eded",
+      "n16k64_wA_n32": "c3728b8c201ed3a2b50d2a441f4d7c6c76230310fba5fdaa248dfd250b704ad6",
+      "n16k64_wA_n64": "0fc24041b4ec44e26ff879380e8ffb2b1f323ee518057c9dce986edf37566367",
+      "n16k64_wA": "44798e216158934b845cc9daadb49a6bb7c1d47894c8909686e58bd384c4e2de"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "256x64-adopted": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "mixed256",
+     "kernels": {
+      "n16k64_wA_g32_n16": "07356a92e35284b56b57c502cde0419468cb3415978493c0fb469cd1208cb65d",
+      "n16k64_wA_g32_n32": "fee479be7f11e5972d4899ef2c67aab00caade6fae280e3107174f79331bdfdd",
+      "n16k64_wA_g32_n64": "e15be97f0f8b45d9f5bb9ec0bfa66dd69742e364f0d1fef93bc0d7f8948bca7d",
+      "n16k64_wA_g32": "2068165a5e3dd12df2beda64f3b0db282ad93cae5c9556b95f1dbe64b4057c52"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    },
+    {
+     "family": "mixed256",
+     "kernels": {
+      "n16k64_wA_g32_n16": "f0dc23d28202d1463213f15cae58f91e34cb5276e8e09c11a480ca45582ed801",
+      "n16k64_wA_g32_n32": "1fd1ea5c0e9583438ad7cf46650000c5a77c76edbd1e0ba2fcb19cba837d403f",
+      "n16k64_wA_g32_n64": "e3e9d46762d8b2880900112de8c9bdfa36e68c1224da132f196cf8b1dee84343",
+      "n16k64_wA_g32": "92d0a3884def2fa8bf2f36854398cdbefd442e0d27cdca148ef28fa1e4f87d96"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "mixed",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "fo6-paper": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "stock",
+     "kernels": {
+      "stock_wA_n16": "28a5cdd457ceb4c2fb7fa889742478a61761aa6c2669133991de1b306fec73fe",
+      "stock_wA_n32": "98c9fa65cc290a2aa47100f5a64ab094fbae233ff370983a047ca1613681b487",
+      "stock_wA_n64": "8682ac62b7d078274aada4593b7f524fdf41ff019d9b669ba0da499340f0ea03",
+      "stock_wA": "da161243f69bcdb420a93ea5c6179e5320f2f67c3185d58ac6dc8280cf84b008"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    },
+    {
+     "family": "stock",
+     "kernels": {
+      "stock_wA_n16": "b3b74022464a719d2fe615c92db7f5e3308d5a0507b3ee53f7e3eb5643bbced8",
+      "stock_wA_n32": "bcf434870360fd28fa59777c082bb6cfbeb802d25e6e5f300aa5e3f9313b17cf",
+      "stock_wA_n64": "04a1aed2076d4978bdeae65ff64ac7323f60a30417fc1bc9c442147fb101e51e",
+      "stock_wA": "bae94708eec81feef29d7b020f8b370fc0fa54f9479c3a268053c744e562b584"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "fo6-adopted": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "stock_ko",
+     "kernels": {
+      "stock_wA_n16": "28a5cdd457ceb4c2fb7fa889742478a61761aa6c2669133991de1b306fec73fe",
+      "stock_wA_n32": "98c9fa65cc290a2aa47100f5a64ab094fbae233ff370983a047ca1613681b487",
+      "stock_wA_n64": "8682ac62b7d078274aada4593b7f524fdf41ff019d9b669ba0da499340f0ea03",
+      "stock_wA_e64": "5e52d5ef9c9a2bf4985df7e5a4a51607291c0b822d0c70294e8aad917159af96"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.ko.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 16,
+     "calls_by_width": {}
+    },
+    {
+     "family": "stock_ko",
+     "kernels": {
+      "stock_wA_n16": "b3b74022464a719d2fe615c92db7f5e3308d5a0507b3ee53f7e3eb5643bbced8",
+      "stock_wA_n32": "bcf434870360fd28fa59777c082bb6cfbeb802d25e6e5f300aa5e3f9313b17cf",
+      "stock_wA_n64": "04a1aed2076d4978bdeae65ff64ac7323f60a30417fc1bc9c442147fb101e51e",
+      "stock_wA_e64": "8662af876ebd4ab442cba32c59229512463da2bdba9598a08dcaefce4acab17f"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.ko.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 16,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "nvfp4-paper": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "stock",
+     "kernels": {
+      "stock_wA_n16": "28a5cdd457ceb4c2fb7fa889742478a61761aa6c2669133991de1b306fec73fe",
+      "stock_wA_n32": "98c9fa65cc290a2aa47100f5a64ab094fbae233ff370983a047ca1613681b487",
+      "stock_wA_n64": "8682ac62b7d078274aada4593b7f524fdf41ff019d9b669ba0da499340f0ea03",
+      "stock_wA": "da161243f69bcdb420a93ea5c6179e5320f2f67c3185d58ac6dc8280cf84b008"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    },
+    {
+     "family": "stock",
+     "kernels": {
+      "stock_wA_n16": "b3b74022464a719d2fe615c92db7f5e3308d5a0507b3ee53f7e3eb5643bbced8",
+      "stock_wA_n32": "bcf434870360fd28fa59777c082bb6cfbeb802d25e6e5f300aa5e3f9313b17cf",
+      "stock_wA_n64": "04a1aed2076d4978bdeae65ff64ac7323f60a30417fc1bc9c442147fb101e51e",
+      "stock_wA": "bae94708eec81feef29d7b020f8b370fc0fa54f9479c3a268053c744e562b584"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 0,
+     "calls_by_width": {}
+    }
+   ]
+  },
+  "nvfp4-adopted": {
+   "equal": [
+    true,
+    true,
+    true
+   ],
+   "modules": [
+    160,
+    160
+   ],
+   "kernels": [
+    {
+     "family": "stock_ko",
+     "kernels": {
+      "stock_wA_n16": "28a5cdd457ceb4c2fb7fa889742478a61761aa6c2669133991de1b306fec73fe",
+      "stock_wA_n32": "98c9fa65cc290a2aa47100f5a64ab094fbae233ff370983a047ca1613681b487",
+      "stock_wA_n64": "8682ac62b7d078274aada4593b7f524fdf41ff019d9b669ba0da499340f0ea03",
+      "stock_wA_e64": "5e52d5ef9c9a2bf4985df7e5a4a51607291c0b822d0c70294e8aad917159af96"
+     },
+     "table": "/home/dev/n16k64_campaign/fqport/wt/kernels/razer_sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.ko.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 16,
+     "calls_by_width": {}
+    },
+    {
+     "family": "stock_ko",
+     "kernels": {
+      "stock_wA_n16": "b3b74022464a719d2fe615c92db7f5e3308d5a0507b3ee53f7e3eb5643bbced8",
+      "stock_wA_n32": "bcf434870360fd28fa59777c082bb6cfbeb802d25e6e5f300aa5e3f9313b17cf",
+      "stock_wA_n64": "04a1aed2076d4978bdeae65ff64ac7323f60a30417fc1bc9c442147fb101e51e",
+      "stock_wA_e64": "8662af876ebd4ab442cba32c59229512463da2bdba9598a08dcaefce4acab17f"
+     },
+     "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.ko.json",
+     "table_shapes": 16,
+     "table_family": "stock",
+     "schedule_shapes": 16,
+     "calls_by_width": {}
+    }
+   ]
+  }
+ },
+ "all_equal": true
+}

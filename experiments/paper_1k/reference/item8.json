@@ -1,0 +1,20 @@
+{
+ "note": "Item 8 (Appendix D.4's sentence at 1k). published_256: the real tags of Mistral-7B-Instruct-v0.3's release maps against random placement at the same share (real - random overhead over stock_ko, points; o_proj / gate_proj / down_proj x T = 1 ... 8192), from the paper's source note (another RTX PRO 6000; flipquant gemm-bench's evaluation.gemm_time with random-placement maps, bitwise checks 216 of 216). The paper's statement: within 1 point.",
+ "published_256": {
+  "ranges": {
+   "8x64": [
+    -0.53,
+    0.43
+   ],
+   "16x64": [
+    -0.37,
+    0.94
+   ],
+   "256x64": [
+    -0.28,
+    0.43
+   ]
+  },
+  "statement_points": 1.0
+ }
+}

@@ -1,0 +1,1454 @@
+{
+ "cells": {
+  "nemotron-nano-9b-v2": {
+   "random": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": -0.7044531050182615,
+      "two_se_milli": 0.8586086424584037,
+      "n": 147,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": 0.36434976694485477,
+      "two_se_milli": 0.5932895891667653,
+      "n": 256,
+      "significant": false
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -0.3211471228913231,
+      "two_se_milli": 0.8764124553829872,
+      "n": 147,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": 0.7873408030718526,
+      "two_se_milli": 0.5903273490319135,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": 0.7137484561288623,
+      "two_se_milli": 0.9412859963364189,
+      "n": 147,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": 1.341243507340553,
+      "two_se_milli": 0.6584006215706512,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "act": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": -1.255604685569296,
+      "two_se_milli": 1.185102338472558,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 0.5073025822639465,
+      "two_se_milli": 0.8146672956338421,
+      "n": 256,
+      "significant": false
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -0.8087952931722006,
+      "two_se_milli": 1.170251834506,
+      "n": 147,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": -0.06800470873713493,
+      "two_se_milli": 0.7843657468004946,
+      "n": 256,
+      "significant": false
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": 2.77531471382193,
+      "two_se_milli": 1.1700960946274694,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 2.125038532540202,
+      "two_se_milli": 0.9179943845644661,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "oneshot": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": 89.90355819260994,
+      "two_se_milli": 4.643792975810894,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 72.54474144428968,
+      "two_se_milli": 4.082947739281315,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": 56.80530168572251,
+      "two_se_milli": 3.33047384639801,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 47.484938986599445,
+      "two_se_milli": 2.865549391004726,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": -2.0614010947091237,
+      "two_se_milli": 1.7430180136625228,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 1.484402222558856,
+      "two_se_milli": 1.1317359596164893,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "flipquant": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": -12.944667517733413,
+      "two_se_milli": 1.179684095291344,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -5.663034738972783,
+      "two_se_milli": 0.8226557118417597,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -11.85734580163242,
+      "two_se_milli": 1.3205626126334526,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -5.555401090532541,
+      "two_se_milli": 0.8395156604551195,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": -9.625412168956938,
+      "two_se_milli": 1.3545801877051749,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -4.108411958441138,
+      "two_se_milli": 0.9072311205178963,
+      "n": 256,
+      "significant": true
+     }
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "random": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": 2.118875240457472,
+      "two_se_milli": 2.7883111732138626,
+      "n": 145,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": -0.2514994703233255,
+      "two_se_milli": 0.7077662075684288,
+      "n": 256,
+      "significant": false
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -2.828892620130522,
+      "two_se_milli": 2.876027233952563,
+      "n": 145,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": -0.019973299155624704,
+      "two_se_milli": 0.6791583857571765,
+      "n": 256,
+      "significant": false
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": 4.192101818391647,
+      "two_se_milli": 2.465977870048177,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 0.09064562618731672,
+      "two_se_milli": 0.7704003632866747,
+      "n": 256,
+      "significant": false
+     }
+    }
+   },
+   "act": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": -8.293633625425143,
+      "two_se_milli": 3.9290699244870697,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -1.3770738150924444,
+      "two_se_milli": 0.8094004812904608,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -8.2667613851613,
+      "two_se_milli": 3.9312630167906573,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -0.2862152177840471,
+      "two_se_milli": 0.9063451605359085,
+      "n": 256,
+      "significant": false
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": -3.9208527269034548,
+      "two_se_milli": 4.031119951098564,
+      "n": 145,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": -0.8657691068947315,
+      "two_se_milli": 0.8709174186248275,
+      "n": 256,
+      "significant": false
+     }
+    }
+   },
+   "oneshot": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": 3.9169344408758753,
+      "two_se_milli": 8.60566394272524,
+      "n": 145,
+      "significant": false
+     },
+     "c4": {
+      "delta_milli": 44.69169117510319,
+      "two_se_milli": 3.2018063065987747,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -14.517651755234292,
+      "two_se_milli": 7.881835653848533,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": 25.252994149923325,
+      "two_se_milli": 2.472234468024537,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": -29.859631637047077,
+      "two_se_milli": 6.694640859796469,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -1.9557976629585028,
+      "two_se_milli": 1.446752412648734,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "flipquant": {
+    "8x64": {
+     "wiki": {
+      "delta_milli": -35.421016298491374,
+      "two_se_milli": 5.995786360506696,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -7.763367844745517,
+      "two_se_milli": 1.163721127902181,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "delta_milli": -31.148791313171387,
+      "two_se_milli": 5.178373019374373,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.680576829239726,
+      "two_se_milli": 1.0707091426120192,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "delta_milli": -17.711235736978466,
+      "two_se_milli": 4.91616917940724,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -4.425999475643039,
+      "two_se_milli": 0.9608757888400351,
+      "n": 256,
+      "significant": true
+     }
+    }
+   }
+  }
+ },
+ "ppl": {
+  "nemotron-nano-9b-v2": {
+   "random": {
+    "8x64": {
+     "wiki": 8.420045943009244,
+     "c4": 11.50760231029359
+    },
+    "16x64": {
+     "wiki": 8.423274015619224,
+     "c4": 11.512470952541578
+    },
+    "256x64": {
+     "wiki": 8.431995736915848,
+     "c4": 11.518849507721436
+    }
+   },
+   "act": {
+    "8x64": {
+     "wiki": 8.415406500015047,
+     "c4": 11.509247472028882
+    },
+    "16x64": {
+     "wiki": 8.419167422825344,
+     "c4": 11.502628022335697
+    },
+    "256x64": {
+     "wiki": 8.449396785356294,
+     "c4": 11.52788146380033
+    }
+   },
+   "oneshot": {
+    "8x64": {
+     "wiki": 9.218601048432365,
+     "c4": 12.368937372239992
+    },
+    "16x64": {
+     "wiki": 8.91847563851078,
+     "c4": 12.062825812202309
+    },
+    "256x64": {
+     "wiki": 8.408628127036959,
+     "c4": 11.52049864945943
+    }
+   },
+   "flipquant": {
+    "8x64": {
+     "wiki": 8.317610967256975,
+     "c4": 11.438450179024844
+    },
+    "16x64": {
+     "wiki": 8.326659804895074,
+     "c4": 11.439681407409727
+    },
+    "256x64": {
+     "wiki": 8.345265112143391,
+     "c4": 11.45624648393339
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "random": {
+    "8x64": {
+     "wiki": 7.317817569494748,
+     "c4": 10.18773424539089
+    },
+    "16x64": {
+     "wiki": 7.281700130946356,
+     "c4": 10.190093245568221
+    },
+    "256x64": {
+     "wiki": 7.333004801218633,
+     "c4": 10.191220525080274
+    }
+   },
+   "act": {
+    "8x64": {
+     "wiki": 7.2420160560066895,
+     "c4": 10.176273644182293
+    },
+    "16x64": {
+     "wiki": 7.242210667816957,
+     "c4": 10.187380576720626
+    },
+    "256x64": {
+     "wiki": 7.273753144579573,
+     "c4": 10.181478151239569
+    }
+   },
+   "oneshot": {
+    "8x64": {
+     "wiki": 7.330987275109584,
+     "c4": 10.65604846959367
+    },
+    "16x64": {
+     "wiki": 7.197081598274852,
+     "c4": 10.45090905290007
+    },
+    "256x64": {
+     "wiki": 7.087506813525555,
+     "c4": 10.170386095738662
+    }
+   },
+   "flipquant": {
+    "8x64": {
+     "wiki": 7.048199863689219,
+     "c4": 10.111492045906452
+    },
+    "16x64": {
+     "wiki": 7.0783757724868535,
+     "c4": 10.122446608327708
+    },
+    "256x64": {
+     "wiki": 7.174133776169534,
+     "c4": 10.145294193359652
+    }
+   }
+  }
+ },
+ "maps": {
+  "nemotron-nano-9b-v2": {
+   "8x64": {
+    "act": {
+     "status": "complete",
+     "windows": 1024,
+     "layers_short_of_positive": 0
+    },
+    "oneshot": {
+     "status": "complete",
+     "steps": 128,
+     "fit_windows": 1024,
+     "layers_short_of_negative": 0,
+     "non_release": {
+      "fit_windows": 1024,
+      "teacher_host": false
+     },
+     "settings": {
+      "fit_windows": 1024,
+      "teacher_topk": 1000,
+      "epochs": 1,
+      "lr": 0.02,
+      "init_logit": -1.0
+     }
+    }
+   },
+   "16x64": {
+    "act": {
+     "status": "complete",
+     "windows": 1024,
+     "layers_short_of_positive": 0
+    },
+    "oneshot": {
+     "status": "complete",
+     "steps": 128,
+     "fit_windows": 1024,
+     "layers_short_of_negative": 0,
+     "non_release": {
+      "fit_windows": 1024,
+      "teacher_host": false
+     },
+     "settings": {
+      "fit_windows": 1024,
+      "teacher_topk": 1000,
+      "epochs": 1,
+      "lr": 0.02,
+      "init_logit": -1.0
+     }
+    }
+   },
+   "256x64": {
+    "act": {
+     "status": "complete",
+     "windows": 1024,
+     "layers_short_of_positive": 27
+    },
+    "oneshot": {
+     "status": "complete",
+     "steps": 128,
+     "fit_windows": 1024,
+     "layers_short_of_negative": 0,
+     "non_release": {
+      "fit_windows": 1024,
+      "teacher_host": false
+     },
+     "settings": {
+      "fit_windows": 1024,
+      "teacher_topk": 1000,
+      "epochs": 1,
+      "lr": 0.02,
+      "init_logit": -1.0
+     }
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "8x64": {
+    "act": {
+     "status": "complete",
+     "windows": 1024,
+     "layers_short_of_positive": 0
+    },
+    "oneshot": {
+     "status": "complete",
+     "steps": 128,
+     "fit_windows": 1024,
+     "layers_short_of_negative": 0,
+     "non_release": {
+      "fit_windows": 1024,
+      "teacher_host": true
+     },
+     "settings": {
+      "fit_windows": 1024,
+      "teacher_topk": 1000,
+      "epochs": 1,
+      "lr": 0.02,
+      "init_logit": -1.0
+     }
+    }
+   },
+   "16x64": {
+    "act": {
+     "status": "complete",
+     "windows": 1024,
+     "layers_short_of_positive": 1
+    },
+    "oneshot": {
+     "status": "complete",
+     "steps": 128,
+     "fit_windows": 1024,
+     "layers_short_of_negative": 0,
+     "non_release": {
+      "fit_windows": 1024,
+      "teacher_host": true
+     },
+     "settings": {
+      "fit_windows": 1024,
+      "teacher_topk": 1000,
+      "epochs": 1,
+      "lr": 0.02,
+      "init_logit": -1.0
+     }
+    }
+   },
+   "256x64": {
+    "act": {
+     "status": "complete",
+     "windows": 1024,
+     "layers_short_of_positive": 43
+    },
+    "oneshot": {
+     "status": "complete",
+     "steps": 128,
+     "fit_windows": 1024,
+     "layers_short_of_negative": 0,
+     "non_release": {
+      "fit_windows": 1024,
+      "teacher_host": true
+     },
+     "settings": {
+      "fit_windows": 1024,
+      "teacher_topk": 1000,
+      "epochs": 1,
+      "lr": 0.02,
+      "init_logit": -1.0
+     }
+    }
+   }
+  }
+ },
+ "fq_vs": {
+  "nemotron-nano-9b-v2": {
+   "8x64": {
+    "random": {
+     "wiki": {
+      "delta_milli": -12.240214412715149,
+      "two_se_milli": 1.1180541934089354,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.027384505917638,
+      "two_se_milli": 0.7598544762752376,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "act": {
+     "wiki": {
+      "delta_milli": -11.689062832164115,
+      "two_se_milli": 1.2268814494416571,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.17033732123673,
+      "two_se_milli": 0.8758607547148634,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "oneshot": {
+     "wiki": {
+      "delta_milli": -102.84822571034334,
+      "two_se_milli": 4.518143566209401,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -78.20777618326247,
+      "two_se_milli": 4.033781905952512,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "16x64": {
+    "random": {
+     "wiki": {
+      "delta_milli": -11.536198678741098,
+      "two_se_milli": 1.1499771834555483,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.342741893604394,
+      "two_se_milli": 0.8084391657770447,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "act": {
+     "wiki": {
+      "delta_milli": -11.04855050846022,
+      "two_se_milli": 1.4840359801482137,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -5.487396381795406,
+      "two_se_milli": 0.9610523640912974,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "oneshot": {
+     "wiki": {
+      "delta_milli": -68.66264748735493,
+      "two_se_milli": 3.1832790024360365,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -53.04034007713199,
+      "two_se_milli": 2.7943321287791307,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "256x64": {
+    "random": {
+     "wiki": {
+      "delta_milli": -10.339160625085801,
+      "two_se_milli": 1.1269901476226865,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -5.449655465781691,
+      "two_se_milli": 0.806755219589879,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "act": {
+     "wiki": {
+      "delta_milli": -12.400726882778867,
+      "two_se_milli": 1.5138910514959394,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.23345049098134,
+      "two_se_milli": 1.0036688081040415,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "oneshot": {
+     "wiki": {
+      "delta_milli": -7.564011074247814,
+      "two_se_milli": 1.4751961809016776,
+      "n": 147,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -5.592814180999994,
+      "two_se_milli": 1.0108232680918567,
+      "n": 256,
+      "significant": true
+     }
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "8x64": {
+    "random": {
+     "wiki": {
+      "delta_milli": -37.539891538948865,
+      "two_se_milli": 5.203332076829699,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -7.511868374422191,
+      "two_se_milli": 1.0917977448491507,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "act": {
+     "wiki": {
+      "delta_milli": -27.127382673066236,
+      "two_se_milli": 4.470834307151276,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.386294029653072,
+      "two_se_milli": 1.1503975413606895,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "oneshot": {
+     "wiki": {
+      "delta_milli": -39.33795073936725,
+      "two_se_milli": 4.052904893915307,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -52.455059019848704,
+      "two_se_milli": 3.2428626317241176,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "16x64": {
+    "random": {
+     "wiki": {
+      "delta_milli": -28.319898693040873,
+      "two_se_milli": 3.805650397827172,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.660603530084102,
+      "two_se_milli": 0.9433162687357994,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "act": {
+     "wiki": {
+      "delta_milli": -22.882029928010088,
+      "two_se_milli": 4.232705116744585,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -6.394361611455679,
+      "two_se_milli": 1.1487106685560045,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "oneshot": {
+     "wiki": {
+      "delta_milli": -16.631139557937097,
+      "two_se_milli": 4.052174050484933,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -31.93357097916305,
+      "two_se_milli": 2.474280573124981,
+      "n": 256,
+      "significant": true
+     }
+    }
+   },
+   "256x64": {
+    "random": {
+     "wiki": {
+      "delta_milli": -21.903337555370115,
+      "two_se_milli": 4.61109336366394,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -4.516645101830355,
+      "two_se_milli": 0.8689768438967477,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "act": {
+     "wiki": {
+      "delta_milli": -13.79038301007501,
+      "two_se_milli": 3.836840099663163,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -3.5602303687483072,
+      "two_se_milli": 0.9793322382381536,
+      "n": 256,
+      "significant": true
+     }
+    },
+    "oneshot": {
+     "wiki": {
+      "delta_milli": 12.148395900068612,
+      "two_se_milli": 4.0810188192940755,
+      "n": 145,
+      "significant": true
+     },
+     "c4": {
+      "delta_milli": -2.470201812684536,
+      "two_se_milli": 1.2359735974604,
+      "n": 256,
+      "significant": true
+     }
+    }
+   }
+  }
+ },
+ "vs_256": {
+  "nemotron-nano-9b-v2": {
+   "random": {
+    "8x64": {
+     "wiki": {
+      "now": -0.7044531050182615,
+      "published": -0.2159201909625457,
+      "diff": -0.48853291405571586
+     },
+     "c4": {
+      "now": 0.36434976694485477,
+      "published": 0.1734009323020682,
+      "diff": 0.19094883464278656
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -0.3211471228913231,
+      "published": -0.6094557357753475,
+      "diff": 0.28830861288402443
+     },
+     "c4": {
+      "now": 0.7873408030718526,
+      "published": 0.2788365042458024,
+      "diff": 0.5085042988260502
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": 0.7137484561288623,
+      "published": -0.5639704987575804,
+      "diff": 1.2777189548864427
+     },
+     "c4": {
+      "now": 1.341243507340553,
+      "published": 0.4133571249743239,
+      "diff": 0.9278863823662291
+     }
+    }
+   },
+   "act": {
+    "8x64": {
+     "wiki": {
+      "now": -1.255604685569296,
+      "published": -2.0163197095702294,
+      "diff": 0.7607150240009335
+     },
+     "c4": {
+      "now": 0.5073025822639465,
+      "published": 0.4636663943529129,
+      "diff": 0.04363618791103363
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -0.8087952931722006,
+      "published": -0.21556607719992293,
+      "diff": -0.5932292159722776
+     },
+     "c4": {
+      "now": -0.06800470873713493,
+      "published": 0.2861637622117996,
+      "diff": -0.35416847094893456
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": 2.77531471382193,
+      "published": 2.412143207731701,
+      "diff": 0.36317150609022875
+     },
+     "c4": {
+      "now": 2.125038532540202,
+      "published": 1.5808676835149527,
+      "diff": 0.5441708490252495
+     }
+    }
+   },
+   "oneshot": {
+    "8x64": {
+     "wiki": {
+      "now": 89.90355819260994,
+      "published": 21.95411880000108,
+      "diff": 67.94943939260885
+     },
+     "c4": {
+      "now": 72.54474144428968,
+      "published": 21.210198989138007,
+      "diff": 51.33454245515168
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": 56.80530168572251,
+      "published": 12.600404875619072,
+      "diff": 44.20489681010344
+     },
+     "c4": {
+      "now": 47.484938986599445,
+      "published": 13.37445224635303,
+      "diff": 34.110486740246415
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": -2.0614010947091237,
+      "published": -5.949169600091013,
+      "diff": 3.887768505381889
+     },
+     "c4": {
+      "now": 1.484402222558856,
+      "published": -1.8082719761878252,
+      "diff": 3.292674198746681
+     }
+    }
+   },
+   "flipquant": {
+    "8x64": {
+     "wiki": {
+      "now": -12.944667517733413,
+      "published": -8.632732086441143,
+      "diff": -4.3119354312922695
+     },
+     "c4": {
+      "now": -5.663034738972783,
+      "published": -5.16215106472373,
+      "diff": -0.500883674249053
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -11.85734580163242,
+      "published": -8.67676086166278,
+      "diff": -3.1805849399696395
+     },
+     "c4": {
+      "now": -5.555401090532541,
+      "published": -5.074382293969393,
+      "diff": -0.4810187965631485
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": -9.625412168956938,
+      "published": -5.513471000048579,
+      "diff": -4.111941168908359
+     },
+     "c4": {
+      "now": -4.108411958441138,
+      "published": -3.105294890701771,
+      "diff": -1.0031170677393675
+     }
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "random": {
+    "8x64": {
+     "wiki": {
+      "now": 2.118875240457472,
+      "published": 0.2667309223920582,
+      "diff": 1.852144318065414
+     },
+     "c4": {
+      "now": -0.2514994703233255,
+      "published": -0.6770098116248798,
+      "diff": 0.42551034130155435
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -2.828892620130522,
+      "published": 0.42117518940190496,
+      "diff": -3.250067809532427
+     },
+     "c4": {
+      "now": -0.019973299155624704,
+      "published": -0.1405547372996885,
+      "diff": 0.1205814381440638
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": 4.192101818391647,
+      "published": 3.340081236828346,
+      "diff": 0.8520205815633011
+     },
+     "c4": {
+      "now": 0.09064562618731672,
+      "published": -0.06459536962211046,
+      "diff": 0.15524099580942718
+     }
+    }
+   },
+   "act": {
+    "8x64": {
+     "wiki": {
+      "now": -8.293633625425143,
+      "published": -3.5801977946840484,
+      "diff": -4.713435830741094
+     },
+     "c4": {
+      "now": -1.3770738150924444,
+      "published": -1.096188323572278,
+      "diff": -0.2808854915201664
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -8.2667613851613,
+      "published": 0.5738348796449858,
+      "diff": -8.840596264806287
+     },
+     "c4": {
+      "now": -0.2862152177840471,
+      "published": -0.2846426796168089,
+      "diff": -0.0015725381672382355
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": -3.9208527269034548,
+      "published": -2.1634702024788695,
+      "diff": -1.7573825244245853
+     },
+     "c4": {
+      "now": -0.8657691068947315,
+      "published": -0.38693659007549286,
+      "diff": -0.47883251681923866
+     }
+    }
+   },
+   "oneshot": {
+    "8x64": {
+     "wiki": {
+      "now": 3.9169344408758753,
+      "published": -10.557741954408842,
+      "diff": 14.474676395284718
+     },
+     "c4": {
+      "now": 44.69169117510319,
+      "published": 10.184159968048334,
+      "diff": 34.50753120705485
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -14.517651755234292,
+      "published": -8.088076525721057,
+      "diff": -6.429575229513235
+     },
+     "c4": {
+      "now": 25.252994149923325,
+      "published": 4.759210627526045,
+      "diff": 20.49378352239728
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": -29.859631637047077,
+      "published": -13.798311661029684,
+      "diff": -16.061319976017394
+     },
+     "c4": {
+      "now": -1.9557976629585028,
+      "published": -1.2122788466513157,
+      "diff": -0.7435188163071871
+     }
+    }
+   },
+   "flipquant": {
+    "8x64": {
+     "wiki": {
+      "now": -35.421016298491374,
+      "published": -22.492277211156384,
+      "diff": -12.92873908733499
+     },
+     "c4": {
+      "now": -7.763367844745517,
+      "published": -4.541107453405857,
+      "diff": -3.2222603913396597
+     }
+    },
+    "16x64": {
+     "wiki": {
+      "now": -31.148791313171387,
+      "published": -16.067803317102893,
+      "diff": -15.080987996068494
+     },
+     "c4": {
+      "now": -6.680576829239726,
+      "published": -4.845522111281753,
+      "diff": -1.8350547179579735
+     }
+    },
+    "256x64": {
+     "wiki": {
+      "now": -17.711235736978466,
+      "published": -11.403740685561608,
+      "diff": -6.307495051416858
+     },
+     "c4": {
+      "now": -4.425999475643039,
+      "published": -2.8452565893530846,
+      "diff": -1.5807428862899542
+     }
+    }
+   }
+  }
+ },
+ "agreement": {
+  "nemotron-nano-9b-v2": {
+   "FourOverSix": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 147
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 8.425979560250349,
+     "c4": 11.50341028180243
+    },
+    "ppl_paper": {
+     "wiki": 8.425979560250349,
+     "c4": 11.50341028180243
+    }
+   },
+   "FlipQuant 8x64": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 147
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 8.317610967256975,
+     "c4": 11.438450179024844
+    },
+    "ppl_paper": {
+     "wiki": 8.317610967256975,
+     "c4": 11.438450179024844
+    }
+   },
+   "FlipQuant 16x64": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 147
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 8.326659804895074,
+     "c4": 11.439681407409727
+    },
+    "ppl_paper": {
+     "wiki": 8.326659804895074,
+     "c4": 11.439681407409727
+    }
+   },
+   "FlipQuant 256x64": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 147
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 8.345265112143391,
+     "c4": 11.45624648393339
+    },
+    "ppl_paper": {
+     "wiki": 8.345265112143391,
+     "c4": 11.45624648393339
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "FourOverSix": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 145
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 7.302328442591353,
+     "c4": 10.190296777381636
+    },
+    "ppl_paper": {
+     "wiki": 7.302328442591353,
+     "c4": 10.190296777381636
+    }
+   },
+   "FlipQuant 8x64": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 145
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 7.048199863689219,
+     "c4": 10.111492045906452
+    },
+    "ppl_paper": {
+     "wiki": 7.048199863689219,
+     "c4": 10.111492045906452
+    }
+   },
+   "FlipQuant 16x64": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 145
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 7.0783757724868535,
+     "c4": 10.122446608327708
+    },
+    "ppl_paper": {
+     "wiki": 7.0783757724868535,
+     "c4": 10.122446608327708
+    }
+   },
+   "FlipQuant 256x64": {
+    "tier": "exact",
+    "max_abs": 0.0,
+    "paired": {
+     "wiki": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 145
+     },
+     "c4": {
+      "delta": 0.0,
+      "two_se": 0.0,
+      "n": 256
+     }
+    },
+    "ppl_now": {
+     "wiki": 7.174133776169534,
+     "c4": 10.145294193359652
+    },
+    "ppl_paper": {
+     "wiki": 7.174133776169534,
+     "c4": 10.145294193359652
+    }
+   }
+  }
+ },
+ "step0": {
+  "step0_smoke_nemotron-nano-9b-v2": {
+   "status": "complete",
+   "steps": 2,
+   "fit_windows": 1024,
+   "trainer_fit_windows": 1024,
+   "extension_windows": 896,
+   "extension_equal_paper": true,
+   "teacher_devices": [
+    "cuda:0"
+   ],
+   "passed": true
+  },
+  "step0_smoke_qwen3.8-27b": {
+   "status": "complete",
+   "steps": 2,
+   "fit_windows": 1024,
+   "trainer_fit_windows": 1024,
+   "extension_windows": 896,
+   "extension_equal_paper": true,
+   "teacher_devices": [
+    "cpu"
+   ],
+   "passed": true
+  },
+  "step0_rebuild": {
+   "got": {
+    "map_unit": "16x64",
+    "modules": 120,
+    "e0m3_tiles": 80098,
+    "digest": "bf811837ec964d85af4c68049707605e164ebc05df55f15c7416acf2e04f64d8"
+   },
+   "want": {
+    "model": "nemotron-nano-9b-v2",
+    "unit": "16x64",
+    "map_unit": "16x64",
+    "modules": 120,
+    "e0m3_tiles": 80098,
+    "digest": "bf811837ec964d85af4c68049707605e164ebc05df55f15c7416acf2e04f64d8",
+    "grads_file_sha256": "39ea92a4cd096f7dc7b2d08ec3950a3ce52c729b742871b5af096ac175f434b2",
+    "grads_file_note": "sha256 of G's oneshot.run/oneshot_grads.pt (the summed tile gradients); reported, not gated (it depends on the GPU's floating-point order)"
+   },
+   "tiles_equal": true,
+   "grads_file_sha256": "39ea92a4cd096f7dc7b2d08ec3950a3ce52c729b742871b5af096ac175f434b2",
+   "grads_file_equal": true,
+   "accepted": false
+  }
+ }
+}

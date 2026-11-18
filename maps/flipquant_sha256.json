@@ -1,0 +1,94 @@
+{
+ "change": "2026-10-05: the provenance wording of each file's meta, nothing else. method, trainer and repo name the reference implementation as \"the reference implementation\" (the values below); the tiles (every tensor record of the file, byte for byte), the unit and every other meta field are unchanged. previous_sha256 is the file as added in 0cd8d40. 2026-10-09: the nemotron-nano-9b-v2 and qwen3.8-27b maps were replaced by the edgeai-lab Hugging Face releases (256 fit windows, 5 epochs, top-1000 teacher; FlipQuant commit 120173a). Their entries carry their own meta wording, and previous_sha256 is the paper-setting map they replace.",
+ "meta": {
+  "method": "FlipQuant = TM-OPT+TC (the paper's calibration; docs/FLIPQUANT_CALIBRATION_zh.md in the reference implementation)",
+  "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc of the reference implementation (vendored as calibration/tmopt/run_train_map.py)",
+  "repo": "the reference implementation"
+ },
+ "files": {
+  "mistral-7b/flipquant_16x64.pt": {
+   "sha256": "bfa66bb8b08beb07a0106ebaf529807b26d4ba78001944110d86f60836b2e988",
+   "previous_sha256": "0b90922135188b87d75af1fa36acad467382a5b76d021f8dc24f94b657a59fc3"
+  },
+  "mistral-7b/flipquant_256x64.pt": {
+   "sha256": "faeae1051e9cf73fcca54532d191bfae6a153b29cae17457eb2e3d267834d55c",
+   "previous_sha256": "7c32736493b2af242ab1c7c6e247512676401ba34585999121d1f10b78b265e6"
+  },
+  "mistral-7b/flipquant_8x64.pt": {
+   "sha256": "461f42b135c34e32be3deb45a5a63f800183f5aa23aba035389d91b66f1d3ccc",
+   "previous_sha256": "a2bded98f7a58e99f536ddf9509027f20e4f260dc4981f60c85998e1b1c8e9dc"
+  },
+  "nemotron-nano-9b-v2/flipquant_16x64.pt": {
+   "sha256": "8eed5296d693a6031c50554bd0ee5837b15cd88c65b992b118fc5838c48c9df1",
+   "previous_sha256": "cc584ce542a100ef284918796ae44b00a63ed42e3b5218166ec7cfabef74a261",
+   "source": "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-FlipQuant @ main, flipquant_16x64.pt",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration) -- NOT the paper's settings: epochs 5 (paper 20), teacher-topk 1000 (paper 0), fit-windows 256 (paper 128)",
+    "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc (calibration/tmopt/run_train_map.py, vendored from the reference implementation)",
+    "repo": "the reference implementation"
+   }
+  },
+  "nemotron-nano-9b-v2/flipquant_256x64.pt": {
+   "sha256": "4ab8f3137a96466cc0ea9e1762232b25bedd3825e63a004432faaa88b4502433",
+   "previous_sha256": "1fbbdc53ba16c7d1b419613884c013f84a3174670bb05f6af2005f50f3a8cbad",
+   "source": "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-FlipQuant @ main, flipquant_256x64.pt",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration) -- NOT the paper's settings: epochs 5 (paper 20), teacher-topk 1000 (paper 0), fit-windows 256 (paper 128)",
+    "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc (calibration/tmopt/run_train_map.py, vendored from the reference implementation)",
+    "repo": "the reference implementation"
+   }
+  },
+  "nemotron-nano-9b-v2/flipquant_8x64.pt": {
+   "sha256": "6c37619cef87411e53a1e06b10518b6ef4c11bad7e141b2a16c52c452321dabf",
+   "previous_sha256": "59c7ba3e7a931fdcfb488b435b10136a363c42b54b6bcd2f47705837ffbc304f",
+   "source": "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-FlipQuant @ main, flipquant_8x64.pt",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration) -- NOT the paper's settings: epochs 5 (paper 20), teacher-topk 1000 (paper 0), fit-windows 256 (paper 128)",
+    "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc (calibration/tmopt/run_train_map.py, vendored from the reference implementation)",
+    "repo": "the reference implementation"
+   }
+  },
+  "phi4-14b/flipquant_16x64.pt": {
+   "sha256": "5690ef8bdd2b846debc55dfc44390d8b8d6bfb2ecc185dfa695d2f25b8c5d9cb",
+   "previous_sha256": "4e8c4c1da8f8cee400f8f942d29811f890fafdd37b21edb60f6b83c160a78213"
+  },
+  "phi4-14b/flipquant_256x64.pt": {
+   "sha256": "4413e791c340845a26fe1c1d7cef6788135783b7de84bbbb64ff42221294866a",
+   "previous_sha256": "66b8f821dddf92baa8201a760bcc0ecca7d5bfb49f8271f0eb6ee3c5fb6d6f05"
+  },
+  "phi4-14b/flipquant_8x64.pt": {
+   "sha256": "eb930345145f6da9bb535146aa0899119c9298a7b4ad707c3c98be5e0f8111a1",
+   "previous_sha256": "c92b68753e15d96d9eaf8e705483705d4e0a377497b690bafce1728fac94ac99"
+  },
+  "qwen3.8-27b/flipquant_16x64.pt": {
+   "sha256": "050f0eead1bb2199bdcdb36b489618ef7177b0e325eefe5e412b067965d43e8d",
+   "previous_sha256": "641d9dd2ebc0fb03c0632227f82b5726800059d954fd41f63f68b12d26035878",
+   "source": "edgeai-lab/Qwen3.8-27B-FlipQuant @ main, flipquant_16x64.pt",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration) -- NOT the paper's settings: epochs 5 (paper 20), teacher-topk 1000 (paper 0), fit-windows 256 (paper 128)",
+    "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc (calibration/tmopt/run_train_map.py, vendored from the reference implementation)",
+    "repo": "the reference implementation"
+   }
+  },
+  "qwen3.8-27b/flipquant_256x64.pt": {
+   "sha256": "59b38ae511226745a401be7616ed9a4049841fb797918badcddd3911c99fd30f",
+   "previous_sha256": "10dd9086435bdff2949a7579964aa600295788ff95779223a6817835b2f65211",
+   "source": "edgeai-lab/Qwen3.8-27B-FlipQuant @ main, flipquant_256x64.pt",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration) -- NOT the paper's settings: epochs 5 (paper 20), teacher-topk 1000 (paper 0), fit-windows 256 (paper 128)",
+    "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc (calibration/tmopt/run_train_map.py, vendored from the reference implementation)",
+    "repo": "the reference implementation"
+   }
+  },
+  "qwen3.8-27b/flipquant_8x64.pt": {
+   "sha256": "f9e0dec72ecd4278a7f22f773390b2205293119275285cbdcf773eef7ceb4a5a",
+   "previous_sha256": "3f778fa3010276f3fe39c82575ec226a23cdae6862e95ed29a00cfc58a14bab8",
+   "source": "edgeai-lab/Qwen3.8-27B-FlipQuant @ main, flipquant_8x64.pt",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration) -- NOT the paper's settings: epochs 5 (paper 20), teacher-topk 1000 (paper 0), fit-windows 256 (paper 128)",
+    "trainer": "TM-OPT+TC: run_train_map.py --tm-opt --tile-grad-tc (calibration/tmopt/run_train_map.py, vendored from the reference implementation)",
+    "repo": "the reference implementation"
+   }
+  }
+ }
+}

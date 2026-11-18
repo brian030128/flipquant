@@ -1,0 +1,210 @@
+{
+ "note": "Item 7 (Appendix D.6 at 1k): weight_elements: per model, the quantized linears' out x in from the checkpoint's safetensors headers at the pinned revision (the same for every map of a model; 3 x their sum = the paper's 181.9 billion for 18 maps). step0: part C1's readback of Mistral-7B's 16x64 release map (run_gpu.ownership, build_V): its per-module rows' digest (sha256 of the rows as sorted JSON) and totals. published_256: C1's per-map totals of the 18 release maps (the Llama maps' from this machine's runs of the same command).",
+ "weight_elements": {
+  "llama3.2-1b-instruct": {
+   "modules": 112,
+   "weight_elements": 973078528,
+   "hf_id": "meta-llama/Llama-3.2-1B-Instruct",
+   "revision": "9213176726f574b556790deb65791e0c5aa438b6"
+  },
+  "llama3.1-8b-instruct": {
+   "modules": 224,
+   "weight_elements": 6979321856,
+   "hf_id": "meta-llama/Llama-3.1-8B-Instruct",
+   "revision": "0e9e39f249a16976918f6564b8830bc894c89659"
+  },
+  "mistral-7b": {
+   "modules": 224,
+   "weight_elements": 6979321856,
+   "hf_id": "mistralai/Mistral-7B-Instruct-v0.3",
+   "revision": "c170c708c41dac9275d15a8fff4eca08d52bab71"
+  },
+  "nemotron-nano-9b-v2": {
+   "modules": 120,
+   "weight_elements": 7711621120,
+   "hf_id": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+   "revision": "6533e8de2c68e4536bf7c411d7a3ce5734111476"
+  },
+  "phi4-14b": {
+   "modules": 160,
+   "weight_elements": 13631488000,
+   "hf_id": "microsoft/phi-4",
+   "revision": "2db69c1c3e91a05d2c64a3185acfbaf36f744e25"
+  },
+  "qwen3.8-27b": {
+   "modules": 496,
+   "weight_elements": 24350556160,
+   "hf_id": "Qwen/Qwen3.8-27B",
+   "revision": "1d4bf0f2ff6012fd82039f2fa52739d0dd7c60c0"
+  }
+ },
+ "step0": {
+  "model": "mistral-7b",
+  "unit": "16x64",
+  "modules": 224,
+  "rows_sha256": "341d4d9a4934ae2debc9018700b2e22335d4fe7c5f37a3fc3cbd1e14e762f3a1",
+  "informative": 6382853652,
+  "e0m3_elements": 67942508,
+  "e0m3_tiles": 75906,
+  "exact": true,
+  "mismatches": 0
+ },
+ "published_256": {
+  "llama3.2-1b-instruct": {
+   "8x64": {
+    "modules": 112,
+    "informative": 890461232,
+    "e0m3_tiles": 38587,
+    "e0m3_elements": 17343859,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 112,
+    "informative": 890180527,
+    "e0m3_tiles": 26656,
+    "e0m3_elements": 23959766,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 112,
+    "informative": 887078947,
+    "e0m3_tiles": 108112,
+    "e0m3_elements": 97230318,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "8x64": {
+    "modules": 224,
+    "informative": 6393003850,
+    "e0m3_tiles": 83771,
+    "e0m3_elements": 37665182,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 224,
+    "informative": 6392594186,
+    "e0m3_tiles": 52719,
+    "e0m3_elements": 47400946,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 224,
+    "informative": 6388881568,
+    "e0m3_tiles": 151152,
+    "e0m3_elements": 135943718,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "mistral-7b": {
+   "8x64": {
+    "modules": 224,
+    "informative": 6383511757,
+    "e0m3_tiles": 116977,
+    "e0m3_elements": 52333106,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 224,
+    "informative": 6382853652,
+    "e0m3_tiles": 75906,
+    "e0m3_elements": 67942508,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 224,
+    "informative": 6378794042,
+    "e0m3_tiles": 183856,
+    "e0m3_elements": 164259903,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "8x64": {
+    "modules": 120,
+    "informative": 7067362797,
+    "e0m3_tiles": 130579,
+    "e0m3_elements": 58659256,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 120,
+    "informative": 7066782964,
+    "e0m3_tiles": 80098,
+    "e0m3_elements": 71951278,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 120,
+    "informative": 7062044642,
+    "e0m3_tiles": 199960,
+    "e0m3_elements": 179440041,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "phi4-14b": {
+   "8x64": {
+    "modules": 160,
+    "informative": 12519536650,
+    "e0m3_tiles": 129730,
+    "e0m3_elements": 58635010,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 160,
+    "informative": 12518999412,
+    "e0m3_tiles": 79591,
+    "e0m3_elements": 71945587,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 160,
+    "informative": 12515456916,
+    "e0m3_tiles": 176944,
+    "e0m3_elements": 159943086,
+    "exact": true,
+    "mismatches": 0
+   }
+  },
+  "qwen3.8-27b": {
+   "8x64": {
+    "modules": 496,
+    "informative": 22329050471,
+    "e0m3_tiles": 169073,
+    "e0m3_elements": 76171152,
+    "exact": true,
+    "mismatches": 0
+   },
+   "16x64": {
+    "modules": 496,
+    "informative": 22328273377,
+    "e0m3_tiles": 105278,
+    "e0m3_elements": 94862919,
+    "exact": true,
+    "mismatches": 0
+   },
+   "256x64": {
+    "modules": 496,
+    "informative": 22323998545,
+    "e0m3_tiles": 219114,
+    "e0m3_elements": 197395832,
+    "exact": true,
+    "mismatches": 0
+   }
+  }
+ }
+}

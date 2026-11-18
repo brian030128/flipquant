@@ -1,0 +1,518 @@
+{
+ "note": "Item 1 (the MMLU column of Table 3 and Tables E.1-E.3, at 1k): published_256: the paper's MMLU (5-shot, lm-eval 0.4.11, no chat template, acc x 100) and Avg. columns per model and row, parsed from Tables E.1-E.3. They come from runs on another RTX PRO 6000 (flipquant mmlu-boolq-runs = paper-sm120-runs 4bbe0b1); their per-question records are not available here. step0: Llama-3.2-1B-Instruct FlipQuant 16x64 with the 256-window release map, 41.40; MMLU has 14,042 questions.",
+ "questions": 14042,
+ "step0": {
+  "model": "llama3.2-1b-instruct",
+  "row": "fq-16x64",
+  "mmlu": 41.4
+ },
+ "published_256": {
+  "llama3.2-1b-instruct": {
+   "bf16": {
+    "mmlu": 46.12,
+    "avg": 57.95
+   },
+   "nvfp4": {
+    "mmlu": 41.47,
+    "avg": 54.3
+   },
+   "fo6": {
+    "mmlu": 41.34,
+    "avg": 54.11
+   },
+   "focus": {
+    "mmlu": 42.4,
+    "avg": 55.26
+   },
+   "gptq": {
+    "mmlu": 41.84,
+    "avg": 54.44
+   },
+   "if4": {
+    "mmlu": 41.24,
+    "avg": 54.83
+   },
+   "mixfp4": {
+    "mmlu": 41.32,
+    "avg": 55.05
+   },
+   "fq-8x64": {
+    "mmlu": 40.74,
+    "avg": 55.47
+   },
+   "fq-16x64": {
+    "mmlu": 41.4,
+    "avg": 54.99
+   },
+   "fq-256x64": {
+    "mmlu": 42.02,
+    "avg": 55.48
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "bf16": {
+    "mmlu": 68.31,
+    "avg": 72.94
+   },
+   "nvfp4": {
+    "mmlu": 64.83,
+    "avg": 70.84
+   },
+   "fo6": {
+    "mmlu": 65.73,
+    "avg": 70.88
+   },
+   "focus": {
+    "mmlu": 65.97,
+    "avg": 71.43
+   },
+   "gptq": {
+    "mmlu": 65.57,
+    "avg": 70.95
+   },
+   "if4": {
+    "mmlu": 65.58,
+    "avg": 71.24
+   },
+   "mixfp4": {
+    "mmlu": 65.65,
+    "avg": 71.12
+   },
+   "fq-8x64": {
+    "mmlu": 66.52,
+    "avg": 71.72
+   },
+   "fq-16x64": {
+    "mmlu": 66.01,
+    "avg": 71.64
+   },
+   "fq-256x64": {
+    "mmlu": 65.6,
+    "avg": 71.33
+   }
+  },
+  "mistral-7b": {
+   "bf16": {
+    "mmlu": 61.84,
+    "avg": 74.06
+   },
+   "nvfp4": {
+    "mmlu": 59.95,
+    "avg": 73.39
+   },
+   "fo6": {
+    "mmlu": 59.87,
+    "avg": 73.2
+   },
+   "focus": {
+    "mmlu": 60.2,
+    "avg": 73.02
+   },
+   "gptq": {
+    "mmlu": 59.35,
+    "avg": 73.48
+   },
+   "if4": {
+    "mmlu": 60.26,
+    "avg": 73.37
+   },
+   "mixfp4": {
+    "mmlu": 60.38,
+    "avg": 73.57
+   },
+   "fq-8x64": {
+    "mmlu": 60.23,
+    "avg": 73.33
+   },
+   "fq-16x64": {
+    "mmlu": 59.8,
+    "avg": 73.49
+   },
+   "fq-256x64": {
+    "mmlu": 59.59,
+    "avg": 73.14
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "bf16": {
+    "mmlu": 74.59,
+    "avg": 72.67
+   },
+   "nvfp4": {
+    "mmlu": 73.1,
+    "avg": 71.72
+   },
+   "fo6": {
+    "mmlu": 73.09,
+    "avg": 71.2
+   },
+   "focus": {
+    "mmlu": 73.14,
+    "avg": 71.83
+   },
+   "gptq": {
+    "mmlu": 73.05,
+    "avg": 71.18
+   },
+   "if4": {
+    "mmlu": 73.31,
+    "avg": 71.3
+   },
+   "mixfp4": {
+    "mmlu": 73.42,
+    "avg": 71.38
+   },
+   "fq-8x64": {
+    "mmlu": 73.54,
+    "avg": 71.41
+   },
+   "fq-16x64": {
+    "mmlu": 73.34,
+    "avg": 71.11
+   },
+   "fq-256x64": {
+    "mmlu": 73.58,
+    "avg": 71.15
+   }
+  },
+  "phi4-14b": {
+   "bf16": {
+    "mmlu": 80.29,
+    "avg": 74.5
+   },
+   "nvfp4": {
+    "mmlu": 79.11,
+    "avg": 73.38
+   },
+   "fo6": {
+    "mmlu": 79.23,
+    "avg": 73.37
+   },
+   "focus": {
+    "mmlu": 79.17,
+    "avg": 74.0
+   },
+   "gptq": {
+    "mmlu": 79.46,
+    "avg": 73.59
+   },
+   "if4": {
+    "mmlu": 79.45,
+    "avg": 73.69
+   },
+   "mixfp4": {
+    "mmlu": 79.39,
+    "avg": 73.68
+   },
+   "fq-8x64": {
+    "mmlu": 79.23,
+    "avg": 73.54
+   },
+   "fq-16x64": {
+    "mmlu": 79.08,
+    "avg": 73.51
+   },
+   "fq-256x64": {
+    "mmlu": 79.01,
+    "avg": 73.47
+   }
+  },
+  "qwen3.8-27b": {
+   "bf16": {
+    "mmlu": 82.62,
+    "avg": 75.2
+   },
+   "nvfp4": {
+    "mmlu": 81.32,
+    "avg": 74.94
+   },
+   "fo6": {
+    "mmlu": 81.8,
+    "avg": 74.86
+   },
+   "focus": {
+    "mmlu": 82.82,
+    "avg": 75.52
+   },
+   "gptq": {
+    "mmlu": 81.24,
+    "avg": 75.05
+   },
+   "if4": {
+    "mmlu": 81.05,
+    "avg": 75.66
+   },
+   "mixfp4": {
+    "mmlu": 81.95,
+    "avg": 75.11
+   },
+   "fq-8x64": {
+    "mmlu": 82.62,
+    "avg": 75.28
+   },
+   "fq-16x64": {
+    "mmlu": 82.35,
+    "avg": 75.11
+   },
+   "fq-256x64": {
+    "mmlu": 81.68,
+    "avg": 75.04
+   }
+  }
+ },
+ "zeroshot_1k": {
+  "llama3.2-1b-instruct": {
+   "fq-8x64": {
+    "piqa": 0.7290533188248096,
+    "hellaswag": 0.5939055964947222,
+    "arc_easy": 0.617003367003367,
+    "arc_challenge": 0.3583617747440273,
+    "winogrande": 0.606156274664562,
+    "lambada_openai": 0.5649136425383272
+   },
+   "fq-16x64": {
+    "piqa": 0.733949945593036,
+    "hellaswag": 0.5936068512248556,
+    "arc_easy": 0.6207912457912458,
+    "arc_challenge": 0.3626279863481229,
+    "winogrande": 0.6045777426992897,
+    "lambada_openai": 0.5604502231709684
+   },
+   "fq-256x64": {
+    "piqa": 0.7230685527747551,
+    "hellaswag": 0.5875323640709023,
+    "arc_easy": 0.6212121212121212,
+    "arc_challenge": 0.36860068259385664,
+    "winogrande": 0.6250986582478295,
+    "lambada_openai": 0.5616145934407142
+   },
+   "focus": {
+    "piqa": 0.7274211099020674,
+    "hellaswag": 0.5927106154152559,
+    "arc_easy": 0.6191077441077442,
+    "arc_challenge": 0.36860068259385664,
+    "winogrande": 0.5966850828729282,
+    "lambada_openai": 0.5691830001940618
+   },
+   "gptq": {
+    "piqa": 0.720892274211099,
+    "hellaswag": 0.5778729336785501,
+    "arc_easy": 0.6018518518518519,
+    "arc_challenge": 0.35580204778157,
+    "winogrande": 0.5966850828729282,
+    "lambada_openai": 0.53929749660392
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "fq-8x64": {
+    "piqa": 0.7970620239390642,
+    "hellaswag": 0.7856004779924318,
+    "arc_easy": 0.7878787878787878,
+    "arc_challenge": 0.5341296928327645,
+    "winogrande": 0.7269139700078927,
+    "lambada_openai": 0.7118183582379196
+   },
+   "fq-16x64": {
+    "piqa": 0.7981501632208923,
+    "hellaswag": 0.785202150965943,
+    "arc_easy": 0.7828282828282829,
+    "arc_challenge": 0.5255972696245734,
+    "winogrande": 0.7348066298342542,
+    "lambada_openai": 0.7102658645449252
+   },
+   "fq-256x64": {
+    "piqa": 0.7970620239390642,
+    "hellaswag": 0.785202150965943,
+    "arc_easy": 0.7769360269360269,
+    "arc_challenge": 0.5204778156996587,
+    "winogrande": 0.7213891081294396,
+    "lambada_openai": 0.6974577915777217
+   },
+   "focus": {
+    "piqa": 0.8057671381936888,
+    "hellaswag": 0.7860983867755427,
+    "arc_easy": 0.7887205387205387,
+    "arc_challenge": 0.5452218430034129,
+    "winogrande": 0.7229676400947119,
+    "lambada_openai": 0.7248204929167475
+   },
+   "gptq": {
+    "piqa": 0.7905331882480957,
+    "hellaswag": 0.7791276638119896,
+    "arc_easy": 0.765993265993266,
+    "arc_challenge": 0.53839590443686,
+    "winogrande": 0.712707182320442,
+    "lambada_openai": 0.7122064816611683
+   }
+  },
+  "mistral-7b": {
+   "fq-8x64": {
+    "piqa": 0.8286180631120783,
+    "hellaswag": 0.8265285799641505,
+    "arc_easy": 0.8093434343434344,
+    "arc_challenge": 0.5750853242320819,
+    "winogrande": 0.755327545382794,
+    "lambada_openai": 0.736852319037454
+   },
+   "fq-16x64": {
+    "piqa": 0.8324265505984766,
+    "hellaswag": 0.8282214698267277,
+    "arc_easy": 0.8085016835016835,
+    "arc_challenge": 0.5844709897610921,
+    "winogrande": 0.749802683504341,
+    "lambada_openai": 0.7380166893071997
+   },
+   "fq-256x64": {
+    "piqa": 0.8291621327529923,
+    "hellaswag": 0.8282214698267277,
+    "arc_easy": 0.8097643097643098,
+    "arc_challenge": 0.5750853242320819,
+    "winogrande": 0.734017363851618,
+    "lambada_openai": 0.7358820104793324
+   },
+   "focus": {
+    "piqa": 0.8275299238302503,
+    "hellaswag": 0.8275243975303724,
+    "arc_easy": 0.8177609427609428,
+    "arc_challenge": 0.5827645051194539,
+    "winogrande": 0.7387529597474349,
+    "lambada_openai": 0.7279254803027363
+   },
+   "gptq": {
+    "piqa": 0.8346028291621328,
+    "hellaswag": 0.8281218880701056,
+    "arc_easy": 0.8143939393939394,
+    "arc_challenge": 0.590443686006826,
+    "winogrande": 0.7403314917127072,
+    "lambada_openai": 0.7288957888608577
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "fq-8x64": {
+    "piqa": 0.8035908596300326,
+    "hellaswag": 0.7684724158534156,
+    "arc_easy": 0.7891414141414141,
+    "arc_challenge": 0.5358361774744027,
+    "winogrande": 0.7324388318863457,
+    "lambada_openai": 0.6479720551135261
+   },
+   "fq-16x64": {
+    "piqa": 0.8052230685527747,
+    "hellaswag": 0.765982871937861,
+    "arc_easy": 0.7857744107744108,
+    "arc_challenge": 0.5332764505119454,
+    "winogrande": 0.7277032359905288,
+    "lambada_openai": 0.6475839316902775
+   },
+   "fq-256x64": {
+    "piqa": 0.8035908596300326,
+    "hellaswag": 0.7671778530173272,
+    "arc_easy": 0.7849326599326599,
+    "arc_challenge": 0.5332764505119454,
+    "winogrande": 0.7379636937647988,
+    "lambada_openai": 0.6473898699786532
+   },
+   "focus": {
+    "piqa": 0.7997823721436343,
+    "hellaswag": 0.767576180043816,
+    "arc_easy": 0.7958754208754208,
+    "arc_challenge": 0.5486348122866894,
+    "winogrande": 0.7292817679558011,
+    "lambada_openai": 0.6582573258296138
+   },
+   "gptq": {
+    "piqa": 0.8079434167573449,
+    "hellaswag": 0.7655845449113723,
+    "arc_easy": 0.7866161616161617,
+    "arc_challenge": 0.5324232081911263,
+    "winogrande": 0.7166535122336227,
+    "lambada_openai": 0.6600038812342325
+   }
+  },
+  "phi4-14b": {
+   "fq-8x64": {
+    "piqa": 0.8041349292709467,
+    "hellaswag": 0.8098984266082454,
+    "arc_easy": 0.7205387205387206,
+    "arc_challenge": 0.552901023890785,
+    "winogrande": 0.7411207576953434,
+    "lambada_openai": 0.7174461478750243
+   },
+   "fq-16x64": {
+    "piqa": 0.8139281828073993,
+    "hellaswag": 0.811790479984067,
+    "arc_easy": 0.7268518518518519,
+    "arc_challenge": 0.5520477815699659,
+    "winogrande": 0.744277821625888,
+    "lambada_openai": 0.7176402095866485
+   },
+   "fq-256x64": {
+    "piqa": 0.809031556039173,
+    "hellaswag": 0.8110934076877117,
+    "arc_easy": 0.7192760942760943,
+    "arc_challenge": 0.5503412969283277,
+    "winogrande": 0.7474348855564326,
+    "lambada_openai": 0.7193867649912672
+   },
+   "focus": {
+    "piqa": 0.8128400435255713,
+    "hellaswag": 0.8131846245767775,
+    "arc_easy": 0.7319023569023569,
+    "arc_challenge": 0.5452218430034129,
+    "winogrande": 0.7576953433307024,
+    "lambada_openai": 0.7219095672423831
+   },
+   "gptq": {
+    "piqa": 0.8073993471164309,
+    "hellaswag": 0.8116908982274448,
+    "arc_easy": 0.7289562289562289,
+    "arc_challenge": 0.5554607508532423,
+    "winogrande": 0.739542225730071,
+    "lambada_openai": 0.7275373568794877
+   }
+  },
+  "qwen3.8-27b": {
+   "fq-8x64": {
+    "piqa": 0.8117519042437432,
+    "hellaswag": 0.8227444732125074,
+    "arc_easy": 0.7483164983164983,
+    "arc_challenge": 0.5861774744027304,
+    "winogrande": 0.7545382794001578,
+    "lambada_openai": 0.713370851930914
+   },
+   "fq-16x64": {
+    "piqa": 0.8171926006528836,
+    "hellaswag": 0.8222465644293966,
+    "arc_easy": 0.7596801346801347,
+    "arc_challenge": 0.5930034129692833,
+    "winogrande": 0.7584846093133386,
+    "lambada_openai": 0.7141470987774112
+   },
+   "fq-256x64": {
+    "piqa": 0.8117519042437432,
+    "hellaswag": 0.8221469826727743,
+    "arc_easy": 0.7525252525252525,
+    "arc_challenge": 0.5947098976109215,
+    "winogrande": 0.7513812154696132,
+    "lambada_openai": 0.7063846303124394
+   },
+   "focus": {
+    "piqa": 0.8128400435255713,
+    "hellaswag": 0.8245369448317068,
+    "arc_easy": 0.7714646464646465,
+    "arc_challenge": 0.6015358361774744,
+    "winogrande": 0.7624309392265194,
+    "lambada_openai": 0.7106539879681739
+   },
+   "gptq": {
+    "piqa": 0.8101196953210011,
+    "hellaswag": 0.8221469826727743,
+    "arc_easy": 0.7466329966329966,
+    "arc_challenge": 0.5691126279863481,
+    "winogrande": 0.7482241515390686,
+    "lambada_openai": 0.7098777411216767
+   }
+  }
+ },
+ "zeroshot_note": "zeroshot_1k: part AA's zero-shot accuracies of the 1k rows (calib_size/<model>/eval/zs/<row>_1024.json: PIQA, HellaSwag, ARC-e / ARC-c acc_norm; WinoGrande, LAMBADA acc), for Table 3's seven-task Avg. with this item's MMLU"
+}

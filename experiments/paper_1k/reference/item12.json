@@ -1,0 +1,59 @@
+{
+ "note": "Item 12 (Table C.5 at 1k). step0: the tiles digest of Mistral-7B's 16x64 release map (experiments/paper_1k/item3.tiles_digest; the HF release map's tiles are the same), which a seed-0 recalibration at 256 windows reproduces bit for bit in the paper's environment (Appendix C.4). published_256: the paper's Table C.5 at 256 sequences (x 1e-3 nats/token, as printed; * beyond 2 SE), with the Jaccard indices and FourOverSix's distance from the paper's source notes; the runs were on another RTX PRO 6000 (calib-robustness 932e01b).",
+ "step0": {
+  "model": "mistral-7b",
+  "unit": "16x64",
+  "windows": 256,
+  "map_unit": "16x64",
+  "modules": 224,
+  "e0m3_tiles": 75906,
+  "digest": "ee3c5cf1faac246095562761e2192f2b19a02bdeca3de1f288149ad482b3a450"
+ },
+ "published_256": {
+  "paper": {
+   "wiki": 0,
+   "c4": 0,
+   "e0m3_pct": 1.11
+  },
+  "seed1": {
+   "wiki": "+0.45 \u00b1 0.96",
+   "c4": "-0.37 \u00b1 1.44",
+   "e0m3_pct": 1.08,
+   "jaccard": 0.398
+  },
+  "seed2": {
+   "wiki": "-0.94 \u00b1 0.98",
+   "c4": "-0.40 \u00b1 0.93",
+   "e0m3_pct": 1.15,
+   "jaccard": 0.397
+  },
+  "nondet": {
+   "wiki": "+0.60 \u00b1 0.95",
+   "c4": "-0.38 \u00b1 1.29",
+   "e0m3_pct": 1.1,
+   "jaccard": 0.503
+  },
+  "fineweb-edu": {
+   "wiki": "+2.58 \u00b1 1.01*",
+   "c4": "+1.87 \u00b1 1.77*",
+   "e0m3_pct": 1.05,
+   "jaccard": 0.057
+  },
+  "ultrachat": {
+   "wiki": "+3.47 \u00b1 0.96*",
+   "c4": "+2.40 \u00b1 1.07*",
+   "e0m3_pct": 1.09,
+   "jaccard": 0.053
+  },
+  "wikitext2-train": {
+   "wiki": "-3.18 \u00b1 1.10*",
+   "c4": "+0.46 \u00b1 1.35",
+   "e0m3_pct": 1.21,
+   "jaccard": 0.061
+  },
+  "fo6": {
+   "wiki": 9.7,
+   "c4": 9.0
+  }
+ }
+}

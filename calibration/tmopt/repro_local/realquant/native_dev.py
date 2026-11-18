@@ -1,0 +1,255 @@
+"""Native (mixfp4 b8x64 kernel) development evaluation for run_multiround.py --shadow-native.
+
+Weights (operand B, format granule 8 output rows x 64 K): both candidates, E2M1 FourOverSix
+(base) and E0M3 alpha=1 (alternative), are packed once from the source weight with rq.py's
+mirrors of the reference quantizers. decode(packed) is checked bitwise against the fake-quant
+candidates. For a map, every byte of codes and every scale byte is taken from the base or the
+alternative tile by tile (bit 7 of a scale byte = E0M3). A map unit (256x64, 16x64 or 8x64) is a
+union of 8x64 granules.
+
+Activations: per-document tensor-wide FourOverSix, the rule of quant_per_document. One FP32
+global scale per document, codes and UE4M3 block scales against it (fused Triton kernel with
+the scales given), and every token of the document gets that scale in the epilogue. The first
+calls are checked bitwise against quant_per_document.
+
+GEMM: D[t, out] = gs_w * sum_k decode(X) decode(W), in bf16. Output: bf16(D * gs_doc[t]).
+lm_head and everything outside the 224 matrices run as in the fake path.
+"""
+import sys
+import time
+from pathlib import Path
+
+import torch
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import fused_quant  # noqa: E402
+import rq  # noqa: E402
+from profile_regions import region  # noqa: E402
+from quantize.fast_act import quant_per_document  # noqa: E402
+from quantize.quantizer import quant_nvfp4  # noqa: E402
+
+CONFIG = 'b8x64'
+
+
+_E2M1_INDEX = {}
+
+
+def e2m1_nibbles(code):
+    """rq.e2m1_nibbles with the sign taken from the sign bit, so that a negative value rounded to
+    zero is stored as -0. That is what quantize/packed_candidates.decode_base returns: level 0
+    times the sign of a negative input. torch.sign(-0.0) is +0, so an exact -0 input stays +0.
+    The E0M3 alternative uses rq.e0m3_nibbles (sign from code < 0): decode_alt stores codes in
+    offset binary, so its zeros are +0."""
+    lut = _E2M1_INDEX.get(code.device)
+    if lut is None:
+        lut = torch.full((13,), -1, dtype=torch.int64, device=code.device)
+        for i, v in enumerate(rq.E2M1_LEVELS):
+            lut[int(2 * v)] = i
+        _E2M1_INDEX[code.device] = lut
+    idx = lut[(code.abs() * 2).round().long().clamp(0, 12)]
+    if bool((idx < 0).any()):
+        raise ValueError('value off the E2M1 grid')
+    return (idx | (torch.signbit(code).long() << 3)).to(torch.uint8)
+
+
+def e0m3_signed_nibbles(code):
+    """rq.e0m3_nibbles with the sign taken from the sign bit (a rounded-to-zero negative is -0)."""
+    mag = code.abs()
+    if bool((mag > 7).any()) or bool((mag != mag.round()).any()):
+        raise ValueError('value off the E0M3 grid')
+    return (mag.long() | (torch.signbit(code).long() << 3)).to(torch.uint8)
+
+
+def unpack_nibbles(packed, n, k):
+    """[n, k/2] bytes -> [n, k] nibbles (element 2j in the low nibble)."""
+    return torch.stack((packed & 0xF, packed >> 4), dim=-1).reshape(n, k)
+
+
+def decode_packed(packed, sbytes, gs, n, k):
+    """bf16 weight or activation from packed codes and row-major scale bytes (bit 7 = E0M3)."""
+    flags = (sbytes >> 7).repeat_interleave(16, 1)
+    scale = (sbytes & 0x7F).view(torch.float8_e4m3fn).float().repeat_interleave(16, 1)
+    return rq.decode(unpack_nibbles(packed, n, k), flags, scale, gs)
+
+
+@torch.no_grad()
+def pack_candidates(name, w, base, alt, alt_signed_zero=False, base_given=None):
+    """Both candidates of the source weight w in the native format: (E2M1 codes, E0M3 codes, E2M1
+    scale bytes, E0M3 scale bytes with bit 7 set, FP32 global scale, n, k). Their decode must equal
+    base and alt bitwise (signed zeros included), else AssertionError. base_given = (E2M1 codes [n, k], block scales
+    [blocks], global scale) replaces FourOverSix's codes and scales (a learned-scale E2M1 base, results/scale_additivity)."""
+    n, k = w.shape
+    c4, s4, g4 = rq.weight_four_over_six(w) if base_given is None else (base_given[0], base_given[1].reshape(n, k // 16), base_given[2])
+    c0, s0, g0 = rq.weight_e0m3(w)
+    if not torch.equal(g4, g0):
+        raise AssertionError(f'{name}: E0M3 and FourOverSix global scales differ')
+    sb4 = rq.scale_bytes(s4)
+    sb0 = rq.scale_bytes(s0) | 128
+    alt_nibbles = e0m3_signed_nibbles(c0) if alt_signed_zero else rq.e0m3_nibbles(c0)
+    b4, b0 = rq.pack_nibbles(e2m1_nibbles(c4)), rq.pack_nibbles(alt_nibbles)
+    gs = g4.reshape(()).float()
+    for packed, sb, ref, label in ((b4, sb4, base, 'base'), (b0, sb0, alt, 'alternative')):
+        got = decode_packed(packed, sb, gs, n, k)
+        if not torch.equal(got.view(torch.int16), ref.view(torch.int16)):
+            raise AssertionError(f'{name}: packed {label} differs from the fake-quant candidate in '
+                                 f'{(got != ref).sum().item()} elements')
+    return b4, b0, sb4, sb0, gs, n, k
+
+
+@torch.no_grad()
+def select_candidates(cand, sel, rows, cols):
+    """Codes and row-major scale bytes of map `sel` [ceil(n/rows), k/cols] from pack_candidates' tuple."""
+    b4, b0, sb4, sb0, gs, n, k = cand
+    tile_rows = sel.repeat_interleave(rows, 0)[:n]
+    packed = torch.where(tile_rows.repeat_interleave(cols // 2, 1), b0, b4).contiguous()
+    sbytes = torch.where(tile_rows.repeat_interleave(cols // 16, 1), sb0, sb4).contiguous()
+    return packed, sbytes, gs, n, k
+
+
+class NativeDev:
+    def __init__(self, modules, rows, cols, tokens, check_calls=64, alt_signed_zero=False, store=None):
+        # alt_signed_zero: store an E0M3 code rounded to zero from a negative value as -0, as
+        # quant_mix_4_6 itself returns it (the zero-shot script's reference weights). The default
+        # (+0) matches decode_alt, whose offset-binary codes have no negative zero (run_multiround).
+        # store: a candidate_store.CandidateStore (run_multiround.py --memory-mode lean). The
+        # candidates are then read from it instead of packed again, and install() builds every
+        # module's packed weight for the map while remove() frees them all: no native weight is
+        # resident outside an evaluation.
+        if (rows, cols) not in ((256, 64), (16, 64), (8, 64)):
+            raise ValueError('a map unit must be a union of the kernel\'s 8x64 format granules')
+        self.kern = rq.Kernel(CONFIG)
+        assert self.kern.weight_operand == 1 and rq.TYPE_BLOCK[CONFIG] == (8, 64)
+        self.modules, self.rows, self.cols, self.tokens = modules, rows, cols, tokens
+        self.check_calls, self.checked = check_calls, 0
+        self.cand, self.built, self.current = {}, {}, {}
+        self.saved = {n: m.forward for n, m in modules.items()}
+        self.documents = 1
+        self.rebuild_seconds = 0.0
+        self.alt_signed_zero = alt_signed_zero
+        self.store = store
+        self.build_seconds_total, self.builds = 0.0, 0
+        if store is not None:
+            assert (store.rows, store.cols) == (rows, cols) and store.alt_signed_zero == alt_signed_zero
+            self.cand = store.cand
+        self.fixed = False
+        self.single_pass_epilogue = False      # run_multiround.py --single-pass-epilogue
+        # the fake activation quantizer the first calls are checked against (bitwise)
+        self.set_activation('four_over_six_rows')
+
+    def set_activation(self, kind):
+        """Per-document tensor-wide activation rule: 'four_over_six_rows' (quant_per_document, the default)
+        or 'nvfp4_rows' (quant_nvfp4 on each document, the NVFP4 baseline); fused_quant's kind of that name
+        is run with the document's global scale given."""
+        self.act_kind = kind
+        if kind == 'four_over_six_rows':
+            self.reference = lambda x, docs: quant_per_document(x.reshape(docs, -1, x.shape[-1]))
+        elif kind == 'nvfp4_rows':
+            self.reference = lambda x, docs: torch.stack([quant_nvfp4(d, 4, 16) for d in
+                                                          x.reshape(docs, -1, x.shape[-1])])
+        else:
+            raise ValueError(kind)
+
+    @torch.no_grad()
+    def add(self, name, w, base, alt):
+        """Pack both candidates of the source weight w; their decode must equal base and alt bitwise."""
+        if self.store is not None:
+            raise RuntimeError('a store-backed NativeDev reads the candidates the store packed')
+        self.cand[name] = pack_candidates(name, w, base, alt, self.alt_signed_zero)
+
+    @torch.no_grad()
+    def select(self, name, sel):
+        """Codes and row-major scale bytes of module `name` for map `sel` [ceil(n/rows), k/cols]."""
+        return select_candidates(self.cand[name], sel, self.rows, self.cols)
+
+    @torch.no_grad()
+    def verify_map(self, sel, installed):
+        """Bitwise: decode(selected packed weight) == the weight apply() installed, every module."""
+        bad = []
+        for name in self.cand:
+            packed, sbytes, gs, n, k = self.select(name, sel[name])
+            if not torch.equal(decode_packed(packed, sbytes, gs, n, k).view(torch.int16),
+                               installed(name).view(torch.int16)):
+                bad.append(name)
+        return bad
+
+    @torch.no_grad()
+    def install(self, sel):
+        """Native forwards for map `sel`; only modules whose map changed since the last build are repacked.
+        Store-backed: every module is built for `sel` (they were all freed by the last remove())."""
+        t0 = time.time()
+        if self.store is not None:
+            # the forwards to restore are the ones in place now (run_multiround's lean forwards)
+            assert not self.current, 'install() again before remove()'
+            self.saved = {n: m.forward for n, m in self.modules.items()}
+        for name, mod in self.modules.items():
+            snap = self.built.get(name)
+            if self.store is not None or snap is None or not torch.equal(snap, sel[name]):
+                packed, sbytes, gs, n, k = self.select(name, sel[name])
+                sf = self.kern.place_scales(sbytes, 1, self.tokens, n, k)
+                self.current[name] = rq.PackedWeight(packed, sf, gs, n, k, int(sel[name].sum()))
+                if self.store is None:
+                    self.built[name] = sel[name].clone()
+            mod.forward = self._forward(name)
+        torch.cuda.synchronize()
+        self.rebuild_seconds = time.time() - t0
+        self.build_seconds_total += self.rebuild_seconds
+        self.builds += 1
+
+    @torch.no_grad()
+    def install_fixed(self, weights):
+        """Native forwards for fixed weights, weights(name) -> (packed, row-major scale bytes, gs, n, k),
+        e.g. NVFP4; built now, freed by remove()."""
+        assert not self.fixed
+        t0 = time.time()
+        self.saved = {n: m.forward for n, m in self.modules.items()}
+        self.built.clear()
+        for name, mod in self.modules.items():
+            packed, sbytes, gs, n, k = weights(name)
+            sf = self.kern.place_scales(sbytes, 1, self.tokens, n, k)
+            self.current[name] = rq.PackedWeight(packed, sf, gs, n, k, 0)
+            mod.forward = self._forward(name)
+        torch.cuda.synchronize()
+        self.fixed = True
+        self.rebuild_seconds = time.time() - t0
+
+    def remove(self):
+        for name, mod in self.modules.items():
+            mod.forward = self.saved[name]
+        if self.store is not None or self.fixed:
+            self.current.clear()
+            self.fixed = False
+
+    def _forward(self, name):
+        w, kern = self.current[name], self.kern
+
+        def forward(x):
+            k, docs = w.k, self.documents
+            with region('native: activation quantization'):
+                x2 = x.reshape(-1, k).contiguous()
+                t = x2.shape[0]
+                # The operand-B scale layout does not depend on the token count, so the weights
+                # placed for `tokens` serve every batch shape (checked: m = 1 ... 16384).
+                assert t % docs == 0, (tuple(x.shape), docs)
+                # quant_per_document's global scale, one per document, broadcast to its tokens
+                gs_doc = x.reshape(docs, -1, 16).float().abs().amax(dim=(1, 2)) / (6 * 448)
+                gs_rows = gs_doc.repeat_interleave(t // docs).contiguous()
+                idx, size = kern.sf_index(0, t, w.n, k, x2.device)
+                packed, asf, _ = fused_quant.quantize(x2, self.act_kind, idx, size, gs=gs_rows, signed_zero=True)
+                if self.checked < self.check_calls:
+                    got = decode_packed(packed, asf[idx].reshape(t, k // 16), gs_rows[:, None], t, k)
+                    ref = self.reference(x, docs).reshape(t, k)
+                    if not torch.equal(got.view(torch.int16), ref.view(torch.int16)):
+                        raise AssertionError(f'{name}: native activation differs from quant_per_document in '
+                                             f'{(got != ref).sum().item()} elements')
+                    self.checked += 1
+            with region('native: FP4 GEMM'):
+                d = kern.gemm(packed, asf, w.packed, w.sf_bytes, t, w.n, k, w.gs)
+            with region('native: epilogue'):
+                if self.single_pass_epilogue:
+                    # one pass: bf16 * fp32 promotes to one FP32 multiply, rounded once to the bf16 output,
+                    # exactly as the two-pass (d.float() * gs).to(bf16)
+                    out = torch.empty((t, w.n), dtype=x.dtype, device=x.device)
+                    torch.mul(d, gs_rows[:, None], out=out)
+                    return out.reshape(*x.shape[:-1], w.n)
+                return (d.float() * gs_rows[:, None]).to(x.dtype).reshape(*x.shape[:-1], w.n)
+        return forward

@@ -1,0 +1,6 @@
+[submodule "kernels/3rdparty/cutlass"]
+	path = kernels/3rdparty/cutlass
+	url = https://github.com/NVIDIA/cutlass.git
+[submodule "kernels/3rdparty/sm120-e0m3-mma"]
+	path = kernels/3rdparty/sm120-e0m3-mma
+	url = https://github.com/revollllt/sm120-e0m3-mma.git

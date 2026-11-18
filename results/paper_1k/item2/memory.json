@@ -1,0 +1,1697 @@
+{
+ "anchor": {
+  "installed_equal": true,
+  "model_equal": true,
+  "after_load_diff_gib": 0.0,
+  "peak_diff_gib": 0.0,
+  "tol_gib": 0.02,
+  "passed": true,
+  "accepted": false
+ },
+ "memory": {
+  "llama3.2-1b-instruct": {
+   "bf16": {
+    "model_bytes": 2471629056,
+    "installed_bytes": 1946157056,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 1.0,
+    "allocated_after_load": 2472678400,
+    "peak_prefill_1x2048": 3083097088,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "49",
+     "utilization.gpu": "0 %",
+     "memory.used": "2920 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:04:43+00:00"
+    }
+   },
+   "nvfp4": {
+    "model_bytes": 1072828672,
+    "installed_bytes": 547356672,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 1072831488,
+    "peak_prefill_1x2048": 1725201408,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "53",
+     "utilization.gpu": "68 %",
+     "memory.used": "3666 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:04:57+00:00"
+    }
+   },
+   "fo6": {
+    "model_bytes": 1072828672,
+    "installed_bytes": 547356672,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 1072831488,
+    "peak_prefill_1x2048": 1726241792,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "54",
+     "utilization.gpu": "75 %",
+     "memory.used": "3858 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:05:12+00:00"
+    }
+   },
+   "fo6-wB": {
+    "model_bytes": 1072828672,
+    "installed_bytes": 547356672,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 1072831488,
+    "peak_prefill_1x2048": 1726241792,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "54",
+     "utilization.gpu": "72 %",
+     "memory.used": "3858 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:05:27+00:00"
+    }
+   },
+   "fq-8x64": {
+    "model_bytes": 1072828672,
+    "installed_bytes": 547356672,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 1072832000,
+    "peak_prefill_1x2048": 1725201920,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "54",
+     "utilization.gpu": "66 %",
+     "memory.used": "3846 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:05:41+00:00"
+    }
+   },
+   "fq-16x64": {
+    "model_bytes": 1072828672,
+    "installed_bytes": 547356672,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 1072832000,
+    "peak_prefill_1x2048": 1725201920,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "53",
+     "utilization.gpu": "73 %",
+     "memory.used": "3846 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:05:56+00:00"
+    }
+   },
+   "fq-256x64": {
+    "model_bytes": 1072828672,
+    "installed_bytes": 547356672,
+    "bf16_bytes": 1946157056,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 1072832000,
+    "peak_prefill_1x2048": 1725201920,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "53",
+     "utilization.gpu": "65 %",
+     "memory.used": "3846 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:06:11+00:00"
+    }
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "bf16": {
+    "model_bytes": 16060523008,
+    "installed_bytes": 13958643712,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 1.0,
+    "allocated_after_load": 16060523520,
+    "peak_prefill_1x2048": 16880657408,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "47",
+     "utilization.gpu": "0 %",
+     "memory.used": "15880 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:06:26+00:00"
+    }
+   },
+   "nvfp4": {
+    "model_bytes": 6027747840,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 6068644864,
+    "peak_prefill_1x2048": 6963481600,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "55",
+     "utilization.gpu": "93 %",
+     "memory.used": "20584 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:06:45+00:00"
+    }
+   },
+   "fo6": {
+    "model_bytes": 6027747840,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 6071266304,
+    "peak_prefill_1x2048": 6966635520,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "57",
+     "utilization.gpu": "93 %",
+     "memory.used": "20590 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:07:06+00:00"
+    }
+   },
+   "fo6-wB": {
+    "model_bytes": 6027747840,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 6071266304,
+    "peak_prefill_1x2048": 6966635520,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "58",
+     "utilization.gpu": "99 %",
+     "memory.used": "20590 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:07:27+00:00"
+    }
+   },
+   "fq-8x64": {
+    "model_bytes": 6027747840,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 6063402496,
+    "peak_prefill_1x2048": 6958124544,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "59",
+     "utilization.gpu": "89 %",
+     "memory.used": "21036 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:07:50+00:00"
+    }
+   },
+   "fq-16x64": {
+    "model_bytes": 6027747840,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 6063402496,
+    "peak_prefill_1x2048": 6958124544,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "93 %",
+     "memory.used": "21036 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:08:13+00:00"
+    }
+   },
+   "fq-256x64": {
+    "model_bytes": 6027747840,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 6063402496,
+    "peak_prefill_1x2048": 6958124544,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "99 %",
+     "memory.used": "21036 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:08:36+00:00"
+    }
+   }
+  },
+  "mistral-7b": {
+   "bf16": {
+    "model_bytes": 14496047616,
+    "installed_bytes": 13958643712,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 1.0,
+    "allocated_after_load": 14496048128,
+    "peak_prefill_1x2048": 15017354240,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "51",
+     "utilization.gpu": "0 %",
+     "memory.used": "14388 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:08:50+00:00"
+    }
+   },
+   "nvfp4": {
+    "model_bytes": 4463272448,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 4504169472,
+    "peak_prefill_1x2048": 5030456320,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "58",
+     "utilization.gpu": "95 %",
+     "memory.used": "19092 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:09:09+00:00"
+    }
+   },
+   "fo6": {
+    "model_bytes": 4463272448,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 4503120896,
+    "peak_prefill_1x2048": 5029153792,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "59",
+     "utilization.gpu": "94 %",
+     "memory.used": "19098 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:09:30+00:00"
+    }
+   },
+   "fo6-wB": {
+    "model_bytes": 4463272448,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 4503120896,
+    "peak_prefill_1x2048": 5029153792,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "59",
+     "utilization.gpu": "94 %",
+     "memory.used": "19098 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:09:51+00:00"
+    }
+   },
+   "fq-8x64": {
+    "model_bytes": 4463272448,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 4502072832,
+    "peak_prefill_1x2048": 5029162496,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "92 %",
+     "memory.used": "19096 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:10:14+00:00"
+    }
+   },
+   "fq-16x64": {
+    "model_bytes": 4463272448,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 4502072832,
+    "peak_prefill_1x2048": 5029162496,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "90 %",
+     "memory.used": "19096 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:10:37+00:00"
+    }
+   },
+   "fq-256x64": {
+    "model_bytes": 4463272448,
+    "installed_bytes": 3925868544,
+    "bf16_bytes": 13958643712,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 4497878528,
+    "peak_prefill_1x2048": 5024968192,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "61",
+     "utilization.gpu": "98 %",
+     "memory.used": "19544 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:10:59+00:00"
+    }
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "bf16": {
+    "model_bytes": 17776454656,
+    "installed_bytes": 15423242240,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 1.0,
+    "allocated_after_load": 17776489984,
+    "peak_prefill_1x2048": 19592672768,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "52",
+     "utilization.gpu": "0 %",
+     "memory.used": "17520 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:11:14+00:00"
+    }
+   },
+   "nvfp4": {
+    "model_bytes": 6691447296,
+    "installed_bytes": 4338234880,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 0.2812790470701963,
+    "allocated_after_load": 6710817792,
+    "peak_prefill_1x2048": 8609293312,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "98 %",
+     "memory.used": "23202 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:11:39+00:00"
+    }
+   },
+   "fo6": {
+    "model_bytes": 6691447296,
+    "installed_bytes": 4338234880,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 0.2812790470701963,
+    "allocated_after_load": 6709000704,
+    "peak_prefill_1x2048": 8608545280,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "99 %",
+     "memory.used": "23494 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:12:05+00:00"
+    }
+   },
+   "fo6-wB": {
+    "model_bytes": 6691447296,
+    "installed_bytes": 4338234880,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 0.2812790470701963,
+    "allocated_after_load": 6709000704,
+    "peak_prefill_1x2048": 8608545280,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "61",
+     "utilization.gpu": "99 %",
+     "memory.used": "23494 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:12:32+00:00"
+    }
+   },
+   "fq-8x64": {
+    "model_bytes": 6691447296,
+    "installed_bytes": 4338234880,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 0.2812790470701963,
+    "allocated_after_load": 6708287488,
+    "peak_prefill_1x2048": 8609605632,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "63",
+     "utilization.gpu": "99 %",
+     "memory.used": "23494 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:13:01+00:00"
+    }
+   },
+   "fq-16x64": {
+    "model_bytes": 6691447296,
+    "installed_bytes": 4338234880,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 0.2812790470701963,
+    "allocated_after_load": 6708287488,
+    "peak_prefill_1x2048": 8609605632,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "63",
+     "utilization.gpu": "99 %",
+     "memory.used": "23494 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:13:30+00:00"
+    }
+   },
+   "fq-256x64": {
+    "model_bytes": 6691447296,
+    "installed_bytes": 4338234880,
+    "bf16_bytes": 15423242240,
+    "installed_over_bf16": 0.2812790470701963,
+    "allocated_after_load": 6707834368,
+    "peak_prefill_1x2048": 8606854656,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "63",
+     "utilization.gpu": "99 %",
+     "memory.used": "23254 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:13:58+00:00"
+    }
+   }
+  },
+  "phi4-14b": {
+   "bf16": {
+    "model_bytes": 29319014912,
+    "installed_bytes": 27262976000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 1.0,
+    "allocated_after_load": 29319015424,
+    "peak_prefill_1x2048": 30178995200,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "55",
+     "utilization.gpu": "0 %",
+     "memory.used": "28524 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:14:19+00:00"
+    }
+   },
+   "nvfp4": {
+    "model_bytes": 9723750912,
+    "installed_bytes": 7667712000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 9747870720,
+    "peak_prefill_1x2048": 10702541824,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "62",
+     "utilization.gpu": "99 %",
+     "memory.used": "37344 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:14:44+00:00"
+    }
+   },
+   "fo6": {
+    "model_bytes": 9723750912,
+    "installed_bytes": 7667712000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 9741415424,
+    "peak_prefill_1x2048": 10697757696,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "63",
+     "utilization.gpu": "98 %",
+     "memory.used": "38270 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:15:12+00:00"
+    }
+   },
+   "fo6-wB": {
+    "model_bytes": 9723750912,
+    "installed_bytes": 7667712000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 9741415424,
+    "peak_prefill_1x2048": 10697757696,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "63",
+     "utilization.gpu": "100 %",
+     "memory.used": "38270 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:15:41+00:00"
+    }
+   },
+   "fq-8x64": {
+    "model_bytes": 9723750912,
+    "installed_bytes": 7667712000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 9740269056,
+    "peak_prefill_1x2048": 10694940160,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "65",
+     "utilization.gpu": "98 %",
+     "memory.used": "39670 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:16:13+00:00"
+    }
+   },
+   "fq-16x64": {
+    "model_bytes": 9723750912,
+    "installed_bytes": 7667712000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 9740269056,
+    "peak_prefill_1x2048": 10694940160,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "65",
+     "utilization.gpu": "99 %",
+     "memory.used": "39670 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:16:46+00:00"
+    }
+   },
+   "fq-256x64": {
+    "model_bytes": 9723750912,
+    "installed_bytes": 7667712000,
+    "bf16_bytes": 27262976000,
+    "installed_over_bf16": 0.28125,
+    "allocated_after_load": 9750427136,
+    "peak_prefill_1x2048": 10704778752,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "66",
+     "utilization.gpu": "99 %",
+     "memory.used": "41070 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:17:18+00:00"
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "bf16": {
+    "model_bytes": 54713457448,
+    "installed_bytes": 48701112320,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 1.0,
+    "allocated_after_load": 54713562624,
+    "peak_prefill_1x2048": 56078693888,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "50",
+     "utilization.gpu": "0 %",
+     "memory.used": "52916 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:18:34+00:00"
+    }
+   },
+   "nvfp4": {
+    "model_bytes": 19711990568,
+    "installed_bytes": 13699645440,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 0.28130046291312305,
+    "allocated_after_load": 19755023872,
+    "peak_prefill_1x2048": 21206801920,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "60",
+     "utilization.gpu": "99 %",
+     "memory.used": "68044 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:19:11+00:00"
+    }
+   },
+   "fo6": {
+    "model_bytes": 19711990568,
+    "installed_bytes": 13699645440,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 0.28130046291312305,
+    "allocated_after_load": 19764198912,
+    "peak_prefill_1x2048": 21206146560,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "64",
+     "utilization.gpu": "99 %",
+     "memory.used": "66864 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:19:56+00:00"
+    }
+   },
+   "fo6-wB": {
+    "model_bytes": 19711990568,
+    "installed_bytes": 13699645440,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 0.28130046291312305,
+    "allocated_after_load": 19764198912,
+    "peak_prefill_1x2048": 21206146560,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "65",
+     "utilization.gpu": "99 %",
+     "memory.used": "66864 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:20:41+00:00"
+    }
+   },
+   "fq-8x64": {
+    "model_bytes": 19711990568,
+    "installed_bytes": 13699645440,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 0.28130046291312305,
+    "allocated_after_load": 19750436864,
+    "peak_prefill_1x2048": 21203533824,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "67",
+     "utilization.gpu": "99 %",
+     "memory.used": "68466 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:21:33+00:00"
+    }
+   },
+   "fq-16x64": {
+    "model_bytes": 19711990568,
+    "installed_bytes": 13699645440,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 0.28130046291312305,
+    "allocated_after_load": 19750436864,
+    "peak_prefill_1x2048": 21203533824,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "67",
+     "utilization.gpu": "57 %",
+     "memory.used": "68468 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:22:26+00:00"
+    }
+   },
+   "fq-256x64": {
+    "model_bytes": 19711990568,
+    "installed_bytes": 13699645440,
+    "bf16_bytes": 48701112320,
+    "installed_over_bf16": 0.28130046291312305,
+    "allocated_after_load": 19750436864,
+    "peak_prefill_1x2048": 21203533824,
+    "gpu": {
+     "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "driver_version": "595.71.05",
+     "power.limit": "500.00 W",
+     "power.default_limit": "600.00 W",
+     "clocks.max.sm": "3090 MHz",
+     "clocks.max.mem": "14001 MHz",
+     "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+     "persistence_mode": "Enabled",
+     "temperature.gpu": "69",
+     "utilization.gpu": "94 %",
+     "memory.used": "68468 MiB",
+     "torch": "2.9.0+cu128",
+     "torch_cuda": "12.8",
+     "triton": "3.5.0",
+     "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+     "capability": [
+      12,
+      0
+     ],
+     "sm_count": 188,
+     "utc": "2026-10-25T18:23:18+00:00"
+    }
+   }
+  }
+ },
+ "claims": {
+  "llama3.2-1b-instruct": {
+   "installed_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "model_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "after_load_max_diff_gib": 4.76837158203125e-07,
+   "peak_max_diff_gib": 0.0009684562683105469,
+   "byte_equal": true,
+   "within_0p02_gib": true,
+   "bf16_over_model": 2.3038432142126792,
+   "vs_published_256": {
+    "bf16": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "nvfp4": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fo6": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-8x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-16x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-256x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    }
+   }
+  },
+  "llama3.1-8b-instruct": {
+   "installed_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "model_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "after_load_max_diff_gib": 0.007323741912841797,
+   "peak_max_diff_gib": 0.007926464080810547,
+   "byte_equal": true,
+   "within_0p02_gib": true,
+   "bf16_over_model": 2.664431796801905,
+   "vs_published_256": {
+    "bf16": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "nvfp4": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fo6": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-8x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-16x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-256x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    }
+   }
+  },
+  "mistral-7b": {
+   "installed_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "model_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "after_load_max_diff_gib": 0.005858898162841797,
+   "peak_max_diff_gib": 0.005111217498779297,
+   "byte_equal": true,
+   "within_0p02_gib": true,
+   "bf16_over_model": 3.2478518362677375,
+   "vs_published_256": {
+    "bf16": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "nvfp4": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fo6": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-8x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-16x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-256x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    }
+   }
+  },
+  "nemotron-nano-9b-v2": {
+   "installed_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "model_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "after_load_max_diff_gib": 0.0027785301208496094,
+   "peak_max_diff_gib": 0.0022711753845214844,
+   "byte_equal": true,
+   "within_0p02_gib": true,
+   "bf16_over_model": 2.6565933899870022,
+   "vs_published_256": {
+    "bf16": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "nvfp4": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fo6": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-8x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-16x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-256x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    }
+   }
+  },
+  "phi4-14b": {
+   "installed_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "model_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "after_load_max_diff_gib": 0.008392810821533203,
+   "peak_max_diff_gib": 0.007079601287841797,
+   "byte_equal": true,
+   "within_0p02_gib": true,
+   "bf16_over_model": 3.0151960058764615,
+   "vs_published_256": {
+    "bf16": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "nvfp4": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fo6": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-8x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.00029754638671875
+    },
+    "fq-16x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-256x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    }
+   }
+  },
+  "qwen3.8-27b": {
+   "installed_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "model_equal": {
+    "fq-8x64 vs nvfp4": true,
+    "fq-8x64 vs fo6": true,
+    "fq-8x64 vs fo6-wB": true,
+    "fq-16x64 vs nvfp4": true,
+    "fq-16x64 vs fo6": true,
+    "fq-16x64 vs fo6-wB": true,
+    "fq-256x64 vs nvfp4": true,
+    "fq-256x64 vs fo6": true,
+    "fq-256x64 vs fo6-wB": true
+   },
+   "after_load_max_diff_gib": 0.012816905975341797,
+   "peak_max_diff_gib": 0.003043651580810547,
+   "byte_equal": true,
+   "within_0p02_gib": true,
+   "bf16_over_model": 2.7756434470306917,
+   "vs_published_256": {
+    "bf16": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "nvfp4": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fo6": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-8x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": -0.00579833984375,
+     "peak_diff_gib": -0.0093231201171875
+    },
+    "fq-16x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": 0.0,
+     "peak_diff_gib": 0.0
+    },
+    "fq-256x64": {
+     "bytes_equal": true,
+     "after_load_diff_gib": -0.0018310546875,
+     "peak_diff_gib": 0.0019683837890625
+    }
+   }
+  }
+ },
+ "done": 42,
+ "of": 42
+}

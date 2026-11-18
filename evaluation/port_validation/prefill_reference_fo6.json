@@ -1,0 +1,201 @@
+{
+ "status": "complete",
+ "gpu": {
+  "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "driver_version": "595.71.05",
+  "power.limit": "500.00 W",
+  "power.default_limit": "600.00 W",
+  "clocks.max.sm": "3090 MHz",
+  "clocks.max.mem": "14001 MHz",
+  "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+  "persistence_mode": "Enabled",
+  "temperature.gpu": "59",
+  "utilization.gpu": "0 %",
+  "memory.used": "2 MiB",
+  "torch": "2.9.0+cu128",
+  "torch_cuda": "12.8",
+  "triton": "3.5.0",
+  "host": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capability": [
+   12,
+   0
+  ],
+  "sm_count": 188,
+  "utc": "2026-10-02T05:23:24+00:00"
+ },
+ "model": "llama8b",
+ "label": "fo6",
+ "artifact": "/home/dev/n16k64_campaign/paper/artifacts/llama8b_fo6",
+ "kernel": "paper_stock",
+ "act_override": null,
+ "round": 1,
+ "reps": 7,
+ "pid": 1132981,
+ "allocator": "",
+ "eager": {
+  "1x128": {
+   "ms": 31.81999969482422,
+   "min_ms": 31.209375381469727,
+   "max_ms": 32.126304626464844,
+   "tokens_per_s": 4022.6273170210065,
+   "enqueue_ms": 30.413186992518604
+  },
+  "1x2048": {
+   "ms": 59.56611251831055,
+   "min_ms": 58.25203323364258,
+   "max_ms": 60.090431213378906,
+   "tokens_per_s": 34381.965070667444,
+   "enqueue_ms": 30.489841010421515
+  }
+ },
+ "graph": {
+  "1x128": {
+   "ms": 7.433055877685547,
+   "min_ms": 7.429440021514893,
+   "max_ms": 7.444672107696533,
+   "tokens_per_s": 17220.37370716709,
+   "logits_equal_eager": true,
+   "max_abs_diff_eager": 0.0
+  },
+  "1x2048": {
+   "ms": 59.49932861328125,
+   "min_ms": 58.07292938232422,
+   "max_ms": 59.729183197021484,
+   "tokens_per_s": 34420.55646225985,
+   "logits_equal_eager": true,
+   "max_abs_diff_eager": 0.0
+  }
+ },
+ "host_bound": {
+  "1x128": {
+   "flag": true,
+   "rule": "eager > 1.05 x graph",
+   "graph_saves": 0.7664030185740512
+  },
+  "1x2048": {
+   "flag": false,
+   "rule": "eager > 1.05 x graph",
+   "graph_saves": 0.0011211727978516217
+  }
+ },
+ "graph_capture_note": "during capture, transformers.masking_utils.is_tracing ignores stream capture (the eager mask decision: flash SDPA with is_causal=True); logits compared bitwise with eager",
+ "load_seconds": 4.751436471939087,
+ "install_seconds": 5.898289918899536,
+ "install": {
+  "kernel": "KernelSet(stock)",
+  "kernel_sha256": {
+   "stock_wA_n16": "3f563ca61ae712971db424dbf61e6f2f847d3941f8423c16316ca83a2562c749",
+   "stock_wA_n32": "a67179aed96d9683fdb4ab5bded2071eb355cf353124c2b16a99fb8f090d59dc",
+   "stock_wA_n64": "88199433928844ab48ebbae42a048d50e68202d0dcfbe1c89b86819f7b6cdc7b",
+   "stock_wA": "13c13a23ed145a8ac191179b16f302f0f0ef3bb38e60d73283fbce200965418c"
+  },
+  "artifact_weights_sha256": "a71c825a51d30343c4bc271127d831923e4114e864b966403a2736fbe7043fb7",
+  "map_sha256": null,
+  "native_modules": 224,
+  "fallback": [],
+  "bf16_by_design": [
+   "lm_head (output head)"
+  ],
+  "e0m3_tiles": 0,
+  "device_bytes": {
+   "packed": 3489660928,
+   "scales_placed": 436207616,
+   "scales_padding": 0,
+   "bias": 0
+  },
+  "kernel_set": {
+   "family": "stock",
+   "kernels": {
+    "stock_wA_n16": "3f563ca61ae712971db424dbf61e6f2f847d3941f8423c16316ca83a2562c749",
+    "stock_wA_n32": "a67179aed96d9683fdb4ab5bded2071eb355cf353124c2b16a99fb8f090d59dc",
+    "stock_wA_n64": "88199433928844ab48ebbae42a048d50e68202d0dcfbe1c89b86819f7b6cdc7b",
+    "stock_wA": "13c13a23ed145a8ac191179b16f302f0f0ef3bb38e60d73283fbce200965418c"
+   },
+   "table": "/home/dev/NVFP4-RaZeR/sm120/configs/nvidia_rtx_pro_6000_blackwell_workstation_edition.json",
+   "table_shapes": 16,
+   "table_family": "stock",
+   "schedule_shapes": 0,
+   "calls_by_width": {
+    "16": 1024,
+    "64": 1536,
+    "128": 4608
+   }
+  },
+  "activation_quantizer": "four_over_six_rows",
+  "activation_quantizer_override": false,
+  "routing": null
+ },
+ "weights_gib": 5.637215614318848,
+ "peak_eager_gib": 6.49367618560791,
+ "capture_error": null,
+ "coverage": {
+  "native": 224,
+  "native_called": 224,
+  "native_not_called": [],
+  "calls": 7168,
+  "tokens": 7798784
+ },
+ "quant_reuse": {
+  "q_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  },
+  "k_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 1024
+  },
+  "v_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 1024
+  },
+  "o_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  },
+  "gate_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  },
+  "up_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 1024
+  },
+  "down_proj": {
+   "modules": 32,
+   "calls": 1024,
+   "quant_reused": 0
+  }
+ },
+ "peak_total_gib": 7.077661514282227,
+ "gpu_end": {
+  "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "driver_version": "595.71.05",
+  "power.limit": "500.00 W",
+  "power.default_limit": "600.00 W",
+  "clocks.max.sm": "3090 MHz",
+  "clocks.max.mem": "14001 MHz",
+  "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+  "persistence_mode": "Enabled",
+  "temperature.gpu": "70",
+  "utilization.gpu": "100 %",
+  "memory.used": "20354 MiB",
+  "torch": "2.9.0+cu128",
+  "torch_cuda": "12.8",
+  "triton": "3.5.0",
+  "host": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capability": [
+   12,
+   0
+  ],
+  "sm_count": 188,
+  "utc": "2026-10-02T05:23:37+00:00"
+ }
+}

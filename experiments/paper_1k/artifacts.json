@@ -1,0 +1,605 @@
+{
+ "note": "The public Hugging Face artifacts the paper's 1k reruns use, pinned to the repositories' revisions of 2026-10-25 (read anonymously; every repository is public). sha256 is the LFS sha256 of each large file; experiments.paper_1k.artifacts downloads a file at its revision and checks it.",
+ "repos": {
+  "edgeai-lab/Llama-3.1-8B-Instruct-FlipQuant": {
+   "model": "llama3.1-8b-instruct",
+   "kind": "flipquant_256",
+   "revision": "8ab5916e1cb18c610db5d1e973272f04199a7422",
+   "files": {
+    "README.md": {
+     "size": 9113,
+     "sha256": null,
+     "blob_id": "99ec2d2efdca35fcce94ff558958a32758beb6ee"
+    },
+    "flipquant_16x64.pt": {
+     "size": 6890735,
+     "sha256": "3d527e1191f6e8bef3010016875c12419a81cec75e2ba231edf6943f8cd6f131"
+    },
+    "flipquant_256x64.pt": {
+     "size": 501077,
+     "sha256": "84b009d76e27f883ab53d7c5ca2ed7bf71b7930affacc3de1d13da4aa56732c4"
+    },
+    "flipquant_8x64.pt": {
+     "size": 13706441,
+     "sha256": "db896cece0fdef908ba1622b23a3c21b8f867e474ceb41439f94821c476f33ce"
+    },
+    "ppl_summary.json": {
+     "size": 7409,
+     "sha256": null,
+     "blob_id": "9526ad929740ade5eb1b90d0d679fbcce380ba93"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.1-8B-Instruct-FlipQuant-Calib1k": {
+   "model": "llama3.1-8b-instruct",
+   "kind": "flipquant_1k",
+   "revision": "ab08ef72c40a62b3cdebac41fe165ce7e6801796",
+   "files": {
+    "README.md": {
+     "size": 13020,
+     "sha256": null,
+     "blob_id": "98b6f6c7f731e53c3831ce0513146d24e27504e1"
+    },
+    "flipquant_16x64.pt": {
+     "size": 6890735,
+     "sha256": "c973cb98c23ba211534bec29fcd3ae238447aab9fa911aa39035f87c8b6a654d"
+    },
+    "flipquant_256x64.pt": {
+     "size": 501077,
+     "sha256": "8c2fb731fdf5e3fc8e5a5b2ed715efa81eb37a8b26c6c0a5782852f17765c421"
+    },
+    "flipquant_8x64.pt": {
+     "size": 13706441,
+     "sha256": "989ef5ec3d992101c67770b4bc2726c28f966e1faeb65068a29b70145e0fc37e"
+    },
+    "ppl_summary.json": {
+     "size": 16850,
+     "sha256": null,
+     "blob_id": "9b00729044a9f965a2b9f9e69b24c631de2e3ab2"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.1-8B-Instruct-GPTQ-BF16Calib-NVFP4": {
+   "model": "llama3.1-8b-instruct",
+   "kind": "gptq_256",
+   "revision": "47a528ecd214377f2c9ee2bca037c2bca4e893d4",
+   "files": {
+    "README.md": {
+     "size": 7894,
+     "sha256": null,
+     "blob_id": "8a5fe46f19033d010a2ca31df52692cfe12826f3"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 3926070201,
+     "sha256": "06ff8052565c6534f555813bfed862ab65ded2a4e0263bbda115bb4065b2f456"
+    },
+    "ppl_summary.json": {
+     "size": 3998,
+     "sha256": null,
+     "blob_id": "6d82960c56e2042b5316052492d08200ce16e9ed"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.1-8B-Instruct-GPTQ-BF16Calib-NVFP4-Calib1k": {
+   "model": "llama3.1-8b-instruct",
+   "kind": "gptq_1k",
+   "revision": "5b9a6efefb8121c79aca7bb03290f79ba7c95e8b",
+   "files": {
+    "README.md": {
+     "size": 10494,
+     "sha256": null,
+     "blob_id": "018d54b4b2631cc90d47d59d7cfc8b860d059f92"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 3926070201,
+     "sha256": "692d721acbd50a37383cde92764f934f404c5794b3b0fbab732b428ba0bb2ffa"
+    },
+    "ppl_summary.json": {
+     "size": 7183,
+     "sha256": null,
+     "blob_id": "a2cc7662db6b7e54ea2117143115b530610a3d7d"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.2-1B-Instruct-FlipQuant": {
+   "model": "llama3.2-1b-instruct",
+   "kind": "flipquant_256",
+   "revision": "1896c62f9e45dc734fc0213468362d61ec23e0a8",
+   "files": {
+    "README.md": {
+     "size": 9160,
+     "sha256": null,
+     "blob_id": "66e108bc4a0440f346a6f6682e6330021cd9eec8"
+    },
+    "flipquant_16x64.pt": {
+     "size": 989903,
+     "sha256": "1c0f1746eb63a43180d6f8eb9ee506ce080a2c339939a70d07b431069eb6bc6a"
+    },
+    "flipquant_256x64.pt": {
+     "size": 99077,
+     "sha256": "4d98536e354fe70cb679d2827158c08e6f1ee43f3d8c7f420093554500b6c92b"
+    },
+    "flipquant_8x64.pt": {
+     "size": 1940121,
+     "sha256": "36bf7d743cfa4a78c7db348e8ddbb50857cc17258bd1f21e9aafc94630ab6b66"
+    },
+    "ppl_summary.json": {
+     "size": 7466,
+     "sha256": null,
+     "blob_id": "ebe380bdc3df0916e71d8b40f43308b9af60d052"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.2-1B-Instruct-FlipQuant-Calib1k": {
+   "model": "llama3.2-1b-instruct",
+   "kind": "flipquant_1k",
+   "revision": "f447d81c6fdf509f2fd367bab0b97c96276a8af9",
+   "files": {
+    "README.md": {
+     "size": 13199,
+     "sha256": null,
+     "blob_id": "915e0ec97ccc99570b157dce26c0d1a2e3d11867"
+    },
+    "flipquant_16x64.pt": {
+     "size": 989903,
+     "sha256": "8ba6e70703d93fdb01ef86864badd72d65caf69849fa11d2fd16080a09095d3f"
+    },
+    "flipquant_256x64.pt": {
+     "size": 99077,
+     "sha256": "309f115a041cdcdce27d70500d3736776b2834a4b24921bce573066862d996b4"
+    },
+    "flipquant_8x64.pt": {
+     "size": 1940121,
+     "sha256": "c45684a0abb34d4832add625c17b99c72a840cfea33048c347376cc2dc100fc1"
+    },
+    "ppl_summary.json": {
+     "size": 16951,
+     "sha256": null,
+     "blob_id": "273387860428c3bc6731a1eb1084a97e71b8ddb5"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.2-1B-Instruct-GPTQ-BF16Calib-NVFP4": {
+   "model": "llama3.2-1b-instruct",
+   "kind": "gptq_256",
+   "revision": "bdd8efe0b5f20b7a62e7444d48fd64c1a79c8282",
+   "files": {
+    "README.md": {
+     "size": 7891,
+     "sha256": null,
+     "blob_id": "e1625a017ab2fded676e16616809ad59b267add3"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 547457897,
+     "sha256": "5f65382fe016aec8736c520051a32ee165ee80ee6572281b946055b78c3a4722"
+    },
+    "ppl_summary.json": {
+     "size": 3990,
+     "sha256": null,
+     "blob_id": "b0662031257dfd333f12d37a2bb1d18f8c4829f0"
+    }
+   }
+  },
+  "edgeai-lab/Llama-3.2-1B-Instruct-GPTQ-BF16Calib-NVFP4-Calib1k": {
+   "model": "llama3.2-1b-instruct",
+   "kind": "gptq_1k",
+   "revision": "60d9f4012262876bf11bddb26cb81bc925d315bb",
+   "files": {
+    "README.md": {
+     "size": 10646,
+     "sha256": null,
+     "blob_id": "a66f5ad77c5751f9ec1a6013debb60df721c6554"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 547457897,
+     "sha256": "49b0c7a9b70359c7a9ebcfef3eb1c4c402bc7827d9bc2146713c2af2fcd3aed2"
+    },
+    "ppl_summary.json": {
+     "size": 7243,
+     "sha256": null,
+     "blob_id": "fdb6a52e5e8cf96dbcfe5a43a7d75eb6fff3efa0"
+    }
+   }
+  },
+  "edgeai-lab/Mistral-7B-Instruct-v0.3-FlipQuant": {
+   "model": "mistral-7b",
+   "kind": "flipquant_256",
+   "revision": "62a727be895efc77293a1b14453d02f9b90e6a67",
+   "files": {
+    "README.md": {
+     "size": 8889,
+     "sha256": null,
+     "blob_id": "a36f006d699322009634649f4ed6e93922762594"
+    },
+    "flipquant_16x64.pt": {
+     "size": 6890735,
+     "sha256": "f19fa89c47fcdf3fd4fddae3ab6df3c93658ce3c25f52e5ff5c788afb8b2a4f5"
+    },
+    "flipquant_256x64.pt": {
+     "size": 501077,
+     "sha256": "5dc243b3385cfa4876f520d5d6cfafa96a68fdfd3e3e4a6ee36bdba1552405e4"
+    },
+    "flipquant_8x64.pt": {
+     "size": 13706441,
+     "sha256": "c986fea02b128abe50308f389a9b81c59e2420e0c591627870d1fd1ada106674"
+    },
+    "ppl_summary.json": {
+     "size": 3817,
+     "sha256": null,
+     "blob_id": "6289e3bb1b905a09d328be726723cfbd84a69112"
+    }
+   }
+  },
+  "edgeai-lab/Mistral-7B-Instruct-v0.3-FlipQuant-Calib1k": {
+   "model": "mistral-7b",
+   "kind": "flipquant_1k",
+   "revision": "2922fffdf5308e0ed16718cf3af91baf757c5a9e",
+   "files": {
+    "README.md": {
+     "size": 11722,
+     "sha256": null,
+     "blob_id": "69750e69bd7c19539ab300d6b612e210ea63e4a5"
+    },
+    "flipquant_16x64.pt": {
+     "size": 6890735,
+     "sha256": "8bb3d25d704d87ed1fb9f23b0958b5d87e23159769567dc08f3b22f4bf960960"
+    },
+    "flipquant_256x64.pt": {
+     "size": 501077,
+     "sha256": "dbec75c2fc97dafce36a5bcc24a2789188052dd3166c46af73a65c6d7cd0dd7f"
+    },
+    "flipquant_8x64.pt": {
+     "size": 13706441,
+     "sha256": "e3fa4365e2f30b3a24b6aa3a5f0568f55f65524ccb69edeccc71e2e1a45c45cd"
+    },
+    "ppl_summary.json": {
+     "size": 16881,
+     "sha256": null,
+     "blob_id": "83582fcfaf7a19f18611bd61ef0f8803c601b286"
+    }
+   }
+  },
+  "edgeai-lab/Mistral-7B-Instruct-v0.3-GPTQ-BF16Calib-NVFP4": {
+   "model": "mistral-7b",
+   "kind": "gptq_256",
+   "revision": "2e57b762ec219441a7a260883187c288cbc28da9",
+   "files": {
+    "README.md": {
+     "size": 6585,
+     "sha256": null,
+     "blob_id": "3d90c7081a0e78759d7966b7f7697647cc3ab9a2"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 3926070201,
+     "sha256": "7d837f380896b690adb32605f4c9ba5b2f73cfe1c280a1efc1a7ad0d465c699c"
+    },
+    "ppl_summary.json": {
+     "size": 3964,
+     "sha256": null,
+     "blob_id": "2dad89097b5ef58fd1909db179c99076e936b090"
+    }
+   }
+  },
+  "edgeai-lab/Mistral-7B-Instruct-v0.3-GPTQ-BF16Calib-NVFP4-Calib1k": {
+   "model": "mistral-7b",
+   "kind": "gptq_1k",
+   "revision": "66ff133594d3a5f96d9c8002de604e4d02efc079",
+   "files": {
+    "README.md": {
+     "size": 9283,
+     "sha256": null,
+     "blob_id": "12e26682598dd872952323ea17e78f258f5a6f01"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 3926070201,
+     "sha256": "66427f757543862cb3be55b10f7abf097aa4afbfb3d152b937e3ec87be15e037"
+    },
+    "ppl_summary.json": {
+     "size": 7172,
+     "sha256": null,
+     "blob_id": "0b65b9b79f96b6c5b99821824579f3f50d1071ad"
+    }
+   }
+  },
+  "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-FlipQuant": {
+   "model": "nemotron-nano-9b-v2",
+   "kind": "flipquant_256",
+   "revision": "24c446d656e0c86e3bb947efff0484c870e87267",
+   "files": {
+    "README.md": {
+     "size": 10079,
+     "sha256": null,
+     "blob_id": "881e76f541b5a86f7c9fb772a00960233a334f82"
+    },
+    "flipquant_16x64.pt": {
+     "size": 7571967,
+     "sha256": "8eed5296d693a6031c50554bd0ee5837b15cd88c65b992b118fc5838c48c9df1"
+    },
+    "flipquant_256x64.pt": {
+     "size": 518397,
+     "sha256": "4ab8f3137a96466cc0ea9e1762232b25bedd3825e63a004432faaa88b4502433"
+    },
+    "flipquant_8x64.pt": {
+     "size": 15100673,
+     "sha256": "6c37619cef87411e53a1e06b10518b6ef4c11bad7e141b2a16c52c452321dabf"
+    },
+    "ppl_summary.json": {
+     "size": 3827,
+     "sha256": null,
+     "blob_id": "d1ecb1cea4ec4b16c58928d1c049f04c0a573c39"
+    }
+   }
+  },
+  "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-FlipQuant-Calib1k": {
+   "model": "nemotron-nano-9b-v2",
+   "kind": "flipquant_1k",
+   "revision": "2a28a31bb8dc60f9ab82d08f54b951f4803959e4",
+   "files": {
+    "README.md": {
+     "size": 12330,
+     "sha256": null,
+     "blob_id": "855f521c74c5ea238a11ea8629b1f00e26efb2bb"
+    },
+    "flipquant_16x64.pt": {
+     "size": 7571967,
+     "sha256": "7469f895ec4d7fe37024934d5ce648dce454194c8b34150eef0b198c1b70c44e"
+    },
+    "flipquant_256x64.pt": {
+     "size": 518397,
+     "sha256": "8738a1c478ee39954e5740e32f82c61335ad99afb4c2bfcfaed4f635b74c5540"
+    },
+    "flipquant_8x64.pt": {
+     "size": 15100673,
+     "sha256": "bbfba43713237770a032260a64cbf1e3f47031adc05b41b641c56b5ed39c341c"
+    },
+    "ppl_summary.json": {
+     "size": 16872,
+     "sha256": null,
+     "blob_id": "ba4f1bee97553350299f81aa402ceacc2d60d95c"
+    }
+   }
+  },
+  "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-GPTQ-BF16Calib-NVFP4": {
+   "model": "nemotron-nano-9b-v2",
+   "kind": "gptq_256",
+   "revision": "fcf9b7c93918258090a44c0c5fb34782e3581436",
+   "files": {
+    "README.md": {
+     "size": 7401,
+     "sha256": null,
+     "blob_id": "93f9b91a576ab3223e80e4764dc1fb3e37d003dc"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 4337895473,
+     "sha256": "251884a98f6408df472f5ee61b3b4656a088ab1f63d2eb26307253b5b765a3a4"
+    },
+    "ppl_summary.json": {
+     "size": 4005,
+     "sha256": null,
+     "blob_id": "3d5b522cf91d12dc7b066852a75420977d5a6c2a"
+    }
+   }
+  },
+  "edgeai-lab/NVIDIA-Nemotron-Nano-9B-v2-GPTQ-BF16Calib-NVFP4-Calib1k": {
+   "model": "nemotron-nano-9b-v2",
+   "kind": "gptq_1k",
+   "revision": "3dbb35d0b003badba3a652c1bad62e715602d2b9",
+   "files": {
+    "README.md": {
+     "size": 10074,
+     "sha256": null,
+     "blob_id": "58049b46e367ca80fec95b355b4f2adb3e663986"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 4337895473,
+     "sha256": "1f07143f30f6a9fd16cbe0ef796f10ff1936392173c954e4c6fd8013d50d422b"
+    },
+    "ppl_summary.json": {
+     "size": 7203,
+     "sha256": null,
+     "blob_id": "fda6d1ea2802c94613a6f3e7bb16c9aeed1aa0ea"
+    }
+   }
+  },
+  "edgeai-lab/Qwen3.8-27B-FlipQuant": {
+   "model": "qwen3.8-27b",
+   "kind": "flipquant_256",
+   "revision": "74c52705f65e3b12a45270755f4fc44d42a15a78",
+   "files": {
+    "README.md": {
+     "size": 8896,
+     "sha256": null,
+     "blob_id": "0101345fa74dc216c5f56d1881fda61805c15020"
+    },
+    "flipquant_16x64.pt": {
+     "size": 23945359,
+     "sha256": "050f0eead1bb2199bdcdb36b489618ef7177b0e325eefe5e412b067965d43e8d"
+    },
+    "flipquant_256x64.pt": {
+     "size": 1660869,
+     "sha256": "59b38ae511226745a401be7616ed9a4049841fb797918badcddd3911c99fd30f"
+    },
+    "flipquant_8x64.pt": {
+     "size": 47726489,
+     "sha256": "f9e0dec72ecd4278a7f22f773390b2205293119275285cbdcf773eef7ceb4a5a"
+    },
+    "ppl_summary.json": {
+     "size": 3808,
+     "sha256": null,
+     "blob_id": "82d778a98ebb16ca8b8abb29a77edffd735846e9"
+    }
+   }
+  },
+  "edgeai-lab/Qwen3.8-27B-FlipQuant-Calib1k": {
+   "model": "qwen3.8-27b",
+   "kind": "flipquant_1k",
+   "revision": "06b068a3b68b29725cda12800db138f4838a4754",
+   "files": {
+    "README.md": {
+     "size": 11901,
+     "sha256": null,
+     "blob_id": "e3f4f1b6af857389bfdb3d7c74fed8f144ccf5db"
+    },
+    "flipquant_16x64.pt": {
+     "size": 23945423,
+     "sha256": "63117f22990a843960ebc72139f62f78b5567272dd89208e503ca9f5894f4398"
+    },
+    "flipquant_256x64.pt": {
+     "size": 1660869,
+     "sha256": "73b703adf5a1fb1427d80214326f1c06eeafbffad7f7d1587f961d41ca5776e6"
+    },
+    "flipquant_8x64.pt": {
+     "size": 47726489,
+     "sha256": "1a07a2f3ec96f46b77b82020348bd17a88991ed7563f703842fbee058297559e"
+    },
+    "ppl_summary.json": {
+     "size": 16769,
+     "sha256": null,
+     "blob_id": "9229c9582b29b0b716c0d1261dbab1b325855704"
+    }
+   }
+  },
+  "edgeai-lab/Qwen3.8-27B-GPTQ-BF16Calib-NVFP4": {
+   "model": "qwen3.8-27b",
+   "kind": "gptq_256",
+   "revision": "6f775089c4565fa1a654b098a56be8f3c80d218b",
+   "files": {
+    "README.md": {
+     "size": 6818,
+     "sha256": null,
+     "blob_id": "08c88bf6d5eba3b3302f3940dc2c5de74ec84c09"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 13697654681,
+     "sha256": "f3d7de9ce2bd18a6d8f070613d8986ce00581dce5d6c8b2fd0cea94e189ad499"
+    },
+    "ppl_summary.json": {
+     "size": 3946,
+     "sha256": null,
+     "blob_id": "3a13f099ffbd482bd6e335e7bb314135df29aa0c"
+    }
+   }
+  },
+  "edgeai-lab/Qwen3.8-27B-GPTQ-BF16Calib-NVFP4-Calib1k": {
+   "model": "qwen3.8-27b",
+   "kind": "gptq_1k",
+   "revision": "70ef48488562dbc8d81f652360df78dc45ee5537",
+   "files": {
+    "README.md": {
+     "size": 9504,
+     "sha256": null,
+     "blob_id": "d280d6f398f6a4b192ad74b5d5571280a30f1d48"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 13697654681,
+     "sha256": "413373d07f37229f02ff7e30b3fcc940a3dbd8236f5eff82f0e4385f57bd6f9a"
+    },
+    "ppl_summary.json": {
+     "size": 7088,
+     "sha256": null,
+     "blob_id": "29af58cf827a08ce9d9e68407a8bf04899c66b7b"
+    }
+   }
+  },
+  "edgeai-lab/phi-4-FlipQuant": {
+   "model": "phi4-14b",
+   "kind": "flipquant_256",
+   "revision": "548b81db1128e81344ae5a5a3c7cc8cbaa48dc11",
+   "files": {
+    "README.md": {
+     "size": 8791,
+     "sha256": null,
+     "blob_id": "4f6c0bd42b3b103dc87bd62664559424d87736d5"
+    },
+    "flipquant_16x64.pt": {
+     "size": 13367279,
+     "sha256": "8ea582050b40943a5abca4c44dc3edd0f86922f422fe77991ba7b04d75cb08fb"
+    },
+    "flipquant_256x64.pt": {
+     "size": 884565,
+     "sha256": "145f060338481ac66aff4e9f73842c1f329ca731d23db88cbf2e2d194c8e38f7"
+    },
+    "flipquant_8x64.pt": {
+     "size": 26679177,
+     "sha256": "9131bff768fce81dbb5e4ad559d1c3dc95c356145a5c705f301aacb9c2a58e94"
+    },
+    "ppl_summary.json": {
+     "size": 3802,
+     "sha256": null,
+     "blob_id": "3deb424a75e9fdf6fda7506661b44fd0a03af68a"
+    }
+   }
+  },
+  "edgeai-lab/phi-4-FlipQuant-Calib1k": {
+   "model": "phi4-14b",
+   "kind": "flipquant_1k",
+   "revision": "a477cc860e39ec731608a8194bf022d95d0d4d03",
+   "files": {
+    "README.md": {
+     "size": 11372,
+     "sha256": null,
+     "blob_id": "12ca69356bff49cdd2b71ca9a588ad39ac962f27"
+    },
+    "flipquant_16x64.pt": {
+     "size": 13367279,
+     "sha256": "265c1cb113b6b6cf5ddd186a906a896fb0e7157086121efd26515ab458507677"
+    },
+    "flipquant_256x64.pt": {
+     "size": 884565,
+     "sha256": "d292e9e7f6601d94ceaa9da0dfe37dfa54ff8ac6499324ee7c4b10362e9640cb"
+    },
+    "flipquant_8x64.pt": {
+     "size": 26679177,
+     "sha256": "657e80d319daefda2abb3360bd7aca979111ea6866e9ef83eca13bdf521517e1"
+    },
+    "ppl_summary.json": {
+     "size": 16764,
+     "sha256": null,
+     "blob_id": "17b5ec93d406797324b1ad103e06166c8f901d31"
+    }
+   }
+  },
+  "edgeai-lab/phi-4-GPTQ-BF16Calib-NVFP4": {
+   "model": "phi4-14b",
+   "kind": "gptq_256",
+   "revision": "4fb3389d2f08e7f23a59e5622c07fa04e4e13364",
+   "files": {
+    "README.md": {
+     "size": 6392,
+     "sha256": null,
+     "blob_id": "f30710ea3dd48af51eb1877760cbc67c12bdcbe1"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 7667859109,
+     "sha256": "5c9522f802db3aa7ea01b07da6ade51e9aa18f2329b631e48ea564a0a85b94f1"
+    },
+    "ppl_summary.json": {
+     "size": 3939,
+     "sha256": null,
+     "blob_id": "b2cbc824b3b6fd935663f4f2fa6836a1b02afe8f"
+    }
+   }
+  },
+  "edgeai-lab/phi-4-GPTQ-BF16Calib-NVFP4-Calib1k": {
+   "model": "phi4-14b",
+   "kind": "gptq_1k",
+   "revision": "fc2ccb6fca6e06ba69e3d053c46881d9d2b6aacb",
+   "files": {
+    "README.md": {
+     "size": 9020,
+     "sha256": null,
+     "blob_id": "363b12399dda1b04b8db04fe57b65d2bb12c6863"
+    },
+    "codes_nvfp4_act-fo6.pt": {
+     "size": 7667859109,
+     "sha256": "93af3d6527f2332045c47e57ce55b48085d141e14e97bd055b90eaf43465cfd9"
+    },
+    "ppl_summary.json": {
+     "size": 7108,
+     "sha256": null,
+     "blob_id": "0b832a493198593bc8ee293e5c1b77acd7563ea8"
+    }
+   }
+  }
+ }
+}

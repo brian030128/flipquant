@@ -1,0 +1,26 @@
+/home/dev/.conda/envs/n16k64/bin/python run_train_map.py --model llama8b --data-root /home/dev/n16k64_campaign/fqport/razer_data --transformers-deviation --unit 16x64 --tm-opt --tile-grad-tc --param ste --lr 0.02 --init-logit -1 --epochs 5 --eval-every 2 --no-dev --no-eval --teacher-topk 256 --out /home/dev/n16k64_campaign/fqport/topk_port/c_llama3.1-8b_16x64_top256_e5/run
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]
+Loading weights:   1%|          | 2/291 [00:00<00:18, 16.01it/s]
+Loading weights:  10%|▉         | 29/291 [00:00<00:01, 151.49it/s]
+Loading weights:  20%|█▉        | 58/291 [00:00<00:01, 207.93it/s]
+Loading weights:  29%|██▉       | 85/291 [00:00<00:00, 230.24it/s]
+Loading weights:  38%|███▊      | 112/291 [00:00<00:00, 235.06it/s]
+Loading weights:  48%|████▊     | 139/291 [00:00<00:00, 244.54it/s]
+Loading weights:  57%|█████▋    | 166/291 [00:00<00:00, 239.92it/s]
+Loading weights:  67%|██████▋   | 194/291 [00:00<00:00, 248.89it/s]
+Loading weights:  76%|███████▌  | 221/291 [00:00<00:00, 245.00it/s]
+Loading weights:  86%|████████▌ | 249/291 [00:01<00:00, 249.69it/s]
+Loading weights:  95%|█████████▍| 276/291 [00:01<00:00, 251.97it/s]
+Loading weights: 100%|██████████| 291/291 [00:01<00:00, 236.37it/s]
+CANDIDATES {"store": "native packed (lean)", "modules": 224, "dense_fallback_modules": [], "store_gib": 7.3125} tiles=6815744
+LEAN {"start_map_mismatches": [], "mixed_map_mismatches": []}
+START (no development set) tiles=6815744 steps/epoch=16 total=80
+EPOCH {"epoch": 0, "step": 16, "train_kl": 0.09195510828430997, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 19.447906017303467}
+EPOCH {"epoch": 1, "step": 32, "train_kl": 0.09195510804420337, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 19.254854440689087}
+EPOCH {"epoch": 2, "step": 48, "train_kl": 0.09195510933204787, "e0m3_units": 0, "hard_flips": 0, "tau": 1.0, "lr": 0.02, "epoch_seconds": 19.521393537521362}
+EPOCH {"epoch": 3, "step": 64, "train_kl": 0.08841544506867649, "e0m3_units": 1008, "hard_flips": 1054, "tau": 1.0, "lr": 0.02, "epoch_seconds": 19.7501323223114}
+EPOCH {"epoch": 4, "step": 80, "train_kl": 0.08259194613492582, "e0m3_units": 3699, "hard_flips": 3253, "tau": 1.0, "lr": 0.02, "epoch_seconds": 19.925485372543335}
+FINAL e0m3=3699
+[W1005 08:48:58.854370517 AllocatorConfig.cpp:28] Warning: PYTORCH_CUDA_ALLOC_CONF is deprecated, use PYTORCH_ALLOC_CONF instead (function operator())

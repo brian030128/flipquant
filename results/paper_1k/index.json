@@ -1,0 +1,52 @@
+{
+ "item2": {
+  "title": "Table 4 (tab:latency) SM120 rows and the memory paragraph",
+  "status": "latency done (33bad82), memory done",
+  "paper_eval": "f60666e",
+  "flipquant": "bc903d2"
+ },
+ "item3": {
+  "status": "done",
+  "flipquant": "7b30554"
+ },
+ "item11": {
+  "status": "cancelled by the user (2026-10-26); filled from part AA records",
+  "flipquant": "9c65e7c"
+ },
+ "item4": {
+  "status": "done",
+  "flipquant": "140cd5b"
+ },
+ "item5": {
+  "status": "done",
+  "flipquant": "33a5653"
+ },
+ "item6": {
+  "status": "done",
+  "flipquant": "9460576"
+ },
+ "item7": {
+  "status": "done",
+  "flipquant": "a76a282"
+ },
+ "item8": {
+  "status": "done",
+  "flipquant": "756cea2"
+ },
+ "item9": {
+  "status": "done",
+  "flipquant": "7027a8a"
+ },
+ "item12": {
+  "status": "done",
+  "flipquant": "eaded15"
+ },
+ "item13": {
+  "status": "done",
+  "flipquant": "2ffefa6"
+ },
+ "item1": {
+  "status": "done",
+  "flipquant": "472409b"
+ }
+}

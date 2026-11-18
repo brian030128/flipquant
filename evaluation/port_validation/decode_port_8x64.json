@@ -1,0 +1,214 @@
+{
+ "status": "complete",
+ "bench": "decode",
+ "gpu": {
+  "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "driver_version": "595.71.05",
+  "power.limit": "500.00 W",
+  "power.default_limit": "600.00 W",
+  "clocks.max.sm": "3090 MHz",
+  "clocks.max.mem": "14001 MHz",
+  "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+  "persistence_mode": "Enabled",
+  "temperature.gpu": "57",
+  "utilization.gpu": "0 %",
+  "memory.used": "2 MiB",
+  "torch": "2.9.0+cu128",
+  "torch_cuda": "12.8",
+  "triton": "3.5.0",
+  "host": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capability": [
+   12,
+   0
+  ],
+  "sm_count": 188,
+  "utc": "2026-10-02T05:24:20+00:00"
+ },
+ "model": "llama3.1-8b",
+ "label": "mixfp4-flipquant_8x64",
+ "round": 1,
+ "gen": 64,
+ "pid": 1133903,
+ "allocator": "",
+ "decode": {
+  "1x512": {
+   "ms_per_token": 9.841130500717554,
+   "tokens_per_s": 101.6143419627538,
+   "tokens_compared": 33,
+   "token_match": 1.0,
+   "tokens_equal_static_eager": true,
+   "token_match_dynamic_eager": 1.0,
+   "peak_gib": 5.968610763549805,
+   "decode_widths": "n8k64_wB"
+  },
+  "4x512": {
+   "ms_per_token": 10.830870516656432,
+   "tokens_per_s": 369.3147281050525,
+   "tokens_compared": 33,
+   "token_match": 1.0,
+   "tokens_equal_static_eager": true,
+   "token_match_dynamic_eager": 0.3712121212121212,
+   "peak_gib": 6.6176629066467285,
+   "decode_widths": "n8k64_wB"
+  }
+ },
+ "policy": {
+  "model": "llama3.1-8b",
+  "source": {
+   "hf_id": "meta-llama/Llama-3.1-8B",
+   "revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b",
+   "transformers": "5.16.1",
+   "torch": "2.9.0+cu128"
+  },
+  "mode": "native",
+  "map": {
+   "path": "/home/dev/n16k64_campaign/fqport/validation/tmopt_llama3.1-8b_8x64/flipquant_8x64.pt",
+   "unit": "8x64",
+   "meta": {
+    "method": "FlipQuant = TM-OPT+TC (the paper's calibration)",
+    "trainer": "NVFP4-RaZeR run_train_map.py --tm-opt --tile-grad-tc (vendored: calibration/razer)",
+    "repo": "NVFP4-RaZeR",
+    "branch": "flipquant-maps",
+    "commit": "c89ee2c31e9aa03f8238f8b66c3fa6a25d2f10b3",
+    "settings": {
+     "param": "ste",
+     "optimizer": "adam",
+     "lr": 0.02,
+     "eps": 1e-12,
+     "betas": [
+      0.9,
+      0.999
+     ],
+     "schedule": "constant",
+     "init_logit": -1.0,
+     "epochs": 20,
+     "batch": 8,
+     "accum": 1,
+     "seed": 0,
+     "tm_opt": true,
+     "tile_grad_tc": true,
+     "no_dev": true,
+     "no_eval": true,
+     "unit": "8x64",
+     "memory_mode": "lean",
+     "fused_act_quant": true,
+     "tile_grad_kernel": false,
+     "chunked_loss": true,
+     "deterministic": true,
+     "dev_backend": "native",
+     "eval_backend": "native",
+     "single_pass_epilogue": true,
+     "pytorch_cuda_alloc_conf": "expandable_segments:True",
+     "cublas_workspace_config": ":4096:8",
+     "fit_set": "128 windows x 512 tokens: 64 open-web-math @ fde8ef8 + 64 codeparrot-clean @ 35a59fb",
+     "activations": "per-token FourOverSix fake quant (STE)",
+     "loss": "KL to the BF16 teacher",
+     "output": "last-epoch map (theta > 0 -> E0M3)"
+    },
+    "model_id": "meta-llama/Llama-3.1-8B",
+    "revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b",
+    "registry_key": "llama3.1-8b",
+    "unit": "8x64",
+    "e0m3_tiles": 309517,
+    "tiles": 13631488,
+    "e0m3_share": 0.022706031799316406,
+    "modules": 224,
+    "calibration_time": {
+     "wall_seconds": 515.5595989227295,
+     "setup_seconds": 60.05853033065796,
+     "training_seconds": 455.42867374420166
+    },
+    "transformers": "5.16.1",
+    "torch": "2.9.0+cu128",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+    "deviations": [
+     {
+      "transformers_installed": "5.16.1",
+      "transformers_calibration": "4.57.3"
+     }
+    ],
+    "source_map_sha256": "8b412c67d9ea412933ecfe7c8801eeefd72c5ef2d13cc32a59c73b07a2ce195d",
+    "source": {
+     "kind": "trained",
+     "run": "/home/dev/n16k64_campaign/fqport/validation/tmopt_llama3.1-8b_8x64/run",
+     "report_sha256": "af3d8e1f489b3bd5e266ca9783acc2e7b92da3e236f46b7d035284eb21a0489c",
+     "calibration_record": "/home/dev/n16k64_campaign/fqport/razer_data/llama8b/calibration/report.json",
+     "calibration_record_sha256": "f3b37423e12c53f847c03f4c6c4761473678115ffdd860bcd79d638bab5232de"
+    },
+    "written_utc": "2026-10-02T04:50:36+00:00"
+   },
+   "modules": 224,
+   "tiles": 13631488,
+   "e0m3_tiles": 309517,
+   "e0m3_fraction": 0.022706031799316406
+  },
+  "quant": {
+   "backend": "razer",
+   "weight": "mixfp4",
+   "act": "fourover6",
+   "act_scope": "row",
+   "unit": "8x64"
+  },
+  "razer": {
+   "backend": "razer",
+   "kernel": "n8k64_wB",
+   "routing": null,
+   "weight": "mixfp4",
+   "unit": "8x64",
+   "activation_quantizer": "four_over_six_rows",
+   "activation_quantizer_override": false,
+   "modules": 224,
+   "e0m3_tiles": 309517,
+   "checked": true,
+   "ownership": {},
+   "kernel_set": {
+    "kernel": "n8k64_wB",
+    "sha256": "b4111699201b4cc14f0310d8fa04099cf0224ec72a1ea726d6aa1414ab076a4d"
+   },
+   "device_bytes": {
+    "packed": 3489660928,
+    "scales_placed": 436207616,
+    "bias": 0
+   }
+  },
+  "quantized_modules": 224,
+  "native_backend": "razer"
+ },
+ "seconds": {
+  "load": 6.56154203414917,
+  "install": 8.155260562896729
+ },
+ "weights_gib": 5.646983623504639,
+ "coverage": {
+  "native": 224,
+  "native_called": 224,
+  "calls": 31360,
+  "tokens": 1795360
+ },
+ "check_passed": true,
+ "gpu_end": {
+  "name": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "driver_version": "595.71.05",
+  "power.limit": "500.00 W",
+  "power.default_limit": "600.00 W",
+  "clocks.max.sm": "3090 MHz",
+  "clocks.max.mem": "14001 MHz",
+  "clocks.applications.graphics": "[Requested functionality has been deprecated]",
+  "persistence_mode": "Enabled",
+  "temperature.gpu": "62",
+  "utilization.gpu": "34 %",
+  "memory.used": "21238 MiB",
+  "torch": "2.9.0+cu128",
+  "torch_cuda": "12.8",
+  "triton": "3.5.0",
+  "host": "gpu-ab4c5289-69ab-4445-bf02-a6b3e67061b8",
+  "device": "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+  "capability": [
+   12,
+   0
+  ],
+  "sm_count": 188,
+  "utc": "2026-10-02T05:24:42+00:00"
+ }
+}
